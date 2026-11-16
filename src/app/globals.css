@@ -1,0 +1,198 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand palette — editorial institutional */
+  --color-forest: #153e35;
+  --color-forest-deep: #102e27;
+  --color-forest-ink: #0c241e;
+  --color-charcoal: #202523;
+  --color-offwhite: #f8f9f6;
+  --color-gold: #b49a67;
+  --color-gold-deep: #9a8254;
+  --color-line: #e7e9e5;
+  --color-line-strong: #d5d8d2;
+  --color-body: #404641;
+  --color-muted: #737a74;
+
+  --font-bengali: var(--font-hind-siliguri), "Hind Siliguri", sans-serif;
+  --font-sans: var(--font-manrope), "Manrope", var(--font-hind-siliguri), "Hind Siliguri", sans-serif;
+
+  --shadow-card: 0 1px 2px rgb(16 46 39 / 0.05);
+  --shadow-lift: 0 10px 30px rgb(16 46 39 / 0.12);
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: var(--color-charcoal);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv05";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Bengali copy — never over-bold, always generous leading */
+.bn {
+  font-family: var(--font-bengali);
+  line-height: 1.85;
+  letter-spacing: 0;
+  text-wrap: pretty;
+}
+.bn-heading {
+  font-family: var(--font-bengali);
+  line-height: 1.32;
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+/* Anchored targets clear the sticky header */
+#main-content {
+  scroll-margin-top: 4.5rem;
+}
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+/* Editorial measure for long-form copy */
+.prose-measure {
+  max-width: 68ch;
+}
+.prose-narrow {
+  max-width: 56ch;
+}
+
+/* Focus visibility — WCAG 2.2 AA */
+:where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-forest);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background: var(--color-forest);
+  color: #fff;
+  font-size: 0.875rem;
+}
+.skip-link:focus-visible {
+  left: 0.5rem;
+  top: 0.5rem;
+}
+
+/* Thin rule used between editorial sections */
+.hairline {
+  border-color: var(--color-line);
+}
+
+/* Underline link, refined */
+.link-underline {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: left 100%;
+  transition: background-size 0.35s ease;
+  padding-bottom: 2px;
+}
+.link-underline:hover,
+.link-underline:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* Subtle image treatment for editorial photography */
+.photo-frame {
+  background: var(--color-forest-deep);
+}
+
+/* Restrained entrance animation — disabled for reduced motion */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-rise {
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-rise-delay {
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise,
+  .animate-rise-delay {
+    animation: none;
+  }
+}
+
+/* Selection */
+::selection {
+  background: var(--color-gold);
+  color: var(--color-forest-ink);
+}
+
+/* Print — a clean one-column briefing page for any article/bio */
+@media print {
+  header,
+  footer,
+  nav,
+  iframe,
+  .skip-link {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #000;
+  }
+  main {
+    padding: 0 !important;
+  }
+  .bg-forest, .bg-forest-deep, .bg-forest-ink, .bg-offwhite {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .text-gold, .text-gold-deep {
+    color: #000 !important;
+  }
+  * {
+    box-shadow: none !important;
+    animation: none !important;
+  }
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.75em;
+    color: #333;
+  }
+  h1, h2, h3, p, li, blockquote {
+    break-inside: avoid;
+  }
+  @page {
+    margin: 2cm;
+  }
+}

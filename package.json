@@ -1,0 +1,48 @@
+{
+  "name": "nurul-haque-nur-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Official personal website of Nurul Haque Nur (VP Nur) — Bengali-first, editorial institutional design.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "seed": "node --experimental-strip-types scripts/seed.mts",
+    "cms:types": "node --experimental-strip-types node_modules/payload/bin.js generate:types --disable-transpile",
+    "cms:importmap": "node --experimental-strip-types node_modules/payload/bin.js generate:importmap --disable-transpile",
+    "cms:migrate": "node --experimental-strip-types node_modules/payload/bin.js migrate --disable-transpile",
+    "cms:migrate:create": "node --experimental-strip-types node_modules/payload/bin.js migrate:create --disable-transpile"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.2.1",
+    "@payloadcms/db-sqlite": "^3.93.0",
+    "@payloadcms/next": "^3.93.0",
+    "@payloadcms/richtext-lexical": "^3.93.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "graphql": "^16.15.0",
+    "lucide-react": "^1.73.0",
+    "motion": "^14.14.0",
+    "next": "16.4.6",
+    "next-themes": "^0.4.6",
+    "payload": "^3.93.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "react-hook-form": "^7.65.0",
+    "tailwind-merge": "^3.3.1",
+    "zod": "^4.1.11"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.5",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.6",
+    "postcss": "^8.5.6",
+    "tailwindcss": "4.3.5",
+    "typescript": "^5"
+  }
+}
