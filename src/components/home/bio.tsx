@@ -32,10 +32,7 @@ export function BioSection({ locale }: { locale: Locale }) {
       <Container>
         <div className="grid gap-8 lg:grid-cols-12 lg:gap-14">
           <div className="lg:col-span-5">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
-              {bn ? "সংক্ষিপ্ত পরিচিতি" : "Overview"}
-            </p>
-            <h2 className="bn-heading mt-2 text-2xl leading-snug text-forest sm:text-3xl">
+            <h2 className="bn-heading text-2xl leading-snug text-forest sm:text-3xl">
               {bn ? "ছাত্ররাজনীতি থেকে জাতীয় পর্যায়ে" : "From Student Politics to Parliament"}
             </h2>
             <p className="bn mt-4 text-[15px] leading-relaxed text-body">
@@ -82,9 +79,9 @@ export function JourneySection({ locale }: { locale: Locale }) {
     <section className="border-t border-line bg-offwhite py-10 sm:py-12">
       <Container>
         <div className="flex items-center justify-between">
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
+          <h2 className="bn-heading text-xl text-forest sm:text-2xl">
             {bn ? "গুরুত্বপূর্ণ সময়রেখা" : "Milestones"}
-          </p>
+          </h2>
           <Link
             href={localePath(locale, "/about")}
             className="text-[12px] font-semibold text-forest hover:underline"

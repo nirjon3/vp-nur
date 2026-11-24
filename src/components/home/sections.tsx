@@ -35,11 +35,7 @@ export function ServicesBand({ locale }: { locale: Locale }) {
       <Container>
         <div className="grid items-center gap-8 lg:grid-cols-12">
           <div className="lg:col-span-7">
-            <p className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.22em] text-gold">
-              <CheckCircle2 className="h-3.5 w-3.5" />
-              {bn ? "নাগরিক সেবা ও গণশুনানি" : "Citizen Services"}
-            </p>
-            <h2 className="bn-heading mt-2 text-2xl leading-snug text-white sm:text-3xl">
+            <h2 className="bn-heading text-2xl leading-snug text-white sm:text-3xl">
               {bn ? "আপনার এলাকার সমস্যা সরাসরি জানান" : "Tell Us What Your Area Needs"}
             </h2>
             <p className="bn mt-2 text-[14.5px] leading-relaxed text-[#d5dcd0]">

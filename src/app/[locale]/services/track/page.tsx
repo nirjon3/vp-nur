@@ -72,7 +72,7 @@ export default async function TrackPage({
               <TrackForm locale={locale} />
             </div>
             <aside className="lg:col-span-6">
-              <h2 className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
+              <h2 className="bn-heading text-lg font-semibold text-forest">
                 {bn ? "অবস্থার অর্থ" : "What the statuses mean"}
               </h2>
               <ol className="mt-4 divide-y divide-line border-y border-line">

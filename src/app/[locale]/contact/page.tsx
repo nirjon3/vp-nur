@@ -61,7 +61,7 @@ export default async function ContactPage({
         <Container>
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
-              <h2 className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
+              <h2 className="bn-heading text-xl text-forest sm:text-2xl">
                 {bn ? "অফিস" : "The office"}
               </h2>
               <ul className="mt-4 divide-y divide-line border-y border-line">
@@ -175,7 +175,7 @@ export default async function ContactPage({
             </div>
 
             <div className="lg:col-span-7">
-              <h2 className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
+              <h2 className="bn-heading text-xl text-forest sm:text-2xl">
                 {bn ? "অনলাইনে বার্তা পাঠান" : "Send a message online"}
               </h2>
               <p className="bn mt-2 max-w-xl text-[14px] leading-7 text-body">

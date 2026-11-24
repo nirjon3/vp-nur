@@ -99,8 +99,8 @@ export default async function EventsPage({
 
           <div className="mt-10 grid gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
-              <h2 className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.22em] text-gold-deep">
-                <CalendarDays aria-hidden="true" className="h-4 w-4" />
+              <h2 className="bn-heading flex items-center gap-2 text-xl text-forest">
+                <CalendarDays aria-hidden="true" className="h-5 w-5 text-forest" />
                 {dict.status.upcoming}
               </h2>
               {upcoming.length > 0 ? (
@@ -114,7 +114,7 @@ export default async function EventsPage({
               )}
             </div>
             <div>
-              <h2 className="text-[11px] font-bold uppercase tracking-[0.22em] text-muted">
+              <h2 className="bn-heading flex items-center gap-2 text-xl text-muted">
                 {dict.status.past}
               </h2>
               {past.length > 0 ? (

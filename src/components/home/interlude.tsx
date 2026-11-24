@@ -14,12 +14,9 @@ export function InterludeSection({ locale }: { locale: Locale }) {
     >
       <div className="mx-auto flex max-w-[1280px] flex-col items-center justify-between gap-4 px-4 text-center sm:flex-row sm:text-left sm:px-6 lg:px-10">
         <div>
-          <p className="flex items-center justify-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-gold sm:justify-start">
-            <MapPin className="h-3.5 w-3.5" />
-            {bn ? "পটুয়াখালী-৩ আসন" : "Patuakhali-3 Constituency"}
-          </p>
-          <p className="bn-heading mt-1 text-2xl text-white sm:text-3xl">
-            {bn ? "গালাচিপা · দশমিনা" : "Galachipa · Dashmina"}
+          <p className="bn-heading flex items-center justify-center gap-2 text-2xl text-white sm:justify-start sm:text-3xl">
+            <MapPin className="h-5 w-5 text-gold" />
+            {bn ? "গালাচিপা · দশমিনা (পটুয়াখালী-৩ আসন)" : "Galachipa · Dashmina (Patuakhali-3)"}
           </p>
         </div>
         <Link

@@ -24,10 +24,7 @@ export function InitiativesSection({ locale }: { locale: Locale }) {
       <Container>
         <div className="flex flex-wrap items-end justify-between gap-4 border-b border-line-strong pb-5">
           <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
-              {bn ? "উন্নয়ন উদ্যোগ" : "Initiatives"}
-            </p>
-            <h2 className="bn-heading mt-1.5 text-2xl text-forest sm:text-3xl">
+            <h2 className="bn-heading text-2xl text-forest sm:text-3xl">
               {bn ? "জনকল্যাণমূলক প্রকল্পসমূহ" : "Community Projects"}
             </h2>
           </div>

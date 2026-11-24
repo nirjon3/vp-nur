@@ -14,10 +14,7 @@ export function ConstituencySection({ locale }: { locale: Locale }) {
       <Container>
         <div className="flex flex-wrap items-end justify-between gap-4 border-b border-line pb-5">
           <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
-              {bn ? "নির্বাচনী এলাকা" : "Constituency"}
-            </p>
-            <h2 className="bn-heading mt-1.5 text-2xl text-forest sm:text-3xl">
+            <h2 className="bn-heading text-2xl text-forest sm:text-3xl">
               {constituency.name[locale]}
               <span className="ml-2 font-normal text-muted text-lg sm:text-xl">
                 ({constituency.upazilas.map((u) => u[locale]).join(" · ")})
@@ -37,9 +34,9 @@ export function ConstituencySection({ locale }: { locale: Locale }) {
           {/* Priorities */}
           <div className="flex flex-col justify-between lg:col-span-6">
             <div>
-              <p className="text-[11.5px] font-bold uppercase tracking-[0.16em] text-gold-deep">
+              <h3 className="bn-heading text-lg font-semibold text-forest">
                 {bn ? "মূল অগ্রাধিকারসমূহ" : "Core Priorities"}
-              </p>
+              </h3>
               <ul className="mt-4 grid gap-3">
                 {constituency.priorities.map((p) => (
                   <li

@@ -72,8 +72,8 @@ export default async function ServicesPage({
 
             <aside className="lg:col-span-5">
               <div className="rounded-[2px] border border-line bg-offwhite p-6 sm:p-8">
-                <h2 className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
-                  <ListChecks aria-hidden="true" className="h-4 w-4" />
+                <h2 className="bn-heading flex items-center gap-2 text-lg font-semibold text-forest">
+                  <ListChecks aria-hidden="true" className="h-5 w-5 text-forest" />
                   {bn ? "প্রক্রিয়াটি যেমন" : "How it works"}
                 </h2>
                 <ol className="mt-4 space-y-4">

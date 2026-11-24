@@ -72,14 +72,14 @@ export default async function ConstituencyPage({
               </a>
             </div>
             <div className="lg:col-span-5">
-              <h2 className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
-                <Waves aria-hidden="true" className="h-4 w-4" />
+              <h2 className="bn-heading flex items-center gap-2 text-xl text-forest">
+                <Waves aria-hidden="true" className="h-5 w-5 text-forest" />
                 {bn ? "ভৌগোলিক পরিচয়" : "Geography"}
               </h2>
               <p className="bn mt-2 text-[15px] leading-8 text-body">{constituency.geography[locale]}</p>
 
-              <h2 className="mt-8 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
-                <Building2 aria-hidden="true" className="h-4 w-4" />
+              <h2 className="bn-heading mt-8 flex items-center gap-2 text-xl text-forest">
+                <Building2 aria-hidden="true" className="h-5 w-5 text-forest" />
                 {bn ? "উপজেলা ও প্রশাসনিক একক" : "Upazilas and units"}
               </h2>
               <ul className="mt-2 divide-y divide-line border-y border-line">
@@ -108,7 +108,7 @@ export default async function ConstituencyPage({
       {/* Priorities */}
       <section className="border-t border-line bg-offwhite py-12 sm:py-16">
         <Container>
-          <h2 className="text-[11px] font-bold uppercase tracking-[0.22em] text-gold-deep">
+          <h2 className="bn-heading text-2xl text-forest sm:text-3xl">
             {bn ? "জনসেবার অগ্রাধিকার" : "Public service priorities"}
           </h2>
           <ol className="mt-6 grid gap-px overflow-hidden rounded-[2px] border border-line bg-line sm:grid-cols-2">

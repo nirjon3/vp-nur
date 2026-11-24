@@ -11,11 +11,8 @@ export default function NotFound() {
 
   return (
     <div className="mx-auto max-w-[1280px] px-4 py-24 text-center sm:px-6 lg:px-10">
-      <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-gold-deep">
-        {isEn ? "404" : "৪০৪"}
-      </p>
-      <h1 className="bn-heading mt-3 text-3xl text-forest sm:text-4xl">
-        {isEn ? "Page Not Found" : "পৃষ্ঠাটি খুঁজে পাওয়া যায়নি"}
+      <h1 className="bn-heading text-4xl text-forest sm:text-5xl">
+        {isEn ? "404 — Page Not Found" : "৪০৪ — পৃষ্ঠাটি খুঁজে পাওয়া যায়নি"}
       </h1>
       <p className="bn mx-auto mt-3 max-w-md text-muted">
         {isEn

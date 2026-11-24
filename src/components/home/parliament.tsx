@@ -35,10 +35,7 @@ export function ParliamentSection({ locale }: { locale: Locale }) {
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-10">
         <div className="flex flex-wrap items-end justify-between gap-4 border-b border-white/10 pb-5">
           <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold">
-              {bn ? "জাতীয় সংসদ" : "Parliament"}
-            </p>
-            <h2 className="bn-heading mt-1.5 text-2xl text-white sm:text-3xl">
+            <h2 className="bn-heading text-2xl text-white sm:text-3xl">
               {bn ? "সংসদীয় কার্যক্রম" : "Parliamentary Activities"}
             </h2>
           </div>

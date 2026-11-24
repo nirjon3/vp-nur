@@ -107,7 +107,7 @@ export default async function NewsArticlePage({
             {/* Sidebar: related */}
             <aside className="lg:col-span-4">
               <div className="border-t border-line pt-6 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
-                <h2 className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
+                <h2 className="bn-heading text-lg font-semibold text-forest">
                   {bn ? "সম্পর্কিত সংবাদ" : "Related"}
                 </h2>
                 <ul className="mt-4 divide-y divide-line">

@@ -43,10 +43,7 @@ export function VideoSpeeches({
       <Container>
         <div className="flex flex-wrap items-end justify-between gap-4 border-b border-line pb-5">
           <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
-              {bn ? "নিজের কণ্ঠে" : "In His Own Voice"}
-            </p>
-            <h2 className="bn-heading mt-1.5 text-2xl text-forest sm:text-3xl">
+            <h2 className="bn-heading text-2xl text-forest sm:text-3xl">
               {bn ? "বক্তৃতা, সাক্ষাৎকার ও ভিডিও" : "Speeches, Interviews & Videos"}
             </h2>
           </div>

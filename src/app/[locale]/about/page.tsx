@@ -124,10 +124,7 @@ export default async function AboutPage({
         <Container>
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-gold-deep">
-                {bn ? "সময়রেখা" : "Timeline"}
-              </p>
-              <h2 className="bn-heading mt-2 text-2xl text-forest sm:text-3xl">
+              <h2 className="bn-heading text-2xl text-forest sm:text-3xl">
                 {bn ? "যাত্রাপথ এক নজরে" : "The journey at a glance"}
               </h2>
             </div>

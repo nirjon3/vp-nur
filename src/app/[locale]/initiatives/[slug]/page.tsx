@@ -102,7 +102,7 @@ export default async function InitiativeDetailPage({
 
             {item.updates.length > 0 ? (
               <div className="mt-10 border-t border-line pt-6">
-                <h2 className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
+                <h2 className="bn-heading text-lg font-semibold text-forest">
                   {bn ? "সর্বশেষ হালনাগাদ" : "Latest updates"}
                 </h2>
                 <ol className="mt-3 space-y-4">
