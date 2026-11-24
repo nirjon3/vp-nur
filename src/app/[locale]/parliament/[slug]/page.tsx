@@ -76,14 +76,14 @@ export default async function ParliamentDetailPage({
               <Badge variant="outline" className="normal-case tracking-normal">
                 {categoryLabel(item.category, bn)}
               </Badge>
-              <time dateTime={item.date} className="text-[12px] font-semibold uppercase tracking-[0.14em] text-muted">
+              <time dateTime={item.date} className="text-[13px] font-medium text-muted">
                 {formatDate(item.date, locale)}
               </time>
               <VerificationBadge status={item.verification} locale={locale} />
             </div>
             <h1 className="bn-heading mt-4 text-3xl leading-[1.3] text-forest sm:text-4xl">{item.title[locale]}</h1>
             {item.session ? (
-              <p className="bn mt-2 text-[13px] font-semibold uppercase tracking-[0.14em] text-gold-deep">
+              <p className="bn mt-2 text-[14px] font-semibold text-gold-deep">
                 {item.session[locale]}
               </p>
             ) : null}

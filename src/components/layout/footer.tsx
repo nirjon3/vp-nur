@@ -10,16 +10,15 @@ export function Footer({ locale }: { locale: Locale }) {
   const exploreLinks = [
     { href: "/about", label: dict.nav.about },
     { href: "/parliament", label: dict.nav.parliament },
-    { href: "/constituency", label: dict.nav.constituency },
-    { href: "/news", label: dict.nav.news },
     { href: "/initiatives", label: dict.nav.initiatives },
+    { href: "/events", label: dict.nav.events },
+    { href: "/media", label: dict.nav.media },
+    { href: "/speeches", label: dict.nav.speeches },
   ];
   const serviceLinks = [
     { href: "/services", label: dict.nav.services },
     { href: "/services/track", label: locale === "bn" ? "অনুরোধ ট্র্যাক করুন" : "Track a request" },
-    { href: "/events", label: dict.nav.events },
-    { href: "/publications", label: dict.nav.publications },
-    { href: "/media", label: dict.nav.media },
+    { href: "/contact", label: dict.nav.contact },
   ];
 
   return (

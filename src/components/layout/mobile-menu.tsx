@@ -3,32 +3,49 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import {
+  Menu,
+  X,
+  User,
+  Landmark,
+  Sparkles,
+  CalendarDays,
+  Image as ImageIcon,
+  Video,
+  FileText,
+  ChevronRight,
+} from "lucide-react";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { localePath, type Locale } from "@/i18n/config";
 import { cn } from "@/lib/cn";
-import { LanguageSwitcher } from "./language-switcher";
 
 interface NavItem {
   href: string;
   label: string;
 }
 
+const navIcons: Record<string, typeof User> = {
+  "/about": User,
+  "/parliament": Landmark,
+  "/initiatives": Sparkles,
+  "/events": CalendarDays,
+  "/media": ImageIcon,
+  "/speeches": Video,
+};
+
 export function MobileMenu({
   locale,
   primary,
-  secondary,
   dict,
 }: {
   locale: Locale;
   primary: NavItem[];
-  secondary: NavItem[];
   dict: Dictionary;
 }) {
   const [open, setOpen] = React.useState(false);
   const pathname = usePathname();
 
-  // Close the menu on navigation — derived-state pattern, no effect needed.
+  // Close the menu on navigation
   const [prevPath, setPrevPath] = React.useState(pathname);
   if (prevPath !== pathname) {
     setPrevPath(pathname);
@@ -61,86 +78,73 @@ export function MobileMenu({
         aria-expanded={open}
         aria-controls="mobile-panel"
         aria-label={open ? dict.nav.menuClose : dict.nav.menuOpen}
-        className="flex h-11 w-11 items-center justify-center rounded-[2px] border border-line-strong text-forest"
+        className="flex h-11 w-11 items-center justify-center rounded-[4px] border border-line-strong bg-white text-forest shadow-2xs transition-colors hover:bg-forest/5"
       >
-        {open ? <X aria-hidden="true" className="h-6 w-6" /> : <Menu aria-hidden="true" className="h-6 w-6" />}
+        {open ? <X aria-hidden="true" className="h-5 w-5" /> : <Menu aria-hidden="true" className="h-5 w-5" />}
       </button>
 
       {open ? (
         <div
           id="mobile-panel"
-          className="fixed inset-x-0 top-[64px] z-40 h-[calc(100dvh-64px)] overflow-y-auto border-t border-line bg-white"
+          className="fixed inset-x-0 top-[64px] z-40 h-[calc(100dvh-64px)] overflow-y-auto border-t border-line bg-white/98 backdrop-blur-md"
         >
-          <nav aria-label={locale === "bn" ? "মোবাইল মেনু" : "Mobile menu"} className="px-4 pb-10 pt-4">
-            <ul className="divide-y divide-line border-y border-line">
-              {primary.map((item) => {
-                const target = localePath(locale, item.href);
-                const isActive =
-                  pathname === target || pathname.startsWith(`${target}/`);
-                return (
-                  <li key={item.href}>
-                    <Link
-                      href={target}
-                      aria-current={isActive ? "page" : undefined}
-                      className={cn(
-                        "flex items-center justify-between py-4 text-lg font-semibold transition-colors",
-                        isActive
-                          ? "border-l-4 border-forest bg-forest/5 pl-3 font-bold text-forest"
-                          : "text-charcoal hover:text-forest"
-                      )}
-                    >
-                      <span>{item.label}</span>
-                      {isActive && (
-                        <span className="h-2 w-2 rounded-full bg-forest" />
-                      )}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-            <p className="mt-6 text-[11px] font-bold uppercase tracking-[0.18em] text-muted">
-              {dict.nav.more}
-            </p>
-            <ul className="mt-2 grid grid-cols-1 divide-y divide-line border-y border-line sm:grid-cols-2 sm:divide-y-0 sm:gap-px">
-              {secondary.map((item) => {
-                const target = localePath(locale, item.href);
-                const isActive =
-                  pathname === target || pathname.startsWith(`${target}/`);
-                return (
-                  <li key={item.href}>
-                    <Link
-                      href={target}
-                      aria-current={isActive ? "page" : undefined}
-                      className={cn(
-                        "flex items-center justify-between py-3.5 text-[15px] transition-colors",
-                        isActive
-                          ? "border-l-2 border-forest bg-forest/5 pl-2.5 font-bold text-forest"
-                          : "font-medium text-body hover:text-forest"
-                      )}
-                    >
-                      <span>{item.label}</span>
-                      {isActive && (
-                        <span className="h-1.5 w-1.5 rounded-full bg-forest" />
-                      )}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-            <Link
-              href={localePath(locale, "/services")}
-              className={cn(
-                "mt-6 block rounded-[2px] bg-forest px-4 py-4 text-center text-base font-semibold text-white",
-              )}
-            >
-              {dict.servicesCta}
-            </Link>
+          <nav aria-label={locale === "bn" ? "মোবাইল মেনু" : "Mobile menu"} className="px-4 pb-12 pt-4">
+            {/* Nav Links with Icons */}
+            <div className="rounded-xl border border-line bg-[#fbfdfa] p-1.5 shadow-2xs">
+              <ul className="divide-y divide-line/60">
+                {primary.map((item) => {
+                  const target = localePath(locale, item.href);
+                  const isActive =
+                    pathname === target || pathname.startsWith(`${target}/`);
+                  const Icon = navIcons[item.href] || Sparkles;
 
-            <div className="mt-6 flex items-center justify-between border-t border-line pt-5">
-              <span className="text-[13px] font-semibold text-charcoal">
-                {locale === "bn" ? "ভাষা পরিবর্তন করুন" : "Switch language"}
-              </span>
-              <LanguageSwitcher locale={locale} />
+                  return (
+                    <li key={item.href}>
+                      <Link
+                        href={target}
+                        aria-current={isActive ? "page" : undefined}
+                        className={cn(
+                          "flex items-center justify-between rounded-lg px-3.5 py-3.5 text-[15.5px] font-semibold transition-all",
+                          isActive
+                            ? "bg-forest font-bold text-gold shadow-xs"
+                            : "text-charcoal hover:bg-white hover:text-forest"
+                        )}
+                      >
+                        <div className="flex items-center gap-3">
+                          <span
+                            className={cn(
+                              "flex h-8 w-8 items-center justify-center rounded-[4px] transition-colors",
+                              isActive
+                                ? "bg-forest-deep text-gold"
+                                : "bg-forest/5 text-forest"
+                            )}
+                          >
+                            <Icon className="h-4 w-4" />
+                          </span>
+                          <span>{item.label}</span>
+                        </div>
+
+                        {isActive ? (
+                          <span className="h-2 w-2 rounded-full bg-gold" />
+                        ) : (
+                          <ChevronRight className="h-4 w-4 text-muted/50" />
+                        )}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+
+            {/* Prominent Citizen Services Action */}
+            <div className="mt-6">
+              <Link
+                href={localePath(locale, "/services")}
+                className="flex items-center justify-center gap-2 rounded-xl bg-forest px-4 py-3.5 text-center text-[15px] font-bold text-white shadow-md transition-colors hover:bg-forest-deep"
+              >
+                <FileText className="h-4 w-4 text-gold" />
+                <span>{dict.servicesCta}</span>
+              </Link>
             </div>
           </nav>
         </div>

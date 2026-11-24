@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
 import { locales } from "@/i18n/config";
-import { newsArticles } from "@/content/news";
 import { initiatives } from "@/content/initiatives";
 import { parliamentActivities } from "@/content/parliament";
 
@@ -13,13 +12,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/about",
     "/parliament",
-    "/constituency",
+    "/events",
     "/initiatives",
-    "/news",
     "/media",
     "/speeches",
-    "/events",
-    "/publications",
     "/services",
     "/services/track",
     "/contact",
@@ -28,7 +24,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const dynamicPaths = [
-    ...newsArticles.map((a) => `/news/${a.slug}`),
     ...initiatives.map((i) => `/initiatives/${i.slug}`),
     ...parliamentActivities.map((p) => `/parliament/${p.slug}`),
   ];

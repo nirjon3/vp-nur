@@ -43,7 +43,7 @@ export function pageMetadata({
     },
     openGraph: {
       type: "website",
-      siteName: locale === "bn" ? "নুরুল হক নুর" : "Nurul Haque Nur",
+      siteName: locale === "bn" ? "মো. নুরুল হক, এমপি" : "Md. Nurul Hoque, MP",
       title,
       description,
       url: siteUrl(localizedPath),

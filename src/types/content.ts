@@ -95,6 +95,7 @@ export interface PublicEvent extends Verifiable {
   location: LocalText;
   description: LocalText;
   status: EventStatus;
+  category?: LocalText;
 }
 
 export interface Publication extends Verifiable {

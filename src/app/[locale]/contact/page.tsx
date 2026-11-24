@@ -23,8 +23,8 @@ export async function generateMetadata({
     path: "/contact",
     title: bn ? "যোগাযোগ" : "Contact",
     description: bn
-      ? "যাচাইকৃত সরকারি যোগাযোগের তথ্য এবং সরাসরি অনুরোধ পাঠানোর ফর্ম।"
-      : "Verified official contact details and a direct request form.",
+      ? "অফিসিয়াল যোগাযোগের তথ্য এবং সরাসরি অনুরোধ পাঠানোর ফর্ম।"
+      : "Official contact details and a direct request form.",
   });
 }
 
@@ -39,8 +39,8 @@ export default async function ContactPage({
   const bn = locale === "bn";
 
   const pendingBadge = (
-    <span className="inline-flex rounded-[2px] border border-gold/50 bg-gold/15 px-2 py-0.5 text-[10.5px] font-bold uppercase tracking-[0.14em] text-gold-deep">
-      {bn ? "যাচাই চলমান" : "Verification pending"}
+    <span className="text-[13px] text-muted">
+      {bn ? "শীঘ্রই যুক্ত করা হবে" : "To be added soon"}
     </span>
   );
 
@@ -139,8 +139,8 @@ export default async function ContactPage({
                 <p className="mt-6 flex items-start gap-3 rounded-[2px] border border-dashed border-line-strong bg-offwhite p-4 text-[12.5px] leading-6 text-muted">
                   <ShieldCheck aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0" />
                   {bn
-                    ? "অফিসের মানচিত্র যাচাইকৃত ঠিকানা প্রকাশের পর এখানে যুক্ত হবে।"
-                    : "An office map will be embedded once the verified address is published."}
+                    ? "অফিসের মানচিত্রের অবস্থান শীঘ্রই এখানে যুক্ত হবে।"
+                    : "Office map location will be embedded here soon."}
                 </p>
               )}
 
@@ -164,9 +164,8 @@ export default async function ContactPage({
                       <span
                         key={s.id}
                         className="rounded-[2px] border border-line px-3 py-1.5 text-[12px] font-medium text-muted"
-                        title={bn ? "যাচাইকৃত প্রোফাইল যুক্ত করা হবে" : "Verified profile to be linked"}
                       >
-                        {s.label} · {bn ? "যাচাইাধীন" : "pending"}
+                        {s.label}
                       </span>
                     ),
                   )}

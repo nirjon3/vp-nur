@@ -2,15 +2,49 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  Sparkles,
+  GraduationCap,
+  Award,
+  Megaphone,
+  Landmark,
+  Building2,
+} from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import { isLocale, localePath } from "@/i18n/config";
 import { pageMetadata } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { PageHeader } from "@/components/shared/page-header";
 import { Container } from "@/components/ui/layout";
-import { VerificationBadge, SourceLine } from "@/components/shared/verification";
 import { timeline } from "@/content/timeline";
+
+const timelineMeta = [
+  {
+    icon: Sparkles,
+    tag: { bn: "জন্ম ও শৈশব", en: "Early Life" },
+  },
+  {
+    icon: GraduationCap,
+    tag: { bn: "উচ্চশিক্ষা", en: "Higher Studies" },
+  },
+  {
+    icon: Award,
+    tag: { bn: "ডাকসু ভিপি", en: "DUCSU Leadership" },
+  },
+  {
+    icon: Megaphone,
+    tag: { bn: "রাজনৈতিক যাত্রা", en: "Political Movement" },
+  },
+  {
+    icon: Landmark,
+    tag: { bn: "সংসদ সদস্য", en: "Member of Parliament" },
+  },
+  {
+    icon: Building2,
+    tag: { bn: "মাননীয় প্রতিমন্ত্রী", en: "Hon'ble State Minister" },
+  },
+];
 
 export async function generateMetadata({
   params,
@@ -87,13 +121,13 @@ export default async function AboutPage({
               <div className="bn prose-measure mt-4 space-y-4 text-[16px] leading-8 text-body">
                 <p>
                   {bn
-                    ? "নুরুল হক নুর (ভিপি নুর) একজন বাংলাদেশি রাজনীতিবিদ। ঢাকা বিশ্ববিদ্যালয় কেন্দ্রীয় ছাত্র সংসদের (ডাকসু) সহ-সভাপতি নির্বাচিত হওয়ার মাধ্যমে তিনি জাতীয় পরিচিতি লাভ করেন।"
-                    : "Nurul Haque Nur (VP Nur) is a Bangladeshi politician. He first came to national attention as the elected Vice President of the Dhaka University Central Students' Union (DUCSU)."}
+                    ? "মো. নুরুল হক, এমপি (জনপ্রিয় পরিচিতি ভিপি নুর) গণপ্রজাতন্ত্রী বাংলাদেশ সরকারের প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়ের মাননীয় প্রতিমন্ত্রী এবং পটুয়াখালী-৩ (গালাচিপা–দশমিনা) আসনের সংসদ সদস্য। ২০১৯ সালে ঢাকা বিশ্ববিদ্যালয় কেন্দ্রীয় ছাত্র সংসদের (ডাকসু) সহ-সভাপতি নির্বাচিত হওয়ার মধ্য দিয়ে তিনি জাতীয় রাজনৈতিক পরিমণ্ডলে ঐতিহাসিক পরিচিতি লাভ করেন।"
+                    : "Md. Nurul Hoque, MP (widely known as VP Nur) serves as State Minister for the Ministry of Expatriates' Welfare & Overseas Employment, Government of Bangladesh, and Member of Parliament for Patuakhali-3 (Galachipa–Dashmina). He came to prominent national leadership in 2019 when elected Vice President of DUCSU."}
                 </p>
                 <p>
                   {bn
-                    ? "ছাত্র রাজনীতির মধ্য দিয়ে জাতীয় রাজনীতিতে প্রবেশ করার পর তিনি গালাচিপা–দশমিনাসহ পটুয়াখালী-৩ আসনের মানুষের উন্নয়ন ও সরকারি সেবা সহজ করার ইস্যুতে সক্রিয় থেকেছেন।"
-                    : "After entering national politics through student politics, he has remained active on issues of development and easier access to public services for the people of the Patuakhali-3 area, including Galachipa and Dashmina."}
+                    ? "বর্তমানে তিনি প্রবাসী কর্মীদের অধিকার সুরক্ষা, অভিবাসন খাতের স্বচ্ছতা, রেমিট্যান্স প্রবাহের নিরাপত্তা এবং পটুয়াখালী-৩ আসনের উপকূলীয় বাঁধ ও অবকাঠামোগত উন্নয়নে অগ্রণী ভূমিকা পালন করছেন।"
+                    : "Currently, his priorities center on the welfare and rights of migrant workers, transparency in overseas employment, secure remittance flows, and the coastal infrastructure and embankment development of Patuakhali-3."}
                 </p>
                 <p className="text-[14px] leading-7 text-muted">
                   {bn
@@ -103,10 +137,10 @@ export default async function AboutPage({
               </div>
               <dl className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-[2px] border border-line bg-line sm:grid-cols-4">
                 {[
-                  { k: bn ? "আসন" : "Seat", v: bn ? "পটুয়াখালী-৩" : "Patuakhali-3" },
+                  { k: bn ? "নির্বাহী পদ" : "Executive Role", v: bn ? "প্রতিমন্ত্রী, প্রবাসী কল্যাণ" : "State Minister" },
+                  { k: bn ? "সংসদীয় আসন" : "Parliamentary Seat", v: bn ? "পটুয়াখালী-৩" : "Patuakhali-3" },
                   { k: bn ? "এলাকা" : "Areas", v: bn ? "গালাচিপা · দশমিনা" : "Galachipa · Dashmina" },
                   { k: bn ? "পরিচিতি" : "Known as", v: bn ? "ভিপি নুর" : "VP Nur" },
-                  { k: bn ? "ভাষা" : "Languages", v: bn ? "বাংলা · English" : "Bengali · English" },
                 ].map((item) => (
                   <div key={item.k} className="bg-offwhite p-4">
                     <dt className="text-[10px] font-bold uppercase tracking-[0.18em] text-muted">{item.k}</dt>
@@ -119,52 +153,105 @@ export default async function AboutPage({
         </Container>
       </section>
 
-      {/* Timeline */}
-      <section className="border-t border-line bg-offwhite py-12 sm:py-16">
+      {/* Timeline: Two-column spine layout matching user's reference */}
+      <section className="relative border-t border-line bg-gradient-to-b from-[#f8faf7] via-offwhite to-white py-14 sm:py-20">
         <Container>
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <h2 className="bn-heading text-2xl text-forest sm:text-3xl">
-                {bn ? "যাত্রাপথ এক নজরে" : "The journey at a glance"}
-              </h2>
-            </div>
-            <Link
-              href={localePath(locale, "/parliament")}
-              className="group inline-flex items-center gap-1.5 text-[12px] font-bold uppercase tracking-[0.12em] text-forest hover:text-forest-deep"
-            >
-              {bn ? "সংসদীয় কর্মকাণ্ড" : "Parliamentary record"}
-              <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </Link>
+          {/* Centered section title with underline accent */}
+          <div className="mb-12 text-center sm:mb-16">
+            <h2 className="bn-heading text-2xl font-bold uppercase tracking-wider text-forest sm:text-3xl lg:text-[34px]">
+              {bn ? "যাত্রাপথ এক নজরে" : "The Journey at a Glance"}
+            </h2>
+            <div className="mx-auto mt-3 h-1 w-20 rounded-full bg-gold/80" />
           </div>
 
-          <ol className="mt-10 border-l-2 border-line-strong pl-6 sm:pl-10">
-            {timeline.map((item) => (
-              <li key={item.id} className="relative grid gap-2 pb-8 last:pb-0 sm:grid-cols-12 sm:gap-6">
-                <span
-                  aria-hidden="true"
-                  className="absolute -left-[31px] top-1.5 h-3 w-3 rounded-full border-2 border-forest bg-white sm:-left-[47px]"
-                />
-                <div className="sm:col-span-3">
-                  <span className="bn text-[12px] font-bold uppercase tracking-[0.14em] text-muted">
-                    {typeof item.date === "string" ? item.date : item.date[locale]}
-                  </span>
-                </div>
-                <div className="sm:col-span-9">
-                  <h3 className="bn-heading text-lg leading-snug text-forest">{item.title[locale]}</h3>
-                  <p className="bn mt-1.5 max-w-3xl text-[14.5px] leading-7 text-body">{item.body[locale]}</p>
-                  <div className="mt-3 flex flex-wrap items-center gap-3">
-                    <VerificationBadge status={item.verification} locale={locale} />
-                    <SourceLine
-                      locale={locale}
-                      sourceUrl={item.sourceUrl}
-                      sourceLabel={item.sourceLabel}
-                      updatedAt={item.updatedAt}
-                    />
+          <div className="relative mx-auto max-w-5xl">
+            {/* Center vertical spine (desktop) */}
+            <div
+              aria-hidden="true"
+              className="absolute left-1/2 top-4 bottom-4 hidden w-[2px] -translate-x-1/2 bg-line-strong/80 md:block"
+            />
+
+            {/* Left vertical spine (mobile) */}
+            <div
+              aria-hidden="true"
+              className="absolute left-4 top-4 bottom-4 block w-[2px] bg-line-strong/80 md:hidden"
+            />
+
+            <div className="space-y-8 md:space-y-12">
+              {timeline.map((item, index) => {
+                const meta = timelineMeta[index];
+                const Icon = meta.icon;
+                const isEven = index % 2 === 0;
+
+                return (
+                  <div
+                    key={item.id}
+                    className="relative flex items-center md:justify-between"
+                  >
+                    {/* Unique Node Icon on Central Spine (Desktop) */}
+                    <div
+                      aria-hidden="true"
+                      className="absolute left-4 top-6 z-10 flex h-9 w-9 -translate-x-1/2 items-center justify-center rounded-[4px] border border-forest/30 bg-forest text-gold shadow-sm transition-transform duration-200 hover:scale-110 md:left-1/2"
+                      title={meta.tag[locale]}
+                    >
+                      <Icon className="h-4.5 w-4.5" />
+                    </div>
+
+                    {/* Card: Alternating Left / Right on md: screens */}
+                    <div
+                      className={`ml-11 w-full md:ml-0 md:w-[calc(50%-2.5rem)] ${
+                        isEven ? "md:mr-auto" : "md:ml-auto"
+                      }`}
+                    >
+                      <div className="group rounded-xl border border-line bg-white p-6 shadow-2xs transition-all duration-200 hover:-translate-y-0.5 hover:border-forest/40 hover:shadow-md sm:rounded-2xl sm:p-7">
+                        {/* Header: Date + Unique Point Icon */}
+                        <div className="flex items-center justify-between border-b border-line/70 pb-3">
+                          <span className="text-[13px] font-bold tracking-wider text-forest uppercase">
+                            {typeof item.date === "string"
+                              ? item.date
+                              : item.date[locale]}
+                          </span>
+                          <div className="flex h-8 w-8 items-center justify-center rounded-[3px] border border-forest/20 bg-forest/5 text-forest transition-colors group-hover:border-forest/40 group-hover:bg-forest group-hover:text-gold">
+                            <Icon className="h-4 w-4" />
+                          </div>
+                        </div>
+
+                        {/* Title & Body */}
+                        <h3 className="bn-heading mt-3 text-[17px] font-bold leading-snug text-forest">
+                          {item.title[locale]}
+                        </h3>
+                        <p className="bn mt-2.5 text-[14px] leading-relaxed text-body">
+                          {item.body[locale]}
+                        </p>
+
+                        {/* Bottom Pill Badge with Dedicated Icon */}
+                        <div className="mt-4 flex items-center justify-between">
+                          <span className="inline-flex items-center gap-1.5 rounded-full bg-forest/8 px-3 py-1 text-[11.5px] font-semibold text-forest">
+                            <Icon className="h-3 w-3 text-gold-deep" />
+                            {meta.tag[locale]}
+                          </span>
+                          <span className="text-[11px] font-bold text-muted/70 tracking-widest">
+                            #{String(index + 1).padStart(2, "0")}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </li>
-            ))}
-          </ol>
+                );
+              })}
+            </div>
+
+            {/* Bottom Link to Parliamentary Record */}
+            <div className="mt-14 text-center">
+              <Link
+                href={localePath(locale, "/parliament")}
+                className="group inline-flex items-center gap-2 rounded-[2px] border border-forest/20 bg-white px-5 py-2.5 text-[12.5px] font-bold uppercase tracking-[0.1em] text-forest shadow-2xs transition-all hover:border-forest hover:bg-forest hover:text-white"
+              >
+                {bn ? "সংসদীয় কর্মকাণ্ডের বিবরণ দেখুন" : "View Parliamentary Record"}
+                <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            </div>
+          </div>
         </Container>
       </section>
     </>

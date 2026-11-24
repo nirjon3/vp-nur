@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import type { Locale } from "@/i18n/config";
 import { isLocale } from "@/i18n/config";
 import { pageMetadata } from "@/lib/seo";
-import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { PageHeader } from "@/components/shared/page-header";
 import { Container } from "@/components/ui/layout";
 import { SpeechList } from "@/components/speeches/speech-list";
@@ -39,15 +38,8 @@ export default async function SpeechesPage({
 
   return (
     <>
-      <Breadcrumbs locale={locale} items={[{ label: bn ? "বক্তৃতা ও সাক্ষাৎকার" : "Speeches & interviews" }]} />
       <PageHeader
-        kicker={bn ? "আর্কাইভ" : "Archive"}
-        title={bn ? "বক্তৃতা ও সাক্ষাৎকার" : "Speeches and interviews"}
-        description={
-          bn
-            ? "সংসদীয় ভাষণ, মিডিয়া সাক্ষাৎকার ও জনসভা — তারিখ, বিষয় ও স্থানসহ। সংক্ষিপ্ত ও দীর্ঘ দুই ফরম্যাটের রেকর্ড এখানে সংরক্ষিত হয়।"
-            : "Parliamentary addresses, media interviews and public meetings — with date, subject and location. Both short clips and full-length recordings live here."
-        }
+        title={bn ? "বক্তৃতা, সাক্ষাৎকার ও ভিডিও" : "Speeches, Interviews & Videos"}
       />
       <section className="bg-white py-10 sm:py-14">
         <Container>

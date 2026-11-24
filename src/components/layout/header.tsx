@@ -2,11 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown } from "lucide-react";
 import { getDictionary } from "@/i18n/dictionaries";
 import { localePath, type Locale } from "@/i18n/config";
 import { cn } from "@/lib/cn";
-import { LanguageSwitcher } from "./language-switcher";
 import { MobileMenu } from "./mobile-menu";
 
 export function Header({ locale }: { locale: Locale }) {
@@ -16,15 +14,10 @@ export function Header({ locale }: { locale: Locale }) {
   const primary = [
     { href: "/about", label: dict.nav.about },
     { href: "/parliament", label: dict.nav.parliament },
-    { href: "/constituency", label: dict.nav.constituency },
-    { href: "/news", label: dict.nav.news },
-  ];
-  const secondary = [
     { href: "/initiatives", label: dict.nav.initiatives },
-    { href: "/speeches", label: dict.nav.speeches },
     { href: "/events", label: dict.nav.events },
     { href: "/media", label: dict.nav.media },
-    { href: "/publications", label: dict.nav.publications },
+    { href: "/speeches", label: dict.nav.speeches },
   ];
 
   const checkActive = (href: string) => {
@@ -39,7 +32,6 @@ export function Header({ locale }: { locale: Locale }) {
     return pathname === target || pathname.startsWith(`${target}/`);
   };
 
-  const isSecondaryActive = secondary.some((item) => checkActive(item.href));
   const isServicesActive = checkActive("/services");
 
   return (
@@ -70,10 +62,10 @@ export function Header({ locale }: { locale: Locale }) {
           </span>
         </Link>
 
-        {/* Desktop nav */}
+        {/* Desktop nav — flat, all 6 items direct, no dropdown */}
         <nav
           aria-label={locale === "bn" ? "প্রধান মেনু" : "Primary menu"}
-          className="hidden items-center gap-1.5 lg:flex"
+          className="hidden items-center gap-1 xl:gap-2 lg:flex"
         >
           {primary.map((item) => {
             const isActive = checkActive(item.href);
@@ -83,7 +75,7 @@ export function Header({ locale }: { locale: Locale }) {
                 href={localePath(locale, item.href)}
                 aria-current={isActive ? "page" : undefined}
                 className={cn(
-                  "relative rounded-[2px] px-3.5 py-2 text-[13.5px] font-semibold transition-all",
+                  "relative rounded-[2px] px-3 py-2 text-[13.5px] font-semibold transition-all whitespace-nowrap",
                   isActive
                     ? "bg-forest/10 font-bold text-forest shadow-2xs after:absolute after:bottom-0 after:left-2.5 after:right-2.5 after:h-0.5 after:bg-forest"
                     : "text-charcoal hover:bg-offwhite hover:text-forest"
@@ -93,56 +85,9 @@ export function Header({ locale }: { locale: Locale }) {
               </Link>
             );
           })}
-
-          {/* Accessible CSS dropdown — hover + focus-within */}
-          <div className="group relative">
-            <button
-              type="button"
-              className={cn(
-                "relative flex items-center gap-1 rounded-[2px] px-3.5 py-2 text-[13.5px] font-semibold transition-all group-focus-within:bg-offwhite",
-                isSecondaryActive
-                  ? "bg-forest/10 font-bold text-forest shadow-2xs after:absolute after:bottom-0 after:left-2.5 after:right-2.5 after:h-0.5 after:bg-forest"
-                  : "text-charcoal hover:bg-offwhite hover:text-forest"
-              )}
-              aria-haspopup="true"
-            >
-              {dict.nav.more}
-              <ChevronDown
-                aria-hidden="true"
-                className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180"
-              />
-            </button>
-            <div className="invisible absolute right-0 top-full z-50 w-64 translate-y-1 rounded-[2px] border border-line bg-white p-2 opacity-0 shadow-[var(--shadow-lift)] transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
-              <ul className="py-1">
-                {secondary.map((item) => {
-                  const isActive = checkActive(item.href);
-                  return (
-                    <li key={item.href}>
-                      <Link
-                        href={localePath(locale, item.href)}
-                        aria-current={isActive ? "page" : undefined}
-                        className={cn(
-                          "flex items-center justify-between rounded-[2px] px-3 py-2 text-[13px] transition-colors",
-                          isActive
-                            ? "bg-forest/10 font-bold text-forest"
-                            : "font-medium text-body hover:bg-offwhite hover:text-forest"
-                        )}
-                      >
-                        <span>{item.label}</span>
-                        {isActive && (
-                          <span className="h-1.5 w-1.5 rounded-full bg-forest" />
-                        )}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          </div>
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
-          <LanguageSwitcher locale={locale} />
           <Link
             href={localePath(locale, "/services")}
             aria-current={isServicesActive ? "page" : undefined}
@@ -160,7 +105,6 @@ export function Header({ locale }: { locale: Locale }) {
         <MobileMenu
           locale={locale}
           primary={primary}
-          secondary={secondary}
           dict={dict}
         />
       </div>

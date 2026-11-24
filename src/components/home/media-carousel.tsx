@@ -4,7 +4,6 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Camera,
   ArrowRight,
   X,
   ExternalLink,
@@ -110,15 +109,7 @@ export function MediaCarousel({
                   className="absolute inset-0 bg-gradient-to-t from-forest-ink via-forest-ink/30 to-transparent opacity-90 transition-opacity group-hover:opacity-100"
                 />
 
-                {/* Top Badge */}
-                <div className="relative z-10 flex items-center justify-between p-4">
-                  <span className="flex items-center gap-1.5 rounded-[2px] bg-forest-ink/80 px-2.5 py-1 text-[11px] font-semibold text-gold shadow-xs backdrop-blur-xs">
-                    <Camera aria-hidden="true" className="h-3.5 w-3.5" />
-                    <span>{bn ? "আলোকচিত্র" : "Photograph"}</span>
-                  </span>
-                </div>
-
-                {/* Bottom Content */}
+                {/* Bottom Content (Photograph badge on top removed per user request) */}
                 <div className="absolute inset-x-0 bottom-0 z-10 p-4 pt-10">
                   <p className="bn-heading text-[15.5px] font-semibold leading-snug text-white drop-shadow-sm group-hover:text-gold sm:text-[16.5px]">
                     {item.title[locale]}

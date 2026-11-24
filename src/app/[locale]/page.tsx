@@ -5,12 +5,9 @@ import { pageMetadata } from "@/lib/seo";
 import { Hero } from "@/components/home/hero";
 import { ImpactNumbers } from "@/components/home/impact-numbers";
 import { QuoteBanner } from "@/components/home/quote-banner";
-import { StayConnected } from "@/components/home/stay-connected";
-import { BioSection } from "@/components/home/bio";
 import { ParliamentSection } from "@/components/home/parliament";
 import { ConstituencySection } from "@/components/home/constituency";
 import { InitiativesSection } from "@/components/home/initiatives";
-import { NewsSection } from "@/components/home/news";
 import {
   SpeechesSection,
   MediaSection,
@@ -31,11 +28,11 @@ export async function generateMetadata({
     locale: locale as Locale,
     path: "/",
     title: bn
-      ? "নুরুল হক নুর — ভিপি নুর | জাতীয় সংসদ সদস্য, পটুয়াখালী-৩"
-      : "Nurul Haque Nur — VP Nur | Member of Parliament, Patuakhali-3",
+      ? "মো. নুরুল হক, এমপি (ভিপি নুর) | প্রতিমন্ত্রী, প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়"
+      : "Md. Nurul Hoque, MP (VP Nur) | State Minister, Ministry of Expatriates' Welfare & Overseas Employment",
     description: bn
-      ? "নুরুল হক নুরের সংসদীয় কর্মকাণ্ড, গালাচিপা–দশমিনার উন্নয়ন উদ্যোগ, সংবাদ, বক্তৃতা ও নাগরিক সেবার তথ্য।"
-      : "Parliamentary activities, Galachipa–Dashmina initiatives, news, speeches and citizen services for and by Nurul Haque Nur.",
+      ? "গণপ্রজাতন্ত্রী বাংলাদেশ সরকারের প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়ের মাননীয় প্রতিমন্ত্রী এবং পটুয়াখালী-৩ আসনের সংসদ সদস্য মো. নুরুল হক (ভিপি নুর)–এর অফিশিয়াল পোর্টাল।"
+      : "Official portal of Md. Nurul Hoque, MP (VP Nur), State Minister for the Ministry of Expatriates' Welfare and Overseas Employment, and Member of Parliament for Patuakhali-3.",
   });
 }
 
@@ -71,22 +68,13 @@ export default async function HomePage({
       {/* 7. Tangible Work: Local development projects */}
       <InitiativesSection locale={locale} />
 
-      {/* 8. Overview: DUCSU VP to Parliament milestones */}
-      <BioSection locale={locale} />
-
-      {/* 9. Parliament: Questions and legislative motions */}
+      {/* 8. Parliament: Questions and legislative motions */}
       <ParliamentSection locale={locale} />
 
-      {/* 10. Latest News: Press and official statements */}
-      <NewsSection locale={locale} />
-
-      {/* 11. Constituency: Galachipa · Dashmina map & priority cards */}
+      {/* 9. Constituency: Galachipa · Dashmina map & priority cards */}
       <ConstituencySection locale={locale} />
 
-      {/* 12. Stay Connected: Direct public engagement strip */}
-      <StayConnected locale={locale} />
-
-      {/* 13. Contact: Office address & reach out */}
+      {/* 10. Contact: Office address & reach out */}
       <ContactStrip locale={locale} />
     </>
   );

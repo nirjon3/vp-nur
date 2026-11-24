@@ -4,6 +4,8 @@ import { Hind_Siliguri, Manrope } from "next/font/google";
 import { isLocale, localePath, type Locale } from "@/i18n/config";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { FloatingLanguageSwitcher } from "@/components/layout/floating-language-switcher";
+import { BackgroundWatermark } from "@/components/shared/background-watermark";
 import { getDictionary } from "@/i18n/dictionaries";
 import "../globals.css";
 
@@ -37,14 +39,14 @@ export async function generateMetadata({
     ),
     title: {
       default: isBn
-        ? "নুরুল হক নুর — ভিপি নুর | জাতীয় সংসদ সদস্য, পটুয়াখালী-৩"
-        : "Nurul Haque Nur — VP Nur | Member of Parliament, Patuakhali-3",
-      template: isBn ? "%s — নুরুল হক নুর" : "%s — Nurul Haque Nur",
+        ? "মো. নুরুল হক, এমপি (ভিপি নুর) | প্রতিমন্ত্রী, প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়"
+        : "Md. Nurul Hoque, MP (VP Nur) | State Minister, Ministry of Expatriates' Welfare & Overseas Employment",
+      template: isBn ? "%s — মো. নুরুল হক, এমপি" : "%s — Md. Nurul Hoque, MP",
     },
     description: isBn
-      ? "নুরুল হক নুর (ভিপি নুর)–এর সংসদীয় কর্মকাণ্ড, গালাচিপা–দশমিনার উন্নয়ন উদ্যোগ, সংবাদ ও সহজে যোগাযোগের তথ্য।"
-      : "Official public information on Nurul Haque Nur (VP Nur): parliamentary activities, Galachipa–Dashmina initiatives, news and citizen services.",
-    applicationName: isBn ? "নুরুল হক নুর" : "Nurul Haque Nur",
+      ? "গণপ্রজাতন্ত্রী বাংলাদেশ সরকারের প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়ের মাননীয় প্রতিমন্ত্রী এবং পটুয়াখালী-৩ আসনের সংসদ সদস্য মো. নুরুল হক (ভিপি নুর)–এর অফিশিয়াল পোর্টাল।"
+      : "Official website of Md. Nurul Hoque, MP (VP Nur), State Minister for the Ministry of Expatriates' Welfare and Overseas Employment, and Member of Parliament for Patuakhali-3.",
+    applicationName: isBn ? "মো. নুরুল হক, এমপি" : "Md. Nurul Hoque, MP",
     formatDetection: { telephone: false },
   };
 }
@@ -67,6 +69,8 @@ export default async function LocaleLayout({
         <Header locale={locale} />
         <main id="main-content">{children}</main>
         <Footer locale={locale} />
+        <FloatingLanguageSwitcher locale={locale} />
+        <BackgroundWatermark />
         <p className="sr-only">
           {localePath(locale)} — {dict.site.tagline}
         </p>

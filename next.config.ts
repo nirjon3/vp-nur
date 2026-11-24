@@ -7,11 +7,29 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
-      // Add authorised CDN/media hosts here (e.g. Payload media CDN) when available.
+      {
+        protocol: "https",
+        hostname: "img.youtube.com",
+      },
+      {
+        protocol: "https",
+        hostname: "i.ytimg.com",
+      },
     ],
   },
   async redirects() {
-    return [{ source: "/", destination: "/bn", permanent: false }];
+    return [
+      { source: "/", destination: "/bn", permanent: false },
+      { source: "/:locale/news/:path*", destination: "/:locale/events", permanent: false },
+      { source: "/:locale/news", destination: "/:locale/events", permanent: false },
+      { source: "/news", destination: "/bn/events", permanent: false },
+      { source: "/:locale/publications/:path*", destination: "/:locale", permanent: false },
+      { source: "/:locale/publications", destination: "/:locale", permanent: false },
+      { source: "/publications", destination: "/bn", permanent: false },
+      { source: "/:locale/constituency/:path*", destination: "/:locale", permanent: false },
+      { source: "/:locale/constituency", destination: "/:locale", permanent: false },
+      { source: "/constituency", destination: "/bn", permanent: false },
+    ];
   },
   async headers() {
     return [

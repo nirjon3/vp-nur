@@ -1,26 +1,11 @@
-import { CheckCircle2, CircleDashed } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
-import { Badge } from "@/components/ui/badge";
 import type { VerificationStatus } from "@/types/content";
 
-/** Visible verification state for any factual item. */
-export function VerificationBadge({ status, locale }: { status: VerificationStatus; locale: Locale }) {
-  const dict = getDictionary(locale);
-  if (status === "verified") {
-    return (
-      <Badge variant="verified" className="normal-case tracking-normal">
-        <CheckCircle2 aria-hidden="true" className="h-3.5 w-3.5" />
-        {dict.common.verificationVerified}
-      </Badge>
-    );
-  }
-  return (
-    <Badge variant="pending" className="normal-case tracking-normal">
-      <CircleDashed aria-hidden="true" className="h-3.5 w-3.5" />
-      {dict.common.verificationPending}
-    </Badge>
-  );
+/** Visible verification state for any factual item (hidden per user request). */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function VerificationBadge(_props?: { status?: VerificationStatus; locale?: Locale }) {
+  return null;
 }
 
 /** Small provenance line: source + last updated date. */

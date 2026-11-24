@@ -99,4 +99,23 @@ export const speeches: Speech[] = [
     sourceLabel: { bn: "চ্যানেল ২৪", en: "Channel 24" },
     updatedAt: "2026-11-17",
   },
+  {
+    id: "video-atn-documentary",
+    date: "2026-02-20",
+    subject: {
+      bn: "প্রামাণ্য প্রতিবেদন ও রাজনৈতিক পথচলা",
+      en: "Documentary Report & Political Journey",
+    },
+    title: {
+      bn: "ডাকসু ভিপি থেকে জাতীয় সংসদে: নুরুল হক নুরের পথচলা",
+      en: "From DUCSU VP to Parliament: Nurul Haque Nur's Journey",
+    },
+    location: { bn: "ঢাকা", en: "Dhaka" },
+    videoUrl: "https://www.youtube.com/watch?v=mm3nNWfsIZA",
+    durationMinutes: 18,
+    verification: "verified",
+    sourceUrl: "https://www.youtube.com/watch?v=mm3nNWfsIZA",
+    sourceLabel: { bn: "এটিএন নিউজ / বাংলাভিশন", en: "ATN News / Banglavision" },
+    updatedAt: "2026-11-17",
+  },
 ];

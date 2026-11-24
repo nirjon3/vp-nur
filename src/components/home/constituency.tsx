@@ -6,12 +6,12 @@ import {
   HeartPulse,
   GraduationCap,
   MapPin,
-  ExternalLink,
 } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import { localePath } from "@/i18n/config";
 import { constituency } from "@/content/constituency";
 import { Container } from "@/components/ui/layout";
+import { ConstituencyAreaMap } from "@/components/shared/constituency-area-map";
 
 const priorityIcons: Record<string, typeof Waves> = {
   embankment: Waves,
@@ -44,10 +44,10 @@ export function ConstituencySection({ locale }: { locale: Locale }) {
             </h2>
           </div>
           <Link
-            href={localePath(locale, "/constituency")}
+            href={localePath(locale, "/initiatives")}
             className="group inline-flex items-center gap-1.5 text-[12px] font-bold uppercase tracking-[0.12em] text-forest hover:text-forest-deep"
           >
-            {bn ? "নির্বাচনী এলাকার বিস্তারিত" : "View constituency details"}
+            {bn ? "উন্নয়ন উদ্যোগসমূহ" : "View all initiatives"}
             <ArrowRight
               aria-hidden="true"
               className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
@@ -111,26 +111,9 @@ export function ConstituencySection({ locale }: { locale: Locale }) {
             </div>
           </div>
 
-          {/* Map with overlay tag */}
-          <div className="flex flex-col justify-between lg:col-span-5">
-            <div className="relative overflow-hidden rounded-[2px] border border-line bg-white shadow-xs">
-              <iframe
-                title={bn ? "পটুয়াখালী-৩ মানচিত্র" : "Patuakhali-3 map"}
-                src={constituency.mapEmbed}
-                className="h-72 w-full border-0 sm:h-80"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-              <a
-                href={constituency.mapLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-[2px] bg-forest-ink/85 px-3 py-1.5 text-[11px] font-semibold text-white shadow-sm backdrop-blur-xs hover:bg-forest"
-              >
-                <span>{bn ? "পূর্ণ মানচিত্র" : "Full map"}</span>
-                <ExternalLink className="h-3 w-3 text-gold" />
-              </a>
-            </div>
+          {/* Map with interactive area selection */}
+          <div className="flex flex-col justify-start lg:col-span-5">
+            <ConstituencyAreaMap locale={locale} />
           </div>
         </div>
       </Container>

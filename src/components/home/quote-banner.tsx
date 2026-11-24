@@ -41,7 +41,7 @@ export function QuoteBanner({ locale }: { locale: Locale }) {
             <div className="relative h-12 w-12 overflow-hidden rounded-full border-2 border-gold/60 shadow-md">
               <Image
                 src="/images/nur-official-2026.jpg"
-                alt={bn ? "নুরুল হক নুর" : "Nurul Haque Nur"}
+                alt={bn ? "মো. নুরুল হক, এমপি" : "Md. Nurul Hoque, MP"}
                 fill
                 sizes="48px"
                 className="object-cover object-top"
@@ -49,12 +49,12 @@ export function QuoteBanner({ locale }: { locale: Locale }) {
             </div>
             <div className="text-center sm:text-left">
               <p className="bn-heading text-[16px] font-bold text-white">
-                {bn ? "নুরুল হক নুর (ভিপি নুর)" : "Nurul Haque Nur (VP Nur)"}
+                {bn ? "মো. নুরুল হক, এমপি (ভিপি নুর)" : "Md. Nurul Hoque, MP (VP Nur)"}
               </p>
               <p className="text-[12.5px] font-medium text-[#b5c2b0]">
                 {bn
-                  ? "সংসদ সদস্য, পটুয়াখালী-৩ · সাবেক ডাকসু ভিপি"
-                  : "Member of Parliament, Patuakhali-3 · Former DUCSU VP"}
+                  ? "প্রতিমন্ত্রী, প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয় · সংসদ সদস্য, পটুয়াখালী-৩"
+                  : "State Minister, Ministry of Expatriates' Welfare & Overseas Employment · MP, Patuakhali-3"}
               </p>
             </div>
           </div>

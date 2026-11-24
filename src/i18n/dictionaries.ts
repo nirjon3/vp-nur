@@ -2,22 +2,21 @@ import type { Locale } from "./config";
 
 const bn = {
   site: {
-    name: "নুরুল হক নুর",
+    name: "মো. নুরুল হক, এমপি",
     shortName: "ভিপি নুর",
-    tagline: "জনগণের পাশে, প্রতিদিন",
-    homeAria: "নুরুল হক নুর — হোমপেজে যান",
+    tagline: "মাননীয় প্রতিমন্ত্রী · প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়",
+    homeAria: "মো. নুরুল হক, এমপি — হোমপেজে যান",
   },
   nav: {
     about: "পরিচয়",
     parliament: "সংসদ",
     constituency: "গালাচিপা–দশমিনা",
-    news: "সংবাদ",
+    events: "ইভেন্ট",
     more: "আরও",
     speeches: "বক্তৃতা ও সাক্ষাৎকার",
-    events: "অনুষ্ঠানসূচি",
     initiatives: "জনউদ্যোগ",
     publications: "প্রকাশনা",
-    media: "মিডিয়া সেন্টার",
+    media: "গ্যালারি",
     services: "নাগরিক সেবা",
     contact: "যোগাযোগ",
     menuOpen: "মেনু খুলুন",
@@ -27,13 +26,13 @@ const bn = {
   servicesCta: "নাগরিক সেবা",
   footer: {
     description:
-      "নুরুল হক নুর (ভিপি নুর)–এর জনবিষয়ক ও সংসদীয় কর্মকাণ্ড, এলাকার মানুষের জন্য উদ্যোগ এবং যোগাযোগের তথ্য এখানে পাওয়া যাবে।",
+      "গণপ্রজাতন্ত্রী বাংলাদেশ সরকারের প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়ের মাননীয় প্রতিমন্ত্রী এবং পটুয়াখালী-৩ আসনের সংসদ সদস্য মো. নুরুল হক (ভিপি নুর)–এর অফিশিয়াল ওয়েবসাইট।",
     disclosure:
-      "এটি কোনো সরকারি ওয়েবসাইট নয়। প্রকাশনা উপকরণ যাচাইকৃত উৎস থেকে নিশ্চিত হলেই প্রকাশযোগ্য হিসেবে চিহ্নিত হয়।",
+      "এটি কোনো সরকারি ওয়েবসাইট নয়। প্রকাশনা উপকরণ নির্ভরযোগ্য উৎস থেকে নিশ্চিত হলেই প্রকাশযোগ্য হিসেবে চিহ্নিত হয়।",
     explore: "অন্বেষণ",
     services: "সেবা",
     contact: "যোগাযোগ",
-    contactPending: "যাচাইকৃত যোগাযোগের তথ্য যুক্ত করা হবে",
+    contactPending: "যোগাযোগের তথ্য শীঘ্রই যুক্ত করা হবে",
     privacy: "গোপনীয়তা নীতি",
     terms: "ব্যবহারের শর্তাবলি",
     rights: "সর্বস্বত্ব সংরক্ষিত",
@@ -100,22 +99,21 @@ export type Dictionary = typeof bn;
 
 const en: Dictionary = {
   site: {
-    name: "Nurul Haque Nur",
+    name: "Md. Nurul Hoque, MP",
     shortName: "VP Nur",
-    tagline: "With the people, every day",
-    homeAria: "Nurul Haque Nur — go to the homepage",
+    tagline: "State Minister · Ministry of Expatriates' Welfare & Overseas Employment",
+    homeAria: "Md. Nurul Hoque, MP — go to the homepage",
   },
   nav: {
     about: "About",
     parliament: "Parliament",
     constituency: "Galachipa–Dashmina",
-    news: "News",
+    events: "Events",
     more: "More",
     speeches: "Speeches & interviews",
-    events: "Events",
     initiatives: "Initiatives",
     publications: "Publications",
-    media: "Media centre",
+    media: "Gallery",
     services: "Citizen services",
     contact: "Contact",
     menuOpen: "Open menu",
@@ -125,13 +123,13 @@ const en: Dictionary = {
   servicesCta: "Citizen services",
   footer: {
     description:
-      "Public and parliamentary activities of Nurul Haque Nur (VP Nur), initiatives for the people of his constituency, and how to get in touch.",
+      "Official website of Md. Nurul Hoque, MP (VP Nur) — State Minister for the Ministry of Expatriates' Welfare & Overseas Employment, and Member of Parliament for Patuakhali-3.",
     disclosure:
-      "This is not a government website. Materials are marked publishable only after verification against source references.",
+      "This is not a government website. Materials are marked publishable only after confirmation against reliable sources.",
     explore: "Explore",
     services: "Services",
     contact: "Contact",
-    contactPending: "Verified contact details will be published here",
+    contactPending: "Contact details will be published soon",
     privacy: "Privacy policy",
     terms: "Terms of use",
     rights: "All rights reserved",

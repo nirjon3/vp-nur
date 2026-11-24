@@ -59,16 +59,30 @@ export const timeline: TimelineItem[] = [
   },
   {
     id: "parliament",
-    date: { bn: "বর্তমান দায়িত্ব", en: "Current Role" },
+    date: { bn: "সংসদ সদস্য", en: "Elected MP" },
     title: {
       bn: "জাতীয় সংসদের নির্বাচিত সদস্য",
-      en: "Elected member of the national parliament",
+      en: "Elected Member of the National Parliament",
     },
     body: {
-      bn: "পটুয়াখালী-৩ (গালাচিপা–দশমিনা) আসন থেকে জাতীয় সংসদের নির্বাচিত সদস্য হিসেবে দায়িত্ব পালন করছেন।",
-      en: "Serving as an elected member of parliament for Patuakhali-3 (Galachipa–Dashmina).",
+      bn: "পটুয়াখালী-৩ (গালাচিপা–দশমিনা) আসন থেকে জাতীয় সংসদের নির্বাচিত সদস্য হিসেবে দায়িত্ব গ্রহণ।",
+      en: "Elected and sworn in as Member of Parliament for Patuakhali-3 (Galachipa–Dashmina).",
     },
-    verification: "pending",
+    verification: "verified",
+    updatedAt: "2026-11-17",
+  },
+  {
+    id: "ministry",
+    date: { bn: "বর্তমান দায়িত্ব", en: "Current Role" },
+    title: {
+      bn: "প্রতিমন্ত্রী, প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়",
+      en: "State Minister, Ministry of Expatriates' Welfare & Overseas Employment",
+    },
+    body: {
+      bn: "গণপ্রজাতন্ত্রী বাংলাদেশ সরকারের প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়ের মাননীয় প্রতিমন্ত্রী হিসেবে দায়িত্ব পালন করছেন।",
+      en: "Serving as State Minister for the Ministry of Expatriates' Welfare and Overseas Employment, Government of the People's Republic of Bangladesh.",
+    },
+    verification: "verified",
     updatedAt: "2026-11-17",
   },
 ];

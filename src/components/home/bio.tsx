@@ -1,7 +1,7 @@
 import type { Locale } from "@/i18n/config";
 import { localePath } from "@/i18n/config";
 import Link from "next/link";
-import { ArrowRight, Award, Landmark, HeartHandshake } from "lucide-react";
+import { ArrowRight, Award, Landmark } from "lucide-react";
 import { Container } from "@/components/ui/layout";
 import { timeline } from "@/content/timeline";
 
@@ -11,6 +11,11 @@ export function BioSection({ locale }: { locale: Locale }) {
 
   const highlights = [
     {
+      icon: Landmark,
+      title: bn ? "মাননীয় প্রতিমন্ত্রী" : "Hon'ble State Minister",
+      desc: bn ? "প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়" : "Ministry of Expatriates' Welfare & Overseas Employment",
+    },
+    {
       icon: Award,
       title: bn ? "ডাকসু ভিপি (২০১৯)" : "DUCSU VP (2019)",
       desc: bn ? "ঢাকা বিশ্ববিদ্যালয় কেন্দ্রীয় ছাত্র সংসদ" : "Dhaka University Central Students' Union",
@@ -18,12 +23,7 @@ export function BioSection({ locale }: { locale: Locale }) {
     {
       icon: Landmark,
       title: bn ? "সংসদ সদস্য" : "Member of Parliament",
-      desc: bn ? "পটুয়াখালী-৩ (গলাচিপা · দশমিনা)" : "Patuakhali-3 (Galachipa · Dashmina)",
-    },
-    {
-      icon: HeartHandshake,
-      title: bn ? "জনসেবা ও উন্নয়ন" : "Public Service",
-      desc: bn ? "উপকূলীয় টেকসই বাঁধ ও নাগরিক অধিকার" : "Coastal embankments & citizen welfare",
+      desc: bn ? "পটুয়াখালী-৩ (গালাচিপা · দশমিনা)" : "Patuakhali-3 (Galachipa · Dashmina)",
     },
   ];
 
@@ -37,8 +37,8 @@ export function BioSection({ locale }: { locale: Locale }) {
             </h2>
             <p className="bn mt-4 text-[15px] leading-relaxed text-body">
               {bn
-                ? "কোটা সংস্কার আন্দোলন ও ডাকসু নির্বাচনের মাধ্যমে জাতীয় রাজনীতিতে উত্থান। বর্তমানে পটুয়াখালী-৩ আসনের জনকল্যাণ ও সংসদে নীতিগত সংস্কারে অগ্রণী ভূমিকা পালন করছেন।"
-                : "Emerged into national politics through student activism and the historic DUCSU election. Currently championing community welfare and policy reforms."}
+                ? "কোটা সংস্কার আন্দোলন ও ডাকসু নির্বাচনের মাধ্যমে জাতীয় রাজনীতিতে উত্থান। বর্তমানে গণপ্রজাতন্ত্রী বাংলাদেশ সরকারের প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়ের মাননীয় প্রতিমন্ত্রী এবং পটুয়াখালী-৩ আসনের সংসদ সদস্য হিসেবে দায়িত্ব পালন করছেন।"
+                : "Emerged into national politics through student activism and the historic DUCSU election. Currently serving as State Minister for the Ministry of Expatriates' Welfare & Overseas Employment, and Member of Parliament for Patuakhali-3."}
             </p>
             <Link
               href={localePath(locale, "/about")}
