@@ -5,6 +5,25 @@ import type { Speech } from "@/types/content";
  */
 export const speeches: Speech[] = [
   {
+    id: "speech-ntv-cooperation-reforms-2026",
+    date: "2026-04-29",
+    subject: {
+      bn: "জাতীয় ঐক্য ও রাষ্ট্র সংস্কার",
+      en: "National unity and state reforms",
+    },
+    title: {
+      bn: "বিরোধীদল ও তরুণ সমাজকে সরকারকে সহযোগিতা করার আহ্বান জানালেন নুর",
+      en: "Nur Appeals to Opposition Parties and Youth to Support the Government",
+    },
+    location: { bn: "ঢাকা", en: "Dhaka" },
+    videoUrl: "https://www.youtube.com/watch?v=blkMc46W0rU",
+    durationMinutes: 13,
+    verification: "verified",
+    sourceUrl: "https://www.youtube.com/watch?v=blkMc46W0rU",
+    sourceLabel: { bn: "এনটিভি নিউজ", en: "NTV News" },
+    updatedAt: "2026-04-29",
+  },
+  {
     id: "speech-patuakhali-rally-2026",
     date: "2026-01-25",
     subject: {
