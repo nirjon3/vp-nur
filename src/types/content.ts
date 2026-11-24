@@ -52,6 +52,8 @@ export interface Initiative extends Verifiable {
   excerpt: LocalText;
   body: LocalText[];
   startDate?: string;
+  imageUrl?: string;
+  videoUrl?: string;
   updates: { date: string; text: LocalText }[];
 }
 

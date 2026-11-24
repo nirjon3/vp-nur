@@ -7,6 +7,46 @@ import type { Initiative } from "@/types/content";
  */
 export const initiatives: Initiative[] = [
   {
+    slug: "gulshan-expatriate-hospital",
+    category: { bn: "স্বাস্থ্য ও প্রবাসী কল্যাণ", en: "Healthcare & Expatriate Welfare" },
+    status: "planned",
+    location: { bn: "গুলশান, ঢাকা", en: "Gulshan, Dhaka" },
+    title: {
+      bn: "প্রবাসীদের জন্য গুলশানে বিশেষায়িত হাসপাতাল নির্মাণ উদ্যোগ",
+      en: "Specialized Hospital in Gulshan for Expatriate Workers and Families",
+    },
+    excerpt: {
+      bn: "প্রবাসী কর্মী ও তাদের পরিবারের মানসম্মত চিকিৎসা সেবা নিশ্চিত করতে ঢাকার গুলশানে আধুনিক বিশেষায়িত হাসপাতাল নির্মাণের পরিকল্পনা।",
+      en: "A plan to establish a modern, specialized hospital in Gulshan, Dhaka, ensuring quality healthcare for migrant workers and their families.",
+    },
+    body: [
+      {
+        bn: "প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়ের দায়িত্বপ্রাপ্ত মাননীয় প্রতিমন্ত্রী নুরুল হক নুর (ভিপি নুর) রেমিট্যান্স যোদ্ধা প্রবাসী কর্মী ও তাদের পরিবারের বিশেষায়িত চিকিৎসা সেবা প্রদানে ঢাকার গুলশানে একটি আধুনিক হাসপাতাল নির্মাণের উদ্যোগের কথা ঘোষণা করেছেন।",
+        en: "Hon'ble State Minister for Expatriates' Welfare and Overseas Employment, Nurul Haque Nur (VP Nur), has announced an initiative to establish a modern specialized hospital in Gulshan, Dhaka, dedicated to providing quality medical care for migrant workers and their families.",
+      },
+      {
+        bn: "এই উদ্যোগে প্রবাসীদের জন্য বিশেষায়িত স্বাস্থ্যসেবা উইং, প্রবাসী হেলথ কার্ডের মাধ্যমে চিকিৎসা সুবিধা এবং জরুরি চিকিৎসাসেবা নিশ্চিত করার পরিকল্পনা গ্রহণ করা হয়েছে। স্বাস্থ্য মন্ত্রণালয় ও সংশ্লিষ্ট দপ্তরগুলোর সাথে সমন্বয়ের মাধ্যমে প্রাথমিক জরিপ ও বাস্তবায়ন প্রক্রিয়া পরিচালিত হচ্ছে।",
+        en: "The initiative encompasses dedicated medical wings, healthcare privileges through expatriate health cards, and emergency response services. Initial surveys and inter-ministerial coordination with the Ministry of Health and relevant authorities are currently in progress.",
+      },
+    ],
+    imageUrl: "/images/initiative-expatriate-hospital.jpg",
+    videoUrl: "https://www.facebook.com/reel/1108372675364812",
+    startDate: "2026-04-10",
+    updates: [
+      {
+        date: "2026-04-12",
+        text: {
+          bn: "বায়ান্ন টেলিভিশনের ভিডিও প্রতিবেদনে গুলশানে বিশেষায়িত প্রবাসী হাসপাতাল নির্মাণের পরিকল্পনা তুলে ধরা হয়।",
+          en: "Bayanno Television broadcasted a special report highlighting the planned expatriate hospital in Gulshan.",
+        },
+      },
+    ],
+    verification: "verified",
+    sourceUrl: "https://www.facebook.com/share/r/1CrSLsabWQ/",
+    sourceLabel: { bn: "বায়ান্ন টেলিভিশন (ভিডিও রিপোর্ট)", en: "Bayanno Television (Video Report)" },
+    updatedAt: "2026-04-15",
+  },
+  {
     slug: "embankment-restoration",
     category: { bn: "ভিত্তি উন্নয়ন", en: "Infrastructure" },
     status: "planned",
