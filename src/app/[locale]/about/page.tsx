@@ -98,21 +98,22 @@ export default async function AboutPage({
               <figure>
                 <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2px] bg-forest-deep shadow-sm">
                   <Image
-                    src="/images/nur-official-2026.jpg"
+                    src="/images/nur-about-portrait.jpg"
                     alt={
                       bn
-                        ? "নুরুল হক নুর (ভিপি নুর) — আনুষ্ঠানিক প্রতিকৃতি"
-                        : "Nurul Haque Nur (VP Nur) — Official Portrait"
+                        ? "নুরুল হক নুর (ভিপি নুর) — প্রতিকৃতি"
+                        : "Nurul Haque Nur (VP Nur) — Portrait"
                     }
                     fill
                     sizes="(min-width: 1024px) 33vw, 100vw"
                     className="object-cover object-top"
+                    priority
                   />
                 </div>
                 <figcaption className="mt-3 text-[11.5px] text-muted">
                   {bn
-                    ? "জাতীয় সংসদ সদস্য মো. নুরুল হক (ভিপি নুর) — উইকিমিডিয়া কমন্স আর্কাইভ।"
-                    : "Member of Parliament Md. Nurul Haque (VP Nur) — Wikimedia Commons archive."}
+                    ? "মো. নুরুল হক (ভিপি নুর) — অফিসিয়াল প্রতিকৃতি।"
+                    : "Md. Nurul Haque (VP Nur) — Official Portrait."}
                 </figcaption>
               </figure>
             </div>
