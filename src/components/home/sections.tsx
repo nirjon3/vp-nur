@@ -1,11 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
 import {
   ArrowRight,
   Mic,
-  Camera,
-  Video,
-  CalendarClock,
   Play,
   FileText,
   Search,
@@ -80,74 +76,13 @@ export function SpeechesSection({ locale }: { locale: Locale }) {
   );
 }
 
-const kindIcon = { photo: Camera, video: Video, interview: Video, speech: Mic, event: CalendarClock } as const;
+import { MediaCarousel } from "./media-carousel";
 
-/** Media highlights: visual thumbnails. */
+/** Media highlights: continuous smooth scrolling carousel. */
 export function MediaSection({ locale }: { locale: Locale }) {
-  const bn = locale === "bn";
-  const items = mediaItems.slice(0, 6);
-
   return (
-    <section className="border-t border-line bg-white py-12 sm:py-16">
-      <Container>
-        <div className="flex flex-wrap items-end justify-between gap-4 border-b border-line pb-5">
-          <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
-              {bn ? "গ্যালারি ও মিডিয়া" : "Gallery & Media"}
-            </p>
-            <h2 className="bn-heading mt-1.5 text-2xl text-forest sm:text-3xl">
-              {bn ? "মাঠপর্যায়ের কার্যক্রম ও ভিডিও" : "Field Work & Recordings"}
-            </h2>
-          </div>
-          <Link
-            href={localePath(locale, "/media")}
-            className="group inline-flex items-center gap-1.5 text-[12px] font-bold uppercase tracking-[0.12em] text-forest hover:text-forest-deep"
-          >
-            {bn ? "সব ছবি ও ভিডিও" : "View all"}
-            <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-          </Link>
-        </div>
-
-        <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6">
-          {items.map((item) => {
-            const Icon = kindIcon[item.kind] ?? Camera;
-            const thumb = item.imageUrl ?? (item.youtubeId ? `https://img.youtube.com/vi/${item.youtubeId}/hqdefault.jpg` : null);
-            return (
-              <Link
-                key={item.id}
-                href={localePath(locale, "/media")}
-                className="group relative flex aspect-[4/5] flex-col justify-between overflow-hidden rounded-[2px] bg-forest-deep p-3 transition-colors hover:shadow-md"
-              >
-                {thumb ? (
-                  <>
-                    <Image
-                      src={thumb}
-                      alt={item.title[locale]}
-                      fill
-                      sizes="(min-width: 1024px) 16vw, (min-width: 640px) 33vw, 50vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-forest-ink via-forest-ink/40 to-forest-ink/10 group-hover:from-forest-ink/90" />
-                  </>
-                ) : null}
-                <span className="relative z-10 flex items-center justify-between">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-[2px] bg-forest-ink/80 text-gold shadow-xs backdrop-blur-xs">
-                    <Icon aria-hidden="true" className="h-3.5 w-3.5" />
-                  </span>
-                  {item.youtubeId ? (
-                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-gold/90 text-forest-ink shadow-xs">
-                      <Play aria-hidden="true" className="h-2.5 w-2.5 fill-forest-ink" />
-                    </span>
-                  ) : null}
-                </span>
-                <span className="relative z-10 bn text-[11.5px] font-medium leading-snug text-white drop-shadow-xs">
-                  {item.title[locale]}
-                </span>
-              </Link>
-            );
-          })}
-        </div>
-      </Container>
+    <section className="border-t border-line bg-white py-10 sm:py-14">
+      <MediaCarousel items={mediaItems} locale={locale} />
     </section>
   );
 }
