@@ -15,6 +15,9 @@ export const mediaItems: MediaItem[] = [
     imageUrl: "/images/brazil-embassy-1.jpg",
     images: [
       "/images/brazil-embassy-1.jpg",
+      "/images/brazil-embassy-2.jpg",
+      "/images/brazil-embassy-3.jpg",
+      "/images/brazil-embassy-4.jpg",
     ],
     date: "2024-09-07",
     caption: {
