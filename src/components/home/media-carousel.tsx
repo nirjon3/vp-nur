@@ -7,7 +7,6 @@ import {
   ArrowRight,
   X,
   ExternalLink,
-  Pause,
 } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import { localePath } from "@/i18n/config";
@@ -55,10 +54,6 @@ export function MediaCarousel({
             </h2>
           </div>
           <div className="flex items-center gap-4">
-            <span className="hidden text-[12px] text-muted sm:inline-flex items-center gap-1.5">
-              <Pause className="h-3.5 w-3.5 text-gold-deep" />
-              {bn ? "কার্সার রাখলে থামবে" : "Hover to pause"}
-            </span>
             <Link
               href={localePath(locale, "/media")}
               className="group inline-flex items-center gap-1.5 text-[12px] font-bold uppercase tracking-[0.12em] text-forest hover:text-forest-deep"
