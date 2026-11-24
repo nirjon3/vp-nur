@@ -1,12 +1,17 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import { getDictionary } from "@/i18n/dictionaries";
 import { localePath, type Locale } from "@/i18n/config";
+import { cn } from "@/lib/cn";
 import { LanguageSwitcher } from "./language-switcher";
 import { MobileMenu } from "./mobile-menu";
 
 export function Header({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
+  const pathname = usePathname() || "";
 
   const primary = [
     { href: "/about", label: dict.nav.about },
@@ -22,6 +27,21 @@ export function Header({ locale }: { locale: Locale }) {
     { href: "/publications", label: dict.nav.publications },
   ];
 
+  const checkActive = (href: string) => {
+    const target = localePath(locale, href);
+    if (href === "/") {
+      return (
+        pathname === `/${locale}` ||
+        pathname === `/${locale}/` ||
+        pathname === ""
+      );
+    }
+    return pathname === target || pathname.startsWith(`${target}/`);
+  };
+
+  const isSecondaryActive = secondary.some((item) => checkActive(item.href));
+  const isServicesActive = checkActive("/services");
+
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-white/95 backdrop-blur-sm supports-[backdrop-filter]:bg-white/85">
       <a href="#main-content" className="skip-link">
@@ -32,11 +52,11 @@ export function Header({ locale }: { locale: Locale }) {
         <Link
           href={localePath(locale, "/")}
           aria-label={dict.site.homeAria}
-          className="flex min-w-0 items-center gap-3"
+          className="flex min-w-0 items-center gap-3 transition-opacity hover:opacity-90"
         >
           <span
             aria-hidden="true"
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[2px] bg-forest font-bengali text-[22px] font-semibold leading-none text-white"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[2px] bg-forest font-bengali text-[22px] font-semibold leading-none text-white shadow-2xs"
           >
             {locale === "bn" ? "ন" : "N"}
           </span>
@@ -53,23 +73,37 @@ export function Header({ locale }: { locale: Locale }) {
         {/* Desktop nav */}
         <nav
           aria-label={locale === "bn" ? "প্রধান মেনু" : "Primary menu"}
-          className="hidden items-center gap-1 lg:flex"
+          className="hidden items-center gap-1.5 lg:flex"
         >
-          {primary.map((item) => (
-            <Link
-              key={item.href}
-              href={localePath(locale, item.href)}
-              className="rounded-[2px] px-3 py-2 text-[13.5px] font-semibold text-charcoal transition-colors hover:bg-offwhite hover:text-forest"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {primary.map((item) => {
+            const isActive = checkActive(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={localePath(locale, item.href)}
+                aria-current={isActive ? "page" : undefined}
+                className={cn(
+                  "relative rounded-[2px] px-3.5 py-2 text-[13.5px] font-semibold transition-all",
+                  isActive
+                    ? "bg-forest/10 font-bold text-forest shadow-2xs after:absolute after:bottom-0 after:left-2.5 after:right-2.5 after:h-0.5 after:bg-forest"
+                    : "text-charcoal hover:bg-offwhite hover:text-forest"
+                )}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
 
           {/* Accessible CSS dropdown — hover + focus-within */}
           <div className="group relative">
             <button
               type="button"
-              className="flex items-center gap-1 rounded-[2px] px-3 py-2 text-[13.5px] font-semibold text-charcoal transition-colors hover:bg-offwhite hover:text-forest group-focus-within:bg-offwhite"
+              className={cn(
+                "relative flex items-center gap-1 rounded-[2px] px-3.5 py-2 text-[13.5px] font-semibold transition-all group-focus-within:bg-offwhite",
+                isSecondaryActive
+                  ? "bg-forest/10 font-bold text-forest shadow-2xs after:absolute after:bottom-0 after:left-2.5 after:right-2.5 after:h-0.5 after:bg-forest"
+                  : "text-charcoal hover:bg-offwhite hover:text-forest"
+              )}
               aria-haspopup="true"
             >
               {dict.nav.more}
@@ -80,16 +114,28 @@ export function Header({ locale }: { locale: Locale }) {
             </button>
             <div className="invisible absolute right-0 top-full z-50 w-64 translate-y-1 rounded-[2px] border border-line bg-white p-2 opacity-0 shadow-[var(--shadow-lift)] transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
               <ul className="py-1">
-                {secondary.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={localePath(locale, item.href)}
-                      className="block rounded-[2px] px-3 py-2 text-[13px] font-medium text-body hover:bg-offwhite hover:text-forest"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
+                {secondary.map((item) => {
+                  const isActive = checkActive(item.href);
+                  return (
+                    <li key={item.href}>
+                      <Link
+                        href={localePath(locale, item.href)}
+                        aria-current={isActive ? "page" : undefined}
+                        className={cn(
+                          "flex items-center justify-between rounded-[2px] px-3 py-2 text-[13px] transition-colors",
+                          isActive
+                            ? "bg-forest/10 font-bold text-forest"
+                            : "font-medium text-body hover:bg-offwhite hover:text-forest"
+                        )}
+                      >
+                        <span>{item.label}</span>
+                        {isActive && (
+                          <span className="h-1.5 w-1.5 rounded-full bg-forest" />
+                        )}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </div>
@@ -99,13 +145,24 @@ export function Header({ locale }: { locale: Locale }) {
           <LanguageSwitcher locale={locale} />
           <Link
             href={localePath(locale, "/services")}
-            className="rounded-[2px] border border-forest bg-forest px-4 py-2 text-[13px] font-semibold text-white transition-colors hover:bg-forest-deep"
+            aria-current={isServicesActive ? "page" : undefined}
+            className={cn(
+              "rounded-[2px] border px-4 py-2 text-[13px] font-semibold transition-all",
+              isServicesActive
+                ? "border-forest-deep bg-forest-deep text-white shadow-sm ring-2 ring-forest/30"
+                : "border-forest bg-forest text-white hover:bg-forest-deep"
+            )}
           >
             {dict.servicesCta}
           </Link>
         </div>
 
-        <MobileMenu locale={locale} primary={primary} secondary={secondary} dict={dict} />
+        <MobileMenu
+          locale={locale}
+          primary={primary}
+          secondary={secondary}
+          dict={dict}
+        />
       </div>
     </header>
   );

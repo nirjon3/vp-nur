@@ -73,31 +73,59 @@ export function MobileMenu({
         >
           <nav aria-label={locale === "bn" ? "মোবাইল মেনু" : "Mobile menu"} className="px-4 pb-10 pt-4">
             <ul className="divide-y divide-line border-y border-line">
-              {primary.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={localePath(locale, item.href)}
-                    className="block py-4 text-lg font-semibold text-charcoal hover:text-forest"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
+              {primary.map((item) => {
+                const target = localePath(locale, item.href);
+                const isActive =
+                  pathname === target || pathname.startsWith(`${target}/`);
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={target}
+                      aria-current={isActive ? "page" : undefined}
+                      className={cn(
+                        "flex items-center justify-between py-4 text-lg font-semibold transition-colors",
+                        isActive
+                          ? "border-l-4 border-forest bg-forest/5 pl-3 font-bold text-forest"
+                          : "text-charcoal hover:text-forest"
+                      )}
+                    >
+                      <span>{item.label}</span>
+                      {isActive && (
+                        <span className="h-2 w-2 rounded-full bg-forest" />
+                      )}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
             <p className="mt-6 text-[11px] font-bold uppercase tracking-[0.18em] text-muted">
               {dict.nav.more}
             </p>
             <ul className="mt-2 grid grid-cols-1 divide-y divide-line border-y border-line sm:grid-cols-2 sm:divide-y-0 sm:gap-px">
-              {secondary.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={localePath(locale, item.href)}
-                    className="block py-3.5 text-[15px] font-medium text-body hover:text-forest"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
+              {secondary.map((item) => {
+                const target = localePath(locale, item.href);
+                const isActive =
+                  pathname === target || pathname.startsWith(`${target}/`);
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={target}
+                      aria-current={isActive ? "page" : undefined}
+                      className={cn(
+                        "flex items-center justify-between py-3.5 text-[15px] transition-colors",
+                        isActive
+                          ? "border-l-2 border-forest bg-forest/5 pl-2.5 font-bold text-forest"
+                          : "font-medium text-body hover:text-forest"
+                      )}
+                    >
+                      <span>{item.label}</span>
+                      {isActive && (
+                        <span className="h-1.5 w-1.5 rounded-full bg-forest" />
+                      )}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
             <Link
               href={localePath(locale, "/services")}
