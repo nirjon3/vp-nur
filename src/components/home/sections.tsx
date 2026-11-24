@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Mic, Camera, MessagesSquare, Video, CalendarClock, Landmark, Play } from "lucide-react";
+import { ArrowRight, Mic, Camera, Video, CalendarClock, Play } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import { localePath } from "@/i18n/config";
 import { Container } from "@/components/ui/layout";
@@ -8,59 +8,71 @@ import { formatDateShort } from "@/lib/format";
 import { speeches } from "@/content/speeches";
 import { mediaItems } from "@/content/media";
 
-/** 07 — Speeches & interviews preview. */
+/** Speeches & interviews preview. */
 export function SpeechesSection({ locale }: { locale: Locale }) {
   const bn = locale === "bn";
+  const items = speeches.slice(0, 3);
+
   return (
-    <section className="border-t border-line bg-offwhite py-12 sm:py-14">
+    <section className="border-t border-line bg-offwhite py-12 sm:py-16">
       <Container>
-        <div className="grid gap-8 lg:grid-cols-12 lg:gap-14">
-          <div className="lg:col-span-4">
-            <p className="flex items-baseline gap-3 text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
-              <span aria-hidden="true" className="tabular-nums">০৭</span>
-              <span>{bn ? "বক্তৃতা ও সাক্ষাৎকার" : "Speeches & interviews"}</span>
+        <div className="flex flex-wrap items-end justify-between gap-4 border-b border-line pb-5">
+          <div>
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
+              {bn ? "বক্তৃতা ও সাক্ষাৎকার" : "Speeches"}
             </p>
-            <h2 className="bn-heading mt-2 text-2xl text-forest">
-              {bn ? "নিজের কণ্ঠে" : "In his own voice"}
+            <h2 className="bn-heading mt-1.5 text-2xl text-forest sm:text-3xl">
+              {bn ? "জনসম্মুখে বক্তব্য" : "In His Own Voice"}
             </h2>
-            <Link
-              href={localePath(locale, "/speeches")}
-              className="group mt-4 inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.12em] text-forest hover:text-forest-deep"
-            >
-              {bn ? "সম্পূর্ণ আর্কাইভ" : "Full archive"}
-              <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </Link>
           </div>
-          <ul className="divide-y divide-line border-y border-line lg:col-span-8">
-            {speeches.map((s) => (
-              <li key={s.id} className="grid grid-cols-[auto_1fr] items-center gap-4 py-4 sm:grid-cols-[auto_1fr_auto]">
-                <span className="flex h-11 w-11 items-center justify-center rounded-[2px] bg-forest/5 text-forest">
-                  {s.durationMinutes && s.durationMinutes >= 15 ? (
-                    <MessagesSquare aria-hidden="true" className="h-5 w-5" />
-                  ) : (
-                    <Mic aria-hidden="true" className="h-5 w-5" />
-                  )}
-                </span>
-                <span>
-                  <span className="bn-heading block text-[15.5px] leading-snug text-charcoal">{s.title[locale]}</span>
-                  <span className="mt-1 block text-[12px] text-muted">
-                    <time dateTime={s.date}>{formatDateShort(s.date, locale)}</time>
-                    {s.location ? ` · ${s.location[locale]}` : ""}
-                    {s.durationMinutes ? ` · ${s.durationMinutes} ${bn ? "মিনিট" : "min"}` : ""}
-                  </span>
-                </span>
-              </li>
-            ))}
-          </ul>
+          <Link
+            href={localePath(locale, "/speeches")}
+            className="group inline-flex items-center gap-1.5 text-[12px] font-bold uppercase tracking-[0.12em] text-forest hover:text-forest-deep"
+          >
+            {bn ? "সম্পূর্ণ আর্কাইভ" : "Full archive"}
+            <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          </Link>
         </div>
+
+        <ul className="mt-4 divide-y divide-line">
+          {items.map((s) => (
+            <li key={s.id} className="flex flex-col justify-between gap-3 py-4 sm:flex-row sm:items-center">
+              <div className="flex items-center gap-3">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[2px] bg-forest/5 text-forest">
+                  <Mic aria-hidden="true" className="h-4 w-4" />
+                </span>
+                <span className="bn-heading text-[15.5px] leading-snug text-charcoal">
+                  {s.title[locale]}
+                </span>
+              </div>
+              <div className="flex items-center gap-4 self-end sm:self-center">
+                <span className="text-[11.5px] text-muted">
+                  <time dateTime={s.date}>{formatDateShort(s.date, locale)}</time>
+                  {s.durationMinutes ? ` · ${s.durationMinutes} ${bn ? "মিনিট" : "min"}` : ""}
+                </span>
+                {s.videoUrl ? (
+                  <a
+                    href={s.videoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 rounded-[2px] border border-forest/20 px-3 py-1 text-[11.5px] font-semibold text-forest hover:bg-forest hover:text-white"
+                  >
+                    <Play className="h-3 w-3 fill-current" />
+                    {bn ? "ভিডিও" : "Watch"}
+                  </a>
+                ) : null}
+              </div>
+            </li>
+          ))}
+        </ul>
       </Container>
     </section>
   );
 }
 
-const kindIcon = { photo: Camera, video: Video, interview: MessagesSquare, speech: Mic, event: CalendarClock } as const;
+const kindIcon = { photo: Camera, video: Video, interview: Video, speech: Mic, event: CalendarClock } as const;
 
-/** 08 — Media highlights: labelled editorial placeholder tiles. */
+/** Media highlights: visual thumbnails. */
 export function MediaSection({ locale }: { locale: Locale }) {
   const bn = locale === "bn";
   const items = mediaItems.slice(0, 6);
@@ -68,14 +80,13 @@ export function MediaSection({ locale }: { locale: Locale }) {
   return (
     <section className="border-t border-line bg-white py-12 sm:py-16">
       <Container>
-        <div className="flex flex-wrap items-end justify-between gap-4">
+        <div className="flex flex-wrap items-end justify-between gap-4 border-b border-line pb-5">
           <div>
-            <p className="flex items-baseline gap-3 text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
-              <span aria-hidden="true" className="tabular-nums">০৮</span>
-              <span>{bn ? "মিডিয়া" : "Media"}</span>
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
+              {bn ? "গ্যালারি" : "Gallery"}
             </p>
-            <h2 className="bn-heading mt-2 text-2xl text-forest sm:text-3xl">
-              {bn ? "আলোকচিত্র ও ভিডিও" : "Photographs and videos"}
+            <h2 className="bn-heading mt-1.5 text-2xl text-forest sm:text-3xl">
+              {bn ? "আলোকচিত্র ও ভিডিও" : "Photographs & Videos"}
             </h2>
           </div>
           <Link
@@ -126,18 +137,12 @@ export function MediaSection({ locale }: { locale: Locale }) {
             );
           })}
         </div>
-        <p className="mt-3 flex items-center gap-2 text-[11.5px] text-muted">
-          <Landmark aria-hidden="true" className="h-4 w-4 text-forest" />
-          {bn
-            ? "জাতীয় সংসদ, বিভিন্ন গণমাধ্যম ও উন্মুক্ত আর্কাইভ থেকে সংগৃহীত ও যাচাইকৃত আলোকচিত্র ও ভিডিও।"
-            : "Verified photographs and video recordings curated from parliament, public media, and open archives."}
-        </p>
       </Container>
     </section>
   );
 }
 
-/** 09 — Citizen services wide band. */
+/** Citizen services wide band. */
 export function ServicesBand({ locale }: { locale: Locale }) {
   const bn = locale === "bn";
   return (
@@ -149,26 +154,26 @@ export function ServicesBand({ locale }: { locale: Locale }) {
               {bn ? "নাগরিক সেবা" : "Citizen services"}
             </p>
             <h2 className="bn-heading mt-2 text-2xl leading-snug text-white sm:text-3xl">
-              {bn ? "আপনার এলাকার সমস্যা, আমাদের জানান" : "Tell us what your area needs"}
+              {bn ? "আপনার এলাকার সমস্যা আমাদের জানান" : "Tell us what your area needs"}
             </h2>
-            <p className="bn mt-3 max-w-2xl text-[15px] leading-7 text-[#d5dcd0]">
+            <p className="bn mt-2 max-w-2xl text-[14.5px] leading-relaxed text-[#d5dcd0]">
               {bn
-                ? "একটি সংক্ষিপ্ত ফর্ম পূরণ করুন, একটি ট্র্যাকিং নম্বর পান এবং যেকোনো সময় অনুরোধের অগ্রগতি দেখুন। তথ্য শুধু অনুমোদিত সেবাকর্মীদের কাছে পৌঁছায়।"
-                : "Fill in a short form, receive a tracking reference and check its progress any time. Your details reach only authorised service operators."}
+                ? "অনুরোধ জমা দিয়ে ট্র্যাকিং নম্বরের মাধ্যমে যেকোনো সময় অগ্রগতি দেখুন।"
+                : "Submit a request and track its progress anytime using your reference."}
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row lg:col-span-4 lg:flex-col">
             <Link
               href={localePath(locale, "/services")}
-              className="inline-flex h-12 items-center justify-center rounded-[2px] border border-gold bg-gold px-6 text-[15px] font-bold text-forest-ink transition-colors hover:bg-white hover:border-white"
+              className="inline-flex h-11 items-center justify-center rounded-[2px] border border-gold bg-gold px-6 text-[14px] font-bold text-forest-ink transition-colors hover:bg-white hover:border-white"
             >
-              {bn ? "অনুরোধ জমা দিন" : "Submit a request"}
+              {bn ? "অনুরোধ জমা দিন" : "Submit request"}
             </Link>
             <Link
               href={localePath(locale, "/services/track")}
-              className="inline-flex h-12 items-center justify-center rounded-[2px] border border-white/30 px-6 text-[15px] font-semibold text-white transition-colors hover:border-white hover:bg-white/10"
+              className="inline-flex h-11 items-center justify-center rounded-[2px] border border-white/30 px-6 text-[14px] font-semibold text-white transition-colors hover:border-white hover:bg-white/10"
             >
-              {bn ? "অনুরোধ ট্র্যাক করুন" : "Track a request"}
+              {bn ? "অনুরোধ ট্র্যাক করুন" : "Track request"}
             </Link>
           </div>
         </div>
@@ -177,37 +182,29 @@ export function ServicesBand({ locale }: { locale: Locale }) {
   );
 }
 
-/** 10 — Compact contact strip with honest pending states. */
+/** Compact contact strip. */
 export function ContactStrip({ locale }: { locale: Locale }) {
   const bn = locale === "bn";
   return (
-    <section className="border-t border-line bg-white py-10">
+    <section className="border-t border-line bg-white py-8">
       <Container>
-        <div className="grid items-center gap-6 lg:grid-cols-12">
-          <div className="lg:col-span-4">
-            <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-gold-deep">
-              {bn ? "যোগাযোগ" : "Contact"}
-            </p>
-            <p className="bn-heading mt-1 text-xl text-forest">
-              {bn ? "অফিসে অথবা অনলাইনে" : "In person or online"}
-            </p>
-          </div>
-          <div className="bn text-[14px] leading-7 text-body lg:col-span-6">
-            <p>
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <h3 className="bn-heading text-lg text-forest">
+              {bn ? "যোগাযোগ ও দাপ্তরিক ঠিকানা" : "Contact & Official Address"}
+            </h3>
+            <p className="bn text-[13px] text-muted">
               {bn
-                ? "যাচাইকৃত অফিস ঠিকানা, ফোন নম্বর ও ইমেইল শিগগিরই এখানে প্রকাশিত হবে। প্রয়োজনে নাগরিক সেবা ফর্ম ব্যবহার করুন।"
-                : "Verified office address, phone and email will be published here shortly. In the meantime, please use the citizen services form."}
+                ? "পটুয়াখালী-৩ সংসদীয় কার্যালয় ও ঢাকা যোগাযোগ।"
+                : "Patuakhali-3 constituency office & Dhaka contact."}
             </p>
           </div>
-          <div className="lg:col-span-2 lg:text-right">
-            <Link
-              href={localePath(locale, "/contact")}
-              className="inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.12em] text-forest hover:text-forest-deep"
-            >
-              {bn ? "যোগাযোগ পৃষ্ঠা" : "Contact page"}
-              <ArrowRight aria-hidden="true" className="h-4 w-4" />
-            </Link>
-          </div>
+          <Link
+            href={localePath(locale, "/contact")}
+            className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-forest underline hover:text-forest-deep"
+          >
+            {bn ? "যোগাযোগ পাতা দেখুন" : "View contact page"} →
+          </Link>
         </div>
       </Container>
     </section>

@@ -32,33 +32,27 @@ export function Hero({ locale }: { locale: Locale }) {
               {bn ? "ভিপি নুর" : "VP NUR"}
             </p>
 
-            <p className="bn prose-narrow mt-6 text-[16.5px] leading-8 text-body sm:text-lg">
+            <p className="bn mt-5 max-w-xl text-[17px] leading-relaxed text-body sm:text-lg">
               {bn
-                ? "ডাকসু–র সাবেক সহ-সভাপতি, পরিচিত ‘ভিপি নুর’ নামে। বর্তমানে পটুয়াখালী-৩ আসনের সংসদ সদস্য হিসেবে দায়িত্ব পালন করছেন। এই ওয়েবসাইটে তাঁর সংসদীয় কর্মকাণ্ড, এলাকার জনউদ্যোগ এবং নাগরিকদের জন্য সেবার তথ্য বাংলা ও ইংরেজিতে প্রকাশিত হয়।"
-                : "Former Vice President of the Dhaka University Central Students' Union (DUCSU), known as VP Nur. Currently serving as Member of Parliament for the Patuakhali-3 constituency. This website publishes his parliamentary activities, constituency initiatives and citizen services in Bengali and English."}
+                ? "ডাকসুর সাবেক ভিপি ও পটুয়াখালী-৩ আসনের সংসদ সদস্য। জনমানুষের অধিকার ও এলাকার উন্নয়নে নিবেদিত।"
+                : "Former DUCSU VP and Member of Parliament for Patuakhali-3. Dedicated to people's rights and community development."}
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Link
                 href={localePath(locale, "/about")}
-                className="inline-flex h-12 items-center gap-2 rounded-[2px] border border-forest bg-forest px-7 text-[15px] font-semibold text-white transition-colors hover:bg-forest-deep"
+                className="inline-flex h-11 items-center gap-2 rounded-[2px] border border-forest bg-forest px-6 text-[14px] font-semibold text-white transition-colors hover:bg-forest-deep"
               >
-                {bn ? "পরিচয় পড়ুন" : "Read his profile"}
+                {bn ? "পরিচয় পড়ুন" : "Read profile"}
                 <ArrowRight aria-hidden="true" className="h-4 w-4" />
               </Link>
               <Link
                 href={localePath(locale, "/services")}
-                className="inline-flex h-12 items-center gap-2 rounded-[2px] border border-line-strong px-7 text-[15px] font-semibold text-forest transition-colors hover:border-forest hover:bg-offwhite"
+                className="inline-flex h-11 items-center gap-2 rounded-[2px] border border-line-strong px-6 text-[14px] font-semibold text-forest transition-colors hover:border-forest hover:bg-offwhite"
               >
                 {bn ? "নাগরিক সেবা" : "Citizen services"}
               </Link>
             </div>
-
-            <p className="mt-6 text-[11.5px] leading-relaxed text-muted">
-              {bn
-                ? "প্রকাশিত উপাদান উৎসসহ যাচাইকৃত হলেই ‘যাচাইকৃত’ হিসেবে চিহ্নিত হয়। যাচাই চলমান উপাদানে আলাদা ব্যাজ দেখা যাবে।"
-                : "Content is marked verified only after confirmation against a source; items pending verification carry a distinct badge."}
-            </p>
           </div>
 
           {/* Portrait */}

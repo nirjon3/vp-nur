@@ -1,77 +1,76 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import { localePath } from "@/i18n/config";
 import { constituency } from "@/content/constituency";
 import { Container } from "@/components/ui/layout";
-import { VerificationBadge } from "@/components/shared/verification";
 
-/** 04 — Constituency: embedded OSM map + numbered priorities. */
+/** Constituency overview: simple map + priorities. */
 export function ConstituencySection({ locale }: { locale: Locale }) {
   const bn = locale === "bn";
 
   return (
     <section className="border-t border-line bg-white py-12 sm:py-16">
       <Container>
-        <p className="flex items-baseline gap-3 text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
-          <span aria-hidden="true" className="tabular-nums">০৪</span>
-          <span>{bn ? "নির্বাচনী এলাকা" : "The constituency"}</span>
-        </p>
-
-        <div className="mt-4 grid gap-10 lg:grid-cols-12 lg:gap-14">
-          <div className="lg:col-span-5">
-            <h2 className="bn-heading text-2xl leading-snug text-forest sm:text-3xl">
+        <div className="flex flex-wrap items-end justify-between gap-4 border-b border-line pb-5">
+          <div>
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
+              {bn ? "নির্বাচনী এলাকা" : "Constituency"}
+            </p>
+            <h2 className="bn-heading mt-1.5 text-2xl text-forest sm:text-3xl">
               {constituency.name[locale]}
-              <span className="block text-lg font-medium text-muted sm:text-xl">
-                {constituency.upazilas.map((u) => u[locale]).join(" · ")}
+              <span className="ml-2 font-normal text-muted text-lg sm:text-xl">
+                ({constituency.upazilas.map((u) => u[locale]).join(" · ")})
               </span>
             </h2>
-            <p className="bn mt-4 text-[15px] leading-8 text-body">{constituency.overview[locale]}</p>
+          </div>
+          <Link
+            href={localePath(locale, "/constituency")}
+            className="group inline-flex items-center gap-1.5 text-[12px] font-bold uppercase tracking-[0.12em] text-forest hover:text-forest-deep"
+          >
+            {bn ? "এলাকার বিস্তারিত" : "View details"}
+            <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          </Link>
+        </div>
 
-            <div className="mt-6 overflow-hidden rounded-[2px] border border-line">
-              <iframe
-                title={bn ? "পটুয়াখালী-৩ মানচিত্র" : "Patuakhali-3 map"}
-                src={constituency.mapEmbed}
-                className="h-56 w-full border-0 sm:h-64"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
+        <div className="mt-8 grid gap-8 lg:grid-cols-12 lg:gap-12">
+          {/* Priorities */}
+          <div className="flex flex-col justify-between lg:col-span-6">
+            <div>
+              <p className="text-[11.5px] font-bold uppercase tracking-[0.16em] text-gold-deep">
+                {bn ? "মূল অগ্রাধিকারসমূহ" : "Core Priorities"}
+              </p>
+              <ul className="mt-4 grid gap-3">
+                {constituency.priorities.map((p) => (
+                  <li
+                    key={p.id}
+                    className="flex items-center gap-3 rounded-[2px] border border-line bg-offwhite p-3.5"
+                  >
+                    <CheckCircle2 className="h-4 w-4 shrink-0 text-forest" />
+                    <span className="bn-heading text-[14.5px] text-charcoal">
+                      {p.title[locale]}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <a
-              href={constituency.mapLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 inline-flex items-center gap-1.5 text-[12px] font-semibold text-muted hover:text-forest"
-            >
-              {bn ? "OpenStreetMap-এ বড় মানচিত্র দেখুন" : "Open larger map on OpenStreetMap"} →
-            </a>
+
+            <p className="bn mt-6 text-[13.5px] leading-relaxed text-muted">
+              {bn
+                ? "উপকূলীয় বাঁধ সংস্কার, চিকিৎসা সেবা ও গ্রামীণ যোগাযোগ ব্যবস্থার উন্নয়নে সক্রিয় উদ্যোগ গ্রহণ করা হচ্ছে।"
+                : "Active initiatives underway for coastal defense, healthcare, and rural infrastructure."}
+            </p>
           </div>
 
-          <div className="lg:col-span-7">
-            <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-muted">
-              {bn ? "অগ্রাধিকার ক্ষেত্রসমূহ" : "Priority areas"}
-            </h3>
-            <ol className="mt-3 divide-y divide-line border-y border-line">
-              {constituency.priorities.map((p, i) => (
-                <li key={p.id} className="grid grid-cols-[auto_1fr_auto] items-baseline gap-4 py-4">
-                  <span aria-hidden="true" className="font-sans text-sm font-bold tabular-nums text-gold-deep">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span>
-                    <span className="bn-heading text-[15px] text-charcoal sm:text-base">{p.title[locale]}</span>
-                    <span className="bn mt-1 block text-[13.5px] leading-6 text-muted">{p.body[locale]}</span>
-                  </span>
-                  <VerificationBadge status={p.verification} locale={locale} />
-                </li>
-              ))}
-            </ol>
-            <Link
-              href={localePath(locale, "/constituency")}
-              className="group mt-6 inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.12em] text-forest hover:text-forest-deep"
-            >
-              {bn ? "এলাকার বিস্তারিত" : "Constituency details"}
-              <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </Link>
+          {/* Map */}
+          <div className="overflow-hidden rounded-[2px] border border-line lg:col-span-6">
+            <iframe
+              title={bn ? "পটুয়াখালী-৩ মানচিত্র" : "Patuakhali-3 map"}
+              src={constituency.mapEmbed}
+              className="h-64 w-full border-0 sm:h-72"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </div>
       </Container>

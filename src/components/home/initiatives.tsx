@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, MapPin } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import { localePath } from "@/i18n/config";
 import { Container } from "@/components/ui/layout";
@@ -13,23 +13,22 @@ const statusVariant = {
   completed: "verified",
 } as const;
 
-/** 05 — Initiatives: one lead item + two secondary, deliberately un-card-like. */
+/** Clean 3-card initiatives preview. */
 export function InitiativesSection({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
   const bn = locale === "bn";
-  const [lead, ...rest] = initiatives;
+  const items = initiatives.slice(0, 3);
 
   return (
     <section className="border-t border-line bg-offwhite py-12 sm:py-16">
       <Container>
         <div className="flex flex-wrap items-end justify-between gap-4 border-b border-line-strong pb-5">
           <div>
-            <p className="flex items-baseline gap-3 text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
-              <span aria-hidden="true" className="tabular-nums">০৫</span>
-              <span>{bn ? "জনউদ্যোগ" : "Public initiatives"}</span>
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
+              {bn ? "উন্নয়ন উদ্যোগ" : "Initiatives"}
             </p>
-            <h2 className="bn-heading mt-2 text-2xl text-forest sm:text-3xl">
-              {bn ? "এলাকার জন্য নেওয়া উদ্যোগ" : "Initiatives taken for the area"}
+            <h2 className="bn-heading mt-1.5 text-2xl text-forest sm:text-3xl">
+              {bn ? "জনকল্যাণমূলক প্রকল্পসমূহ" : "Community Projects"}
             </h2>
           </div>
           <Link
@@ -41,54 +40,32 @@ export function InitiativesSection({ locale }: { locale: Locale }) {
           </Link>
         </div>
 
-        <div className="mt-8 grid gap-10 lg:grid-cols-12 lg:gap-14">
-          {lead ? (
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {items.map((item) => (
             <Link
-              href={localePath(locale, `/initiatives/${lead.slug}`)}
-              className="group lg:col-span-6"
+              key={item.slug}
+              href={localePath(locale, `/initiatives/${item.slug}`)}
+              className="group flex flex-col justify-between rounded-[2px] border border-line bg-white p-5 transition-all hover:border-forest hover:shadow-xs"
             >
-              <div className="flex h-44 items-end rounded-[2px] bg-forest-deep p-6 transition-colors group-hover:bg-forest">
-                <span className="bn-heading text-2xl leading-snug text-white">{lead.title[locale]}</span>
-              </div>
-              <p className="bn mt-4 max-w-lg text-[14.5px] leading-7 text-body">{lead.excerpt[locale]}</p>
-              <p className="mt-3 flex flex-wrap items-center gap-3 text-[12px] text-muted">
-                <Badge variant={statusVariant[lead.status]} className="normal-case tracking-normal">
-                  {dict.status[lead.status]}
-                </Badge>
-                <span className="inline-flex items-center gap-1">
-                  <MapPin aria-hidden="true" className="h-3.5 w-3.5" />
-                  {lead.location[locale]}
-                </span>
-              </p>
-            </Link>
-          ) : null}
-
-          <div className="divide-y divide-line border-y border-line lg:col-span-6">
-            {rest.map((item) => (
-              <Link
-                key={item.slug}
-                href={localePath(locale, `/initiatives/${item.slug}`)}
-                className="group grid grid-cols-[1fr_auto] items-center gap-4 py-5"
-              >
-                <div>
-                  <p className="flex items-center gap-3 text-[10.5px] font-bold uppercase tracking-[0.16em] text-muted">
-                    <Badge variant={statusVariant[item.status]} className="normal-case tracking-normal">
-                      {dict.status[item.status]}
-                    </Badge>
-                    {item.category[locale]}
-                  </p>
-                  <p className="bn-heading mt-1.5 text-[17px] leading-snug text-charcoal group-hover:text-forest">
-                    {item.title[locale]}
-                  </p>
-                  <p className="mt-1 text-[12px] text-muted">{item.location[locale]}</p>
+              <div>
+                <div className="flex items-center justify-between gap-2">
+                  <Badge variant={statusVariant[item.status]} className="text-[11px] normal-case tracking-normal">
+                    {dict.status[item.status]}
+                  </Badge>
+                  <span className="flex items-center gap-1 text-[11.5px] text-muted">
+                    <MapPin className="h-3 w-3" />
+                    {item.location[locale]}
+                  </span>
                 </div>
-                <ArrowUpRight
-                  aria-hidden="true"
-                  className="h-5 w-5 text-muted transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-forest"
-                />
-              </Link>
-            ))}
-          </div>
+                <h3 className="bn-heading mt-3 text-[17px] leading-snug text-charcoal group-hover:text-forest">
+                  {item.title[locale]}
+                </h3>
+              </div>
+              <span className="mt-5 inline-flex items-center gap-1.5 text-[12px] font-bold uppercase tracking-[0.12em] text-forest group-hover:underline">
+                {bn ? "বিস্তারিত দেখুন" : "View details"} →
+              </span>
+            </Link>
+          ))}
         </div>
       </Container>
     </section>
