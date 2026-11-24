@@ -12,7 +12,7 @@ import type { TimelineItem } from "@/types/content";
 export const timeline: TimelineItem[] = [
   {
     id: "birth",
-    date: "১৯৮৯",
+    date: { bn: "১৯৮৯", en: "1989" },
     title: { bn: "জন্ম ও প্রাথমিক জীবন", en: "Birth and early life" },
     body: {
       bn: "পটুয়াখালীর গালাচিপা উপজেলায় জন্ম। শৈশব ও কৈশোর কাটে গ্রামীণ পরিবেশে।",
@@ -23,7 +23,7 @@ export const timeline: TimelineItem[] = [
   },
   {
     id: "education",
-    date: "শিক্ষাজীবন",
+    date: { bn: "শিক্ষাজীবন", en: "Education" },
     title: { bn: "শিক্ষাজীবন", en: "Education" },
     body: {
       bn: "প্রাথমিক ও মাধ্যমিক শিক্ষা স্থানীয় প্রতিষ্ঠানে; উচ্চশিক্ষার জন্য ঢাকা বিশ্ববিদ্যালয়ে ভর্তি, যেখানে তিনি ছাত্ররাজনীতিতে সক্রিয় হন।",
@@ -34,7 +34,7 @@ export const timeline: TimelineItem[] = [
   },
   {
     id: "ducsu-vp",
-    date: "শিক্ষার্থী জীবন",
+    date: { bn: "শিক্ষার্থী জীবন", en: "Student Life" },
     title: {
       bn: "ডাকসু–র সহ-সভাপতি (ভিপি)",
       en: "Vice President of DUCSU",
@@ -48,7 +48,7 @@ export const timeline: TimelineItem[] = [
   },
   {
     id: "party",
-    date: "রাজনৈতিক যাত্রা",
+    date: { bn: "রাজনৈতিক যাত্রা", en: "Political Journey" },
     title: { bn: "জাতীয় রাজনীতিতে অভিষেক", en: "Entry into national politics" },
     body: {
       bn: "ছাত্র রাজনীতি থেকে জাতীয় রাজনীতিতে পদার্পণ। পরে নিজস্ব রাজনৈতিক সংগঠন গড়ে তোলেন এবং গণমানুষের ইস্যুতে সক্রিয় ভূমিকা রাখেন।",
@@ -59,7 +59,7 @@ export const timeline: TimelineItem[] = [
   },
   {
     id: "parliament",
-    date: "বর্তমান দায়িত্ব",
+    date: { bn: "বর্তমান দায়িত্ব", en: "Current Role" },
     title: {
       bn: "জাতীয় সংসদের নির্বাচিত সদস্য",
       en: "Elected member of the national parliament",

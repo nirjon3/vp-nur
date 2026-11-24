@@ -38,7 +38,7 @@ export function Header({ locale }: { locale: Locale }) {
             aria-hidden="true"
             className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[2px] bg-forest font-bengali text-[22px] font-semibold leading-none text-white"
           >
-            ন
+            {locale === "bn" ? "ন" : "N"}
           </span>
           <span className="min-w-0 leading-tight">
             <span className="bn-heading block truncate text-[15px] text-forest sm:text-base">

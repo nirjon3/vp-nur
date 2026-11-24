@@ -63,6 +63,16 @@ body {
   text-wrap: balance;
 }
 
+/* English copy override for bn classes when language is English */
+html[lang="en"] .bn {
+  font-family: var(--font-sans);
+  line-height: 1.6;
+}
+html[lang="en"] .bn-heading {
+  font-family: var(--font-sans);
+  line-height: 1.25;
+}
+
 /* Anchored targets clear the sticky header */
 #main-content {
   scroll-margin-top: 4.5rem;

@@ -19,7 +19,7 @@ export interface LocalText {
 
 export interface TimelineItem extends Verifiable {
   id: string;
-  date: string; // ISO or display precision date
+  date: string | LocalText; // ISO or display precision date or localized label
   title: LocalText;
   body: LocalText;
 }

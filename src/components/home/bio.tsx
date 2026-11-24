@@ -100,7 +100,7 @@ export function JourneySection({ locale }: { locale: Locale }) {
               className="w-[220px] shrink-0 snap-start border-r border-line bg-white px-5 py-5 last:border-r-0 sm:w-[240px]"
             >
               <span className="bn block text-[11px] font-semibold uppercase tracking-[0.16em] text-muted">
-                {item.date}
+                {typeof item.date === "string" ? item.date : item.date[locale]}
               </span>
               <span className="bn-heading mt-1.5 block text-[14.5px] leading-snug text-forest">
                 {item.title[locale]}

@@ -37,7 +37,7 @@ export function Footer({ locale }: { locale: Locale }) {
                 aria-hidden="true"
                 className="flex h-10 w-10 items-center justify-center rounded-[2px] bg-gold font-bengali text-[22px] font-semibold text-forest-ink"
               >
-                ন
+                {locale === "bn" ? "ন" : "N"}
               </span>
               <span className="leading-tight">
                 <span className="bn-heading block text-base text-white">{dict.site.name}</span>

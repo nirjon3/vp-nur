@@ -149,7 +149,7 @@ export default async function AboutPage({
                 />
                 <div className="sm:col-span-3">
                   <span className="bn text-[12px] font-bold uppercase tracking-[0.14em] text-muted">
-                    {item.date}
+                    {typeof item.date === "string" ? item.date : item.date[locale]}
                   </span>
                 </div>
                 <div className="sm:col-span-9">

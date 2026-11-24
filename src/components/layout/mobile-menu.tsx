@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { localePath, type Locale } from "@/i18n/config";
 import { cn } from "@/lib/cn";
+import { LanguageSwitcher } from "./language-switcher";
 
 interface NavItem {
   href: string;
@@ -106,6 +107,13 @@ export function MobileMenu({
             >
               {dict.servicesCta}
             </Link>
+
+            <div className="mt-6 flex items-center justify-between border-t border-line pt-5">
+              <span className="text-[13px] font-semibold text-charcoal">
+                {locale === "bn" ? "ভাষা পরিবর্তন করুন" : "Switch language"}
+              </span>
+              <LanguageSwitcher locale={locale} />
+            </div>
           </nav>
         </div>
       ) : null}
