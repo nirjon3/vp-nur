@@ -5,8 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   Camera,
-  Video,
-  Play,
   ArrowRight,
   X,
   ExternalLink,
@@ -15,22 +13,7 @@ import {
 import type { Locale } from "@/i18n/config";
 import { localePath } from "@/i18n/config";
 import { formatDateShort } from "@/lib/format";
-import type { MediaItem, MediaKind } from "@/types/content";
-
-const kindIcon: Record<MediaKind, typeof Camera> = {
-  photo: Camera,
-  video: Video,
-  interview: Video,
-  speech: Video,
-  event: Camera,
-};
-
-const kindLabel = (kind: MediaKind, bn: boolean) => {
-  if (kind === "video" || kind === "speech" || kind === "interview") {
-    return bn ? "ভিডিও" : "Video";
-  }
-  return bn ? "ছবি" : "Photo";
-};
+import type { MediaItem } from "@/types/content";
 
 export function MediaCarousel({
   items,
@@ -42,10 +25,9 @@ export function MediaCarousel({
   const bn = locale === "bn";
   const [active, setActive] = React.useState<MediaItem | null>(null);
   const [isPaused, setIsPaused] = React.useState(false);
-  const trackRef = React.useRef<HTMLDivElement>(null);
   const closeRef = React.useRef<HTMLButtonElement>(null);
 
-  // Duplicate items for a seamless, continuous infinite scroll loop
+  // Duplicate items for a seamless continuous infinite scroll loop
   const duplicated = React.useMemo(() => [...items, ...items], [items]);
 
   React.useEffect(() => {
@@ -63,22 +45,20 @@ export function MediaCarousel({
     }
   }, [active]);
 
-
-
   return (
     <div className="relative overflow-hidden py-4">
-      {/* Header with Title and View All */}
+      {/* Header */}
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-10">
         <div className="flex flex-wrap items-end justify-between gap-4 border-b border-line pb-5">
           <div>
             <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
-              {bn ? "গ্যালারি ও মিডিয়া" : "Gallery & Media"}
+              {bn ? "আলোকচিত্র গ্যালারি" : "Photo Gallery"}
             </p>
             <h2 className="bn-heading mt-1.5 text-2xl text-forest sm:text-3xl">
-              {bn ? "আলোকচিত্র ও ভিডিও সম্ভার" : "Photographs & Video Collection"}
+              {bn ? "মাঠপর্যায়ের কার্যক্রম ও আলোকচিত্র" : "Field Work & Activities"}
             </h2>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <span className="hidden text-[12px] text-muted sm:inline-flex items-center gap-1.5">
               <Pause className="h-3.5 w-3.5 text-gold-deep" />
               {bn ? "কার্সার রাখলে থামবে" : "Hover to pause"}
@@ -87,7 +67,7 @@ export function MediaCarousel({
               href={localePath(locale, "/media")}
               className="group inline-flex items-center gap-1.5 text-[12px] font-bold uppercase tracking-[0.12em] text-forest hover:text-forest-deep"
             >
-              {bn ? "সব ছবি ও ভিডিও" : "View all archive"}
+              {bn ? "সব ছবি দেখুন" : "View all photos"}
               <ArrowRight
                 aria-hidden="true"
                 className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
@@ -97,26 +77,21 @@ export function MediaCarousel({
         </div>
       </div>
 
-      {/* Continuous Marquee Track */}
+      {/* Continuous 4:3 Photo Marquee Track */}
       <div
         className="group/track relative mt-7 overflow-hidden"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
         <div
-          ref={trackRef}
           className={`animate-continuous-scroll flex gap-5 px-4 ${
             isPaused ? "[animation-play-state:paused]" : ""
           }`}
           style={{ willChange: "transform" }}
         >
           {duplicated.map((item, index) => {
-            const Icon = kindIcon[item.kind] ?? Camera;
-            const thumb =
-              item.imageUrl ??
-              (item.youtubeId
-                ? `https://img.youtube.com/vi/${item.youtubeId}/hqdefault.jpg`
-                : null);
+            const thumb = item.imageUrl;
+            if (!thumb) return null;
 
             return (
               <button
@@ -124,43 +99,30 @@ export function MediaCarousel({
                 type="button"
                 onClick={() => setActive(item)}
                 aria-label={item.title[locale]}
-                className="group relative aspect-[16/10] w-[310px] shrink-0 overflow-hidden rounded-[2px] bg-forest-deep text-left shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest sm:w-[370px] lg:w-[410px]"
+                className="group relative aspect-[4/3] w-[320px] shrink-0 overflow-hidden rounded-[2px] bg-forest-deep text-left shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest sm:w-[390px] lg:w-[430px]"
               >
-                {thumb ? (
-                  <>
-                    <Image
-                      src={thumb}
-                      alt={item.title[locale]}
-                      fill
-                      sizes="(min-width: 1024px) 410px, (min-width: 640px) 370px, 310px"
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-108"
-                    />
-                    <div
-                      aria-hidden="true"
-                      className="absolute inset-0 bg-gradient-to-t from-forest-ink via-forest-ink/40 to-transparent opacity-90 transition-opacity group-hover:opacity-100"
-                    />
-                  </>
-                ) : null}
+                <Image
+                  src={thumb}
+                  alt={item.title[locale]}
+                  fill
+                  sizes="(min-width: 1024px) 430px, (min-width: 640px) 390px, 320px"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-108"
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-gradient-to-t from-forest-ink via-forest-ink/30 to-transparent opacity-90 transition-opacity group-hover:opacity-100"
+                />
 
-                {/* Top Badges */}
+                {/* Top Badge */}
                 <div className="relative z-10 flex items-center justify-between p-4">
                   <span className="flex items-center gap-1.5 rounded-[2px] bg-forest-ink/80 px-2.5 py-1 text-[11px] font-semibold text-gold shadow-xs backdrop-blur-xs">
-                    <Icon aria-hidden="true" className="h-3.5 w-3.5" />
-                    <span>{kindLabel(item.kind, bn)}</span>
+                    <Camera aria-hidden="true" className="h-3.5 w-3.5" />
+                    <span>{bn ? "আলোকচিত্র" : "Photograph"}</span>
                   </span>
-
-                  {item.youtubeId ? (
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gold/90 text-forest-ink shadow-md transition-transform duration-300 group-hover:scale-115 group-hover:bg-gold">
-                      <Play
-                        aria-hidden="true"
-                        className="h-4 w-4 fill-forest-ink pl-0.5"
-                      />
-                    </span>
-                  ) : null}
                 </div>
 
                 {/* Bottom Content */}
-                <div className="absolute inset-x-0 bottom-0 z-10 p-4 pt-8">
+                <div className="absolute inset-x-0 bottom-0 z-10 p-4 pt-10">
                   <p className="bn-heading text-[15.5px] font-semibold leading-snug text-white drop-shadow-sm group-hover:text-gold sm:text-[16.5px]">
                     {item.title[locale]}
                   </p>
@@ -197,20 +159,8 @@ export function MediaCarousel({
               <X aria-hidden="true" className="h-5 w-5" />
             </button>
 
-            {active.youtubeId ? (
-              <div className="aspect-video w-full overflow-hidden rounded-[2px]">
-                <iframe
-                  src={`https://www.youtube.com/embed/${encodeURIComponent(
-                    active.youtubeId
-                  )}?rel=0&autoplay=1`}
-                  title={active.title[locale]}
-                  className="h-full w-full border-0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
-            ) : active.imageUrl ? (
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2px] bg-black sm:aspect-video">
+            {active.imageUrl ? (
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2px] bg-black">
                 <Image
                   src={active.imageUrl}
                   alt={active.title[locale]}

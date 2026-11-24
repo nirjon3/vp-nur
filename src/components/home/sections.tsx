@@ -1,8 +1,5 @@
 import Link from "next/link";
 import {
-  ArrowRight,
-  Mic,
-  Play,
   FileText,
   Search,
   CheckCircle2,
@@ -10,79 +7,22 @@ import {
 import type { Locale } from "@/i18n/config";
 import { localePath } from "@/i18n/config";
 import { Container } from "@/components/ui/layout";
-import { formatDateShort } from "@/lib/format";
-import { speeches } from "@/content/speeches";
 import { mediaItems } from "@/content/media";
+import { MediaCarousel } from "./media-carousel";
+import { VideoSpeeches } from "./video-speeches";
 
-/** Speeches & interviews preview. */
+/** Speeches & video interviews ("In His Own Voice"). */
 export function SpeechesSection({ locale }: { locale: Locale }) {
-  const bn = locale === "bn";
-  const items = speeches.slice(0, 3);
-
-  return (
-    <section className="border-t border-line bg-offwhite py-12 sm:py-16">
-      <Container>
-        <div className="flex flex-wrap items-end justify-between gap-4 border-b border-line pb-5">
-          <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
-              {bn ? "বক্তৃতা ও সাক্ষাৎকার" : "Speeches"}
-            </p>
-            <h2 className="bn-heading mt-1.5 text-2xl text-forest sm:text-3xl">
-              {bn ? "জনসম্মুখে বক্তব্য ও সাক্ষাৎকার" : "In His Own Voice"}
-            </h2>
-          </div>
-          <Link
-            href={localePath(locale, "/speeches")}
-            className="group inline-flex items-center gap-1.5 text-[12px] font-bold uppercase tracking-[0.12em] text-forest hover:text-forest-deep"
-          >
-            {bn ? "সম্পূর্ণ আর্কাইভ" : "Full archive"}
-            <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-          </Link>
-        </div>
-
-        <ul className="mt-4 divide-y divide-line">
-          {items.map((s) => (
-            <li key={s.id} className="flex flex-col justify-between gap-3 py-4 sm:flex-row sm:items-center">
-              <div className="flex items-center gap-3">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[2px] bg-forest/5 text-forest">
-                  <Mic aria-hidden="true" className="h-4 w-4" />
-                </span>
-                <span className="bn-heading text-[15.5px] leading-snug text-charcoal">
-                  {s.title[locale]}
-                </span>
-              </div>
-              <div className="flex items-center gap-4 self-end sm:self-center">
-                <span className="text-[11.5px] text-muted">
-                  <time dateTime={s.date}>{formatDateShort(s.date, locale)}</time>
-                  {s.durationMinutes ? ` · ${s.durationMinutes} ${bn ? "মিনিট" : "min"}` : ""}
-                </span>
-                {s.videoUrl ? (
-                  <a
-                    href={s.videoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 rounded-[2px] bg-forest px-3.5 py-1.5 text-[12px] font-semibold text-white shadow-xs transition-colors hover:bg-forest-deep"
-                  >
-                    <Play className="h-3 w-3 fill-current" />
-                    {bn ? "ভিডিও দেখুন" : "Watch"}
-                  </a>
-                ) : null}
-              </div>
-            </li>
-          ))}
-        </ul>
-      </Container>
-    </section>
-  );
+  const videoItems = mediaItems.filter((item) => Boolean(item.youtubeId));
+  return <VideoSpeeches items={videoItems} locale={locale} />;
 }
 
-import { MediaCarousel } from "./media-carousel";
-
-/** Media highlights: continuous smooth scrolling carousel. */
+/** Photo gallery: continuous smooth scrolling 4:3 carousel. */
 export function MediaSection({ locale }: { locale: Locale }) {
+  const photoItems = mediaItems.filter((item) => !item.youtubeId);
   return (
     <section className="border-t border-line bg-white py-10 sm:py-14">
-      <MediaCarousel items={mediaItems} locale={locale} />
+      <MediaCarousel items={photoItems} locale={locale} />
     </section>
   );
 }
