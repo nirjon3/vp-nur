@@ -6,6 +6,27 @@ import type { MediaItem } from "@/types/content";
  */
 export const mediaItems: MediaItem[] = [
   {
+    id: "album-brazil-embassy-independence-day",
+    kind: "event",
+    title: {
+      bn: "ব্রাজিলের ২০৪তম স্বাধীনতা দিবস উদযাপন — ব্রাজিল দূতাবাস",
+      en: "Brazil's 204th Independence Day Celebration — Embassy of Brazil",
+    },
+    imageUrl: "/images/brazil-embassy-1.jpg",
+    images: [
+      "/images/brazil-embassy-1.jpg",
+    ],
+    date: "2024-09-07",
+    caption: {
+      bn: "ব্রাজিল অ্যাম্বাসি আয়োজিত বর্ষপূর্তি উদযাপন অনুষ্ঠানে আমন্ত্রিত অতিথি হিসেবে ভিপি নুরুল হক নুর।",
+      en: "VP Nurul Haque Nur as an invited guest at the anniversary reception organized by the Embassy of Brazil.",
+    },
+    verification: "verified",
+    sourceUrl: "https://www.facebook.com/share/p/1535JpDy3DW/",
+    sourceLabel: { bn: "ফেসবুক পোস্ট", en: "Facebook Post" },
+    updatedAt: "2026-11-25",
+  },
+  {
     id: "photo-portrait-official-2026",
     kind: "photo",
     title: {

@@ -117,6 +117,8 @@ export interface MediaItem extends Verifiable {
   /** YouTube embed id — only set for verified uploads */
   youtubeId?: string;
   imageUrl?: string;
+  /** Multiple photos for photo album / slider */
+  images?: string[];
   caption?: LocalText;
 }
 
