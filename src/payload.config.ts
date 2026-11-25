@@ -41,7 +41,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
     meta: {
-      titleSuffix: "— Nur CMS",
+      titleSuffix: "— ভিপি নুর অ্যাডমিন পোর্টাল",
     },
   },
   typescript: {

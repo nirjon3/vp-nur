@@ -38,7 +38,13 @@ const existing = await payload.find({
 });
 
 if (existing.docs.length > 0) {
-  console.log(`Super admin ${email} already exists — nothing to do.`);
+  await payload.update({
+    collection: "users",
+    id: existing.docs[0].id,
+    data: { password, name: "Super Admin", role: "super-admin" },
+    overrideAccess: true,
+  });
+  console.log(`Updated super admin ${email} password`);
 } else {
   await payload.create({
     collection: "users",

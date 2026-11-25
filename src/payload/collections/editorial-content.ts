@@ -55,7 +55,11 @@ export const News = editorialCollection({
 
 export const Speeches = editorialCollection({
   slug: "speeches",
-  label: "Speech / interview",
+  label: "Speech & Interview",
+  labels: {
+    singular: "Speech & Interview (বক্তৃতা ও সাক্ষাৎকার)",
+    plural: "Speeches & Interviews (বক্তৃতা ও সাক্ষাৎকার)",
+  },
   adminGroup: "Editorial",
   extraFields: [
     slugField,
@@ -75,7 +79,11 @@ export const Speeches = editorialCollection({
 
 export const Events = editorialCollection({
   slug: "events",
-  label: "Public event",
+  label: "Public Event",
+  labels: {
+    singular: "Public Event (অনুষ্ঠান)",
+    plural: "Public Events (অনুষ্ঠানসমূহ)",
+  },
   adminGroup: "Editorial",
   extraFields: [
     slugField,
@@ -113,6 +121,10 @@ Events.hooks = {
 export const Initiatives = editorialCollection({
   slug: "initiatives",
   label: "Initiative",
+  labels: {
+    singular: "Initiative (উন্নয়ন উদ্যোগ)",
+    plural: "Initiatives (উন্নয়ন উদ্যোগসমূহ)",
+  },
   adminGroup: "Editorial",
   extraFields: [
     slugField,
@@ -153,6 +165,10 @@ export const Initiatives = editorialCollection({
 export const ParliamentActivities = editorialCollection({
   slug: "parliament-activities",
   label: "Parliament activity",
+  labels: {
+    singular: "Parliament Activity (সংসদীয় কার্যক্রম)",
+    plural: "Parliament Activities (সংসদীয় কার্যক্রম)",
+  },
   adminGroup: "Editorial",
   extraFields: [
     slugField,
@@ -200,6 +216,10 @@ export const Publications = editorialCollection({
 export const TimelineMilestones = editorialCollection({
   slug: "timeline-milestones",
   label: "Timeline milestone",
+  labels: {
+    singular: "Timeline Milestone (জীবন ও সংগ্রাম)",
+    plural: "Timeline Milestones (জীবন ও সংগ্রাম)",
+  },
   adminGroup: "About",
   useAsTitle: "slug",
   extraFields: [
@@ -213,6 +233,10 @@ export const TimelineMilestones = editorialCollection({
 
 export const Media: CollectionConfig = {
   slug: "media",
+  labels: {
+    singular: "Media & Photo (ছবি ও মিডিয়া)",
+    plural: "Media & Gallery (ছবি ও গ্যালারি)",
+  },
   upload: {
     staticDir: path.resolve(dirname, "../../media"),
     mimeTypes: ["image/jpeg", "image/png", "image/webp", "image/avif", "application/pdf"],
@@ -260,6 +284,10 @@ export const CitizenRequestAttachments: CollectionConfig = {
 /** Citizen requests — the public never gets direct access. */
 export const CitizenRequests: CollectionConfig = {
   slug: "citizen-requests",
+  labels: {
+    singular: "Citizen Request (নাগরিক সেবা আবেদন)",
+    plural: "Citizen Requests (নাগরিক সেবা আবেদনসমূহ)",
+  },
   admin: {
     group: "Citizen Services",
     useAsTitle: "ref",

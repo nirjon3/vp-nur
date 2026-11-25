@@ -87,6 +87,7 @@ const auditAfterDelete = (collection: string): CollectionAfterDeleteHook =>
 export interface EditorialDefinition {
   slug: string;
   label: string;
+  labels?: { singular: string; plural: string };
   adminGroup: string;
   extraFields: NonNullable<CollectionConfig["fields"]>;
   useAsTitle?: string;
@@ -98,6 +99,7 @@ export interface EditorialDefinition {
 export function editorialCollection({
   slug,
   label,
+  labels,
   adminGroup,
   extraFields,
   useAsTitle,
@@ -106,7 +108,7 @@ export function editorialCollection({
 }: EditorialDefinition): CollectionConfig {
   return {
     slug,
-    labels: { singular: label, plural: `${label}s` },
+    labels: labels ?? { singular: label, plural: `${label}s` },
     admin: {
       useAsTitle: useAsTitle ?? "slug",
       group: adminGroup,
