@@ -4,60 +4,60 @@ import { editorsAndAbove } from "./access.ts";
 
 export const HomepageSettings: GlobalConfig = {
   slug: "homepage-settings",
-  label: "হোমপেজ ব্যানার ও প্রধান পরিচয়",
+  label: "🏠 Homepage Banner",
   admin: {
-    group: "৩. নাগরিক সেবা ও যোগাযোগ (Citizen Services)",
-    description: "ওয়েবসাইটের মূল হোমপেজের প্রধান শিরোনাম, পরিচয় ও ছবি এখান থেকে পরিবর্তন করতে পারেন।",
+    group: "📩 Citizen & Site",
+    description: "Main homepage hero title, subtitle, and intro portrait",
   },
   access: { read: () => true, update: editorsAndAbove },
   fields: [
-    bilingualText("heroDesignation", false, "প্রধান পদবি বা পরিচয়", "Hero designation"),
-    bilingualArea("heroIntro", false, "হোমপেজের ভূমিকা বা সারসংক্ষেপ", "Hero introduction paragraph"),
-    bilingualArea("heroNote", false, "যাচাইকরণ নোট / সতর্কবার্তা", "Hero verification note"),
+    bilingualText("heroDesignation", false, "প্রধান পদবি বা পরিচয়", "Hero Designation"),
+    bilingualArea("heroIntro", false, "ভূমিকা বা মূল বিবরণ", "Hero Introduction"),
+    bilingualArea("heroNote", false, "যাচাইকরণ বার্তা / নোট", "Verification Notice"),
     {
       name: "heroImage",
       type: "upload",
       relationTo: "media",
-      label: "মূল প্রতিকৃতি বা পোর্ট্রেট ছবি (Hero Portrait Photo)",
+      label: "Hero Portrait Photo",
     },
   ],
 };
 
 export const ContactInfoGlobal: GlobalConfig = {
   slug: "contact-info",
-  label: "অফিস ও যোগাযোগের ঠিকানা",
+  label: "📍 Contact Info",
   admin: {
-    group: "৩. নাগরিক সেবা ও যোগাযোগ (Citizen Services)",
-    description: "নাগরিক ও শুভানুধ্যায়ীদের যোগাযোগের জন্য অফিস ঠিকানা, ফোন, ইমেইল ও গুগল ম্যাপ লিঙ্ক।",
+    group: "📩 Citizen & Site",
+    description: "Public office address, email, phone number, and Google Map",
   },
   access: { read: () => true, update: editorsAndAbove },
   fields: [
-    bilingualArea("officeAddress", false, "অফিসের পূর্ণ ঠিকানা", "Office address"),
-    { name: "phone", type: "text", label: "পাবলিক ফোন নম্বর (Phone Number)" },
-    { name: "email", type: "email", label: "পাবলিক ইমেইল ঠিকানা (Email Address)" },
-    bilingualArea("officeHours", false, "সাক্ষাৎ বা অফিসের সময়সূচি", "Office hours"),
-    { name: "mapEmbedUrl", type: "text", label: "গুগল ম্যাপ এমবেড ইউআরএল (Map Embed URL)" },
-    { name: "mapLink", type: "text", label: "গুগল ম্যাপ সরাসরি লিংক (Map External Link)" },
+    bilingualArea("officeAddress", false, "অফিসের ঠিকানা", "Office Address"),
+    { name: "phone", type: "text", label: "Phone Number" },
+    { name: "email", type: "email", label: "Email Address" },
+    bilingualArea("officeHours", false, "অফিসের সময়সূচি", "Office Hours"),
+    { name: "mapEmbedUrl", type: "text", label: "Google Map Embed URL" },
+    { name: "mapLink", type: "text", label: "Google Map Link" },
   ],
 };
 
 export const SocialLinksGlobal: GlobalConfig = {
   slug: "social-links",
-  label: "সোশ্যাল মিডিয়া প্রোফাইল লিংক",
+  label: "🔗 Social Links",
   admin: {
-    group: "৩. নাগরিক সেবা ও যোগাযোগ (Citizen Services)",
-    description: "ভিপি নুরের ভেরিফাইড ফেসবুক পেজ, ইউটিউব চ্যানেল, এক্স (টুইটার) ইত্যাদির লিঙ্ক।",
+    group: "📩 Citizen & Site",
+    description: "Verified Facebook, YouTube, X/Twitter, and other links",
   },
   access: { read: () => true, update: editorsAndAbove },
   fields: [
     {
       name: "links",
       type: "array",
-      label: "সোশ্যাল মিডিয়া লিংক তালিকা (Social Links List)",
+      label: "Social Media Links",
       fields: [
-        { name: "id", type: "text", required: true, label: "চিহ্ন / কী (যেমন: facebook, youtube, twitter)" },
-        { name: "label", type: "text", required: true, label: "প্রদর্শনের নাম (Label, যেমন: অফিসিয়াল ফেসবুক পেজ)" },
-        { name: "url", type: "text", required: true, label: "ভেরিফাইড প্রোফাইল লিংক (URL)" },
+        { name: "id", type: "text", required: true, label: "Platform Key (e.g. facebook, youtube)" },
+        { name: "label", type: "text", required: true, label: "Display Label (e.g. Official Facebook Page)" },
+        { name: "url", type: "text", required: true, label: "Profile URL" },
       ],
     },
   ],

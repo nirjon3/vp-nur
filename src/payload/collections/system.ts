@@ -4,8 +4,8 @@ import { superAdminOnly, editorsAndAbove } from "../access.ts";
 export const Users: CollectionConfig = {
   slug: "users",
   labels: {
-    singular: "ব্যবহারকারী (User)",
-    plural: "অ্যাডমিন ও ব্যবহারকারী (Users)",
+    singular: "User",
+    plural: "👥 Users",
   },
   auth: {
     loginWithUsername: {
@@ -15,15 +15,14 @@ export const Users: CollectionConfig = {
   },
   admin: {
     useAsTitle: "username",
-    group: "৪. সিস্টেম ও নিরাপত্তা (System & Security)",
-    description: "অ্যাডমিন প্যানেলে প্রবেশকারী ব্যবহারকারী ও তাদের দায়িত্ব (Role) পরিচালনা করুন।",
+    group: "⚙️ System",
+    description: "Manage admin users, credentials, and access roles",
     defaultColumns: ["username", "email", "role", "createdAt"],
   },
   access: {
     read: ({ req }) => Boolean(req.user),
     create: ({ req }) => {
       const role = (req.user as { role?: string } | null | undefined)?.role;
-      // First user (no users yet) can be created; otherwise super-admin only
       if (!req.user) return true;
       return role === "super-admin";
     },
@@ -41,20 +40,20 @@ export const Users: CollectionConfig = {
       name: "name",
       type: "text",
       required: true,
-      label: "পূর্ণ নাম (Full Name)",
+      label: "Full Name",
     },
     {
       name: "role",
       type: "select",
       required: true,
       defaultValue: "editor",
-      label: "দায়িত্ব / ভূমিকা (Role)",
+      label: "Role & Permissions",
       options: [
-        { label: "সুপার অ্যাডমিন — সমস্ত ক্ষমতা (Super Admin)", value: "super-admin" },
-        { label: "সম্পাদক — তথ্য তৈরি ও সম্পাদনা (Editor)", value: "editor" },
-        { label: "পর্যালোচক — তথ্য যাচাই ও অনুমোদন (Reviewer)", value: "reviewer" },
-        { label: "প্রকাশক — অনুমোদিত তথ্য প্রকাশ (Publisher)", value: "publisher" },
-        { label: "সেবা কর্মকর্তা — নাগরিক আবেদন পরিচালনা (Service Operator)", value: "service-operator" },
+        { label: "Super Admin (Full System Access)", value: "super-admin" },
+        { label: "Editor (Create & Edit Content)", value: "editor" },
+        { label: "Reviewer (Verify & Approve)", value: "reviewer" },
+        { label: "Publisher (Publish to Live Site)", value: "publisher" },
+        { label: "Service Operator (Citizen Requests)", value: "service-operator" },
       ],
       access: {
         update: ({ req }) => {
@@ -69,39 +68,39 @@ export const Users: CollectionConfig = {
 export const AuditLogs: CollectionConfig = {
   slug: "audit-logs",
   labels: {
-    singular: "অডিট লগ (Audit Log)",
-    plural: "কার্যক্রমের অডিট লগ (Audit Logs)",
+    singular: "Log Entry",
+    plural: "📜 Audit Logs",
   },
   admin: {
     useAsTitle: "summary",
-    group: "৪. সিস্টেম ও নিরাপত্তা (System & Security)",
-    description: "ওয়েবসাইটে কোন অ্যাডমিন কি তথ্য তৈরি, পরিবর্তন বা মুছেছেন তার রেকর্ড।",
+    group: "⚙️ System",
+    description: "Security and modification history log",
     defaultColumns: ["summary", "collection", "action", "createdAt"],
   },
   access: {
     read: superAdminOnly,
-    create: () => false, // written only by hooks
+    create: () => false,
     update: () => false,
     delete: () => false,
   },
   fields: [
-    { name: "summary", type: "text", required: true, label: "সংক্ষিপ্ত বিবরণ (Summary)" },
-    { name: "collection", type: "text", required: true, index: true, label: "বিভাগ / টেবিল (Collection)" },
-    { name: "documentId", type: "text", label: "নথি নম্বর (Doc ID)" },
+    { name: "summary", type: "text", required: true, label: "Summary" },
+    { name: "collection", type: "text", required: true, index: true, label: "Collection" },
+    { name: "documentId", type: "text", label: "Document ID" },
     {
       name: "action",
       type: "select",
       options: [
-        { label: "তৈরি করা হয়েছে (Create)", value: "create" },
-        { label: "সম্পাদনা করা হয়েছে (Update)", value: "update" },
-        { label: "মুছে ফেলা হয়েছে (Delete)", value: "delete" },
-        { label: "স্ট্যাটাস পরিবর্তন (Status Change)", value: "status-change" },
-        { label: "লগইন (Login)", value: "login" },
+        { label: "Create", value: "create" },
+        { label: "Update", value: "update" },
+        { label: "Delete", value: "delete" },
+        { label: "Status Change", value: "status-change" },
+        { label: "Login", value: "login" },
       ],
       required: true,
-      label: "কার্যক্রমের ধরন (Action)",
+      label: "Action",
     },
-    { name: "actor", type: "text", label: "সম্পাদনকারী ইউজার (User)" },
+    { name: "actor", type: "text", label: "User / Actor" },
   ],
 };
 
@@ -116,10 +115,10 @@ export const bilingualText = (
   return {
     name,
     type: "group" as const,
-    label: `${labelBn} (${enLabel})`,
+    label: enLabel,
     fields: [
-      { name: "bn", type: "text" as const, required, label: `${labelBn} (বাংলায় লিখুন)` },
-      { name: "en", type: "text" as const, required, label: `${enLabel} (English)` },
+      { name: "bn", type: "text" as const, required, label: `Bangla (বাংলা) — ${labelBn}` },
+      { name: "en", type: "text" as const, required, label: `English — ${enLabel}` },
     ],
   };
 };
@@ -134,10 +133,10 @@ export const bilingualArea = (
   return {
     name,
     type: "group" as const,
-    label: `${labelBn} (${enLabel})`,
+    label: enLabel,
     fields: [
-      { name: "bn", type: "textarea" as const, required, label: `${labelBn} (বাংলায় বিস্তারিত বিবরণ)` },
-      { name: "en", type: "textarea" as const, required, label: `${enLabel} (English description)` },
+      { name: "bn", type: "textarea" as const, required, label: `Bangla (বাংলা) — ${labelBn}` },
+      { name: "en", type: "textarea" as const, required, label: `English — ${enLabel}` },
     ],
   };
 };
@@ -146,7 +145,7 @@ export const bilingualArea = (
 export const verificationGroup = {
   name: "verification",
   type: "group" as const,
-  label: "তথ্য যাচাই ও সূত্র (Verification & Source)",
+  label: "Verification & Source",
   admin: { position: "sidebar" as const },
   fields: [
     {
@@ -154,22 +153,22 @@ export const verificationGroup = {
       type: "select" as const,
       defaultValue: "pending",
       required: true,
-      label: "যাচাইয়ের অবস্থা (Status)",
+      label: "Verification Status",
       options: [
-        { label: "অপেক্ষমাণ (Pending) — তথ্য যাচাই চলমান", value: "pending" },
-        { label: "যাচাইকৃত (Verified) — প্রমাণিত সত্য তথ্য", value: "verified" },
+        { label: "⏳ Pending (Verification in progress)", value: "pending" },
+        { label: "✅ Verified (Confirmed by source)", value: "verified" },
       ],
     },
-    { name: "sourceUrl", type: "text" as const, label: "তথ্যের মূল লিংক (Source URL)" },
-    { name: "sourceLabel", type: "text" as const, label: "উৎসের নাম (Source Name, যেমন: প্রথম আলো, ফেসবুক)" },
-    { name: "note", type: "textarea" as const, label: "যাচাইকরণ নোট (Verification Note)" },
+    { name: "sourceUrl", type: "text" as const, label: "Source URL" },
+    { name: "sourceLabel", type: "text" as const, label: "Source Name" },
+    { name: "note", type: "textarea" as const, label: "Verification Note" },
   ],
 };
 
 export const workflowGroup = {
   name: "workflow",
   type: "group" as const,
-  label: "প্রকাশনা নিয়ন্ত্রণ (Publishing Workflow)",
+  label: "Publishing Workflow",
   admin: { position: "sidebar" as const },
   fields: [
     {
@@ -177,18 +176,18 @@ export const workflowGroup = {
       type: "select" as const,
       defaultValue: "draft",
       required: true,
-      label: "প্রকাশের অবস্থা (Workflow Status)",
+      label: "Publish Status",
       options: [
-        { label: "খসড়া (Draft) — ওয়েবসাইটে দেখাবে না", value: "draft" },
-        { label: "পর্যালোচনায় (Review) — অনুমোদনের অপেক্ষায়", value: "review" },
-        { label: "অনুমোদিত (Approved) — প্রকাশের যোগ্য", value: "approved" },
-        { label: "প্রকাশিত (Published) — লাইভ ওয়েবসাইটে দেখা যাচ্ছে", value: "published" },
+        { label: "📝 Draft (Hidden from website)", value: "draft" },
+        { label: "🔍 Under Review", value: "review" },
+        { label: "👍 Approved", value: "approved" },
+        { label: "🚀 Published (Live on website)", value: "published" },
       ],
     },
     {
       name: "publishAt",
       type: "date" as const,
-      label: "নির্ধারিত সময়ে প্রকাশ (Schedule Publish, ঐচ্ছিক)",
+      label: "Scheduled Publish Date (Optional)",
       admin: { date: { pickerAppearance: "dayAndTime" as const } },
     },
   ],
