@@ -34,6 +34,7 @@ export const News = editorialCollection({
   adminGroup: "📰 Content",
   description: "🔗 Updates Live Page: /news — Controls news articles on the News page & Homepage cards.",
   preview: () => "/bn/news",
+  defaultColumns: ["title", "heroImage", "category", "date", "updatedAt"],
   useAsTitle: "slug",
   extraFields: [
     slugField,
@@ -93,6 +94,7 @@ export const Speeches = editorialCollection({
   adminGroup: "📰 Content",
   description: "🔗 Updates Live Page: /speeches — Speeches, video recordings, and interview archive.",
   preview: () => "/bn/speeches",
+  defaultColumns: ["title", "videoUrl", "date", "updatedAt"],
   extraFields: [
     slugField,
     {
@@ -135,6 +137,7 @@ export const Events = editorialCollection({
   adminGroup: "📰 Content",
   description: "🔗 Updates Live Page: /events — Public events schedule and calendar.",
   preview: () => "/bn/events",
+  defaultColumns: ["title", "location", "date", "updatedAt"],
   extraFields: [
     slugField,
     {
@@ -187,6 +190,7 @@ export const Initiatives = editorialCollection({
   adminGroup: "📰 Content",
   description: "🔗 Updates Live Page: /initiatives — Development projects on initiatives page & homepage.",
   preview: (doc) => (doc?.slug ? `/bn/initiatives/${doc.slug}` : "/bn/initiatives"),
+  defaultColumns: ["title", "status", "category", "location", "updatedAt"],
   extraFields: [
     slugField,
     {
@@ -252,6 +256,7 @@ export const ParliamentActivities = editorialCollection({
   adminGroup: "📰 Content",
   description: "🔗 Updates Live Page: /parliament — Speeches, Q&A, and bills on parliament page & homepage.",
   preview: (doc) => (doc?.slug ? `/bn/parliament/${doc.slug}` : "/bn/parliament"),
+  defaultColumns: ["title", "category", "date", "updatedAt"],
   extraFields: [
     slugField,
     {
@@ -298,6 +303,7 @@ export const Publications = editorialCollection({
   adminGroup: "🖼️ Media & Milestones",
   description: "🔗 Downloadable manifestos, research papers, booklets, and PDFs.",
   preview: () => "/bn/publications",
+  defaultColumns: ["title", "category", "date", "file", "updatedAt"],
   extraFields: [
     slugField,
     {
@@ -334,6 +340,7 @@ export const TimelineMilestones = editorialCollection({
   adminGroup: "🖼️ Media & Milestones",
   description: "🔗 Updates Live Page: /about — Historical timeline on the About / Profile page.",
   preview: () => "/bn/about",
+  defaultColumns: ["sortOrder", "dateLabel", "title", "updatedAt"],
   useAsTitle: "slug",
   extraFields: [
     slugField,
@@ -365,6 +372,7 @@ export const Media: CollectionConfig = {
     description: "🔗 Updates Live Page: /media — Photo gallery page and homepage photo carousel (Cloudinary CDN).",
     useAsTitle: "altEn",
     preview: () => "/bn/media",
+    defaultColumns: ["filename", "altEn", "altBn", "updatedAt"],
   },
   access: {
     read: () => true,
