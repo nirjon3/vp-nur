@@ -3,11 +3,16 @@ import { superAdminOnly, editorsAndAbove } from "../access.ts";
 
 export const Users: CollectionConfig = {
   slug: "users",
-  auth: true,
+  auth: {
+    loginWithUsername: {
+      allowEmailLogin: true,
+      requireEmail: false,
+    },
+  },
   admin: {
     useAsTitle: "email",
     group: "System",
-    defaultColumns: ["email", "role", "createdAt"],
+    defaultColumns: ["username", "email", "role", "createdAt"],
   },
   access: {
     read: ({ req }) => Boolean(req.user),
