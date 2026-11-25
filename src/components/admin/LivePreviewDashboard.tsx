@@ -75,6 +75,13 @@ const livePages: LivePageItem[] = [
     websiteHref: "/bn/contact",
   },
   {
+    icon: "🚩",
+    name: "GOP (গণ অধিকার পরিষদ)",
+    changesWhat: "Party ideology, EC registration 051, truck symbol & gonoodhikar.com link",
+    adminHref: "/admin",
+    websiteHref: "/bn/gop",
+  },
+  {
     icon: "📩",
     name: "Citizen Requests",
     changesWhat: "Incoming public inquiries (tracked at /services/track)",
