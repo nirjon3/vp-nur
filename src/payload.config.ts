@@ -1,5 +1,6 @@
 import { buildConfig } from "payload";
 import { sqliteAdapter } from "@payloadcms/db-sqlite";
+import { postgresAdapter } from "@payloadcms/db-postgres";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -21,17 +22,37 @@ if (!process.env.PAYLOAD_SECRET && process.env.NODE_ENV === "production") {
   );
 }
 
+const defaultSupabaseUrl =
+  "postgresql://postgres.qghcoposdhgzbvkkjmzl:Nirjon1478%40%40@aws-0-ap-northeast-1.pooler.supabase.com:6543/postgres";
+
+const databaseUrl =
+  process.env.DATABASE_URL ||
+  (process.env.VERCEL ? defaultSupabaseUrl : "file:./payload.db");
+
+const isPostgres =
+  databaseUrl.startsWith("postgres://") ||
+  databaseUrl.startsWith("postgresql://");
+
 export default buildConfig({
   secret,
-  db: sqliteAdapter({
-    client: {
-      url: process.env.DATABASE_URL ?? "file:./payload.db",
-    },
-    // Dev auto-pushes the Drizzle schema; production runs the checked-in
-    // migrations from ./migrations at boot (payload connect() applies them).
-    push: process.env.DATABASE_PUSH !== "false",
-    prodMigrations: migrations,
-  }),
+  db: isPostgres
+    ? postgresAdapter({
+        pool: {
+          connectionString: databaseUrl,
+          ssl: { rejectUnauthorized: false },
+        },
+        schemaName: "payload_cms",
+        push: true,
+      })
+    : sqliteAdapter({
+        client: {
+          url: databaseUrl,
+        },
+        // Dev auto-pushes the Drizzle schema; production runs the checked-in
+        // migrations from ./migrations at boot (payload connect() applies them).
+        push: process.env.DATABASE_PUSH !== "false",
+        prodMigrations: migrations,
+      }),
   editor: lexicalEditor(),
   collections: [Users, AuditLogs, ...allEditorialCollections],
   globals: [HomepageSettings, ContactInfoGlobal, SocialLinksGlobal],

@@ -198,6 +198,7 @@ export const Initiatives = editorialCollection({
       type: "select",
       required: true,
       defaultValue: "planned",
+      enumName: "enum_initiatives_project_status",
       label: "Project Status",
       options: [
         { label: "📋 Planned", value: "planned" },
@@ -364,7 +365,7 @@ export const Media: CollectionConfig = {
     plural: "🖼️ Photo Gallery",
   },
   upload: {
-    staticDir: path.resolve(dirname, "../../media"),
+    staticDir: process.env.VERCEL ? "/tmp/media" : path.resolve(dirname, "../../media"),
     mimeTypes: ["image/jpeg", "image/png", "image/webp", "image/avif", "application/pdf"],
   },
   admin: {
@@ -402,7 +403,7 @@ export const Media: CollectionConfig = {
 export const CitizenRequestAttachments: CollectionConfig = {
   slug: "citizen-request-attachments",
   upload: {
-    staticDir: path.resolve(dirname, "../../media/private"),
+    staticDir: process.env.VERCEL ? "/tmp/media/private" : path.resolve(dirname, "../../media/private"),
     mimeTypes: [
       "application/pdf",
       "image/jpeg",
