@@ -14,6 +14,7 @@ import {
   ServicesBand,
   ContactStrip,
 } from "@/components/home/sections";
+import { getLiveInitiatives, getLiveParliamentActivities } from "@/lib/cms-live";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({
@@ -44,6 +45,10 @@ export default async function HomePage({
   const { locale: raw } = await params;
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
+  const [initiatives, parliamentActivities] = await Promise.all([
+    getLiveInitiatives(),
+    getLiveParliamentActivities(),
+  ]);
 
   return (
     <>
@@ -66,10 +71,10 @@ export default async function HomePage({
       <QuoteBanner locale={locale} />
 
       {/* 7. Tangible Work: Local development projects */}
-      <InitiativesSection locale={locale} />
+      <InitiativesSection locale={locale} items={initiatives} />
 
       {/* 8. Parliament: Questions and legislative motions */}
-      <ParliamentSection locale={locale} />
+      <ParliamentSection locale={locale} items={parliamentActivities} />
 
       {/* 9. Constituency: Galachipa · Dashmina map & priority cards */}
       <ConstituencySection locale={locale} />

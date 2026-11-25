@@ -12,6 +12,7 @@ import { Badge } from "@/components/ui/badge";
 import { VerificationBadge, SourceLine } from "@/components/shared/verification";
 import { formatDate } from "@/lib/format";
 import { initiatives } from "@/content/initiatives";
+import { getLiveInitiatives } from "@/lib/cms-live";
 import type { InitiativeStatus } from "@/types/content";
 
 const statusVariant: Record<InitiativeStatus, "outline" | "status" | "verified"> = {
@@ -53,7 +54,8 @@ export default async function InitiativeDetailPage({
   const locale = raw as Locale;
   const dict = getDictionary(locale);
   const bn = locale === "bn";
-  const item = initiatives.find((i) => i.slug === slug);
+  const allItems = await getLiveInitiatives();
+  const item = allItems.find((i) => i.slug === slug);
   if (!item) notFound();
 
   return (

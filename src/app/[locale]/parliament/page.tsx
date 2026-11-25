@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/seo";
 import { PageHeader } from "@/components/shared/page-header";
 import { Container } from "@/components/ui/layout";
 import { ParliamentBrowser } from "@/components/parliament/parliament-browser";
-import { parliamentActivities } from "@/content/parliament";
+import { getLiveParliamentActivities } from "@/lib/cms-live";
 
 export async function generateMetadata({
   params,
@@ -35,6 +35,7 @@ export default async function ParliamentPage({
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const bn = locale === "bn";
+  const parliamentActivities = await getLiveParliamentActivities();
 
   return (
     <>

@@ -17,7 +17,7 @@ import { pageMetadata } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { PageHeader } from "@/components/shared/page-header";
 import { Container } from "@/components/ui/layout";
-import { timeline } from "@/content/timeline";
+import { getLiveTimeline } from "@/lib/cms-live";
 
 const timelineMeta = [
   {
@@ -73,6 +73,7 @@ export default async function AboutPage({
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const bn = locale === "bn";
+  const timeline = await getLiveTimeline();
 
   return (
     <>

@@ -7,6 +7,8 @@ import { Badge } from "@/components/ui/badge";
 import { getDictionary } from "@/i18n/dictionaries";
 import { initiatives } from "@/content/initiatives";
 
+import type { Initiative } from "@/types/content";
+
 const statusVariant = {
   planned: "outline",
   ongoing: "status",
@@ -14,10 +16,10 @@ const statusVariant = {
 } as const;
 
 /** Clean 3-card initiatives preview. */
-export function InitiativesSection({ locale }: { locale: Locale }) {
+export function InitiativesSection({ locale, items }: { locale: Locale; items?: Initiative[] }) {
   const dict = getDictionary(locale);
   const bn = locale === "bn";
-  const items = initiatives.slice(0, 3);
+  const displayItems = (items ?? initiatives).slice(0, 3);
 
   return (
     <section className="border-t border-line bg-offwhite py-12 sm:py-16">
@@ -38,7 +40,7 @@ export function InitiativesSection({ locale }: { locale: Locale }) {
         </div>
 
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((item) => (
+          {displayItems.map((item) => (
             <Link
               key={item.slug}
               href={localePath(locale, `/initiatives/${item.slug}`)}

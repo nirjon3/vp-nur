@@ -11,6 +11,7 @@ import { VerificationBadge, SourceLine } from "@/components/shared/verification"
 import { Badge } from "@/components/ui/badge";
 import { formatDate } from "@/lib/format";
 import { parliamentActivities } from "@/content/parliament";
+import { getLiveParliamentActivities } from "@/lib/cms-live";
 
 export function generateStaticParams() {
   return [
@@ -57,7 +58,8 @@ export default async function ParliamentDetailPage({
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const bn = locale === "bn";
-  const item = parliamentActivities.find((p) => p.slug === slug);
+  const allActivities = await getLiveParliamentActivities();
+  const item = allActivities.find((p) => p.slug === slug);
   if (!item) notFound();
 
   return (

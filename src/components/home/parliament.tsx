@@ -4,7 +4,7 @@ import type { Locale } from "@/i18n/config";
 import { localePath } from "@/i18n/config";
 import { formatDateShort } from "@/lib/format";
 import { parliamentActivities } from "@/content/parliament";
-import type { ParliamentCategory } from "@/types/content";
+import type { ParliamentActivity, ParliamentCategory } from "@/types/content";
 
 const categoryIcon: Record<ParliamentCategory, typeof Mic> = {
   speech: Mic,
@@ -26,9 +26,9 @@ const categoryLabel = (category: ParliamentCategory, bn: boolean) => {
 };
 
 /** Parliamentary activities preview: clean dark band. */
-export function ParliamentSection({ locale }: { locale: Locale }) {
+export function ParliamentSection({ locale, items }: { locale: Locale; items?: ParliamentActivity[] }) {
   const bn = locale === "bn";
-  const items = parliamentActivities.slice(0, 3);
+  const displayItems = (items ?? parliamentActivities).slice(0, 3);
 
   return (
     <section className="bg-forest-ink py-12 text-[#e9ece7] sm:py-16">
@@ -49,7 +49,7 @@ export function ParliamentSection({ locale }: { locale: Locale }) {
         </div>
 
         <ul className="mt-4 divide-y divide-white/10">
-          {items.map((item) => {
+          {displayItems.map((item) => {
             const Icon = categoryIcon[item.category];
             return (
               <li key={item.slug}>

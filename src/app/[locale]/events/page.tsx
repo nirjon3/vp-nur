@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/seo";
 import { PageHeader } from "@/components/shared/page-header";
 import { Container } from "@/components/ui/layout";
 import { EventBrowser } from "@/components/events/event-browser";
-import { events } from "@/content/events";
+import { getLiveEvents } from "@/lib/cms-live";
 
 export async function generateMetadata({
   params,
@@ -35,6 +35,7 @@ export default async function EventsPage({
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const bn = locale === "bn";
+  const events = await getLiveEvents();
 
   return (
     <>

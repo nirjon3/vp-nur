@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/seo";
 import { PageHeader } from "@/components/shared/page-header";
 import { Container } from "@/components/ui/layout";
 import { SpeechList } from "@/components/speeches/speech-list";
-import { speeches } from "@/content/speeches";
+import { getLiveSpeeches } from "@/lib/cms-live";
 
 export async function generateMetadata({
   params,
@@ -35,6 +35,7 @@ export default async function SpeechesPage({
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const bn = locale === "bn";
+  const speeches = await getLiveSpeeches();
 
   return (
     <>

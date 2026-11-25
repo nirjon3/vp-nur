@@ -11,7 +11,7 @@ import { PageHeader } from "@/components/shared/page-header";
 import { Container } from "@/components/ui/layout";
 import { Badge } from "@/components/ui/badge";
 import { VerificationBadge } from "@/components/shared/verification";
-import { initiatives } from "@/content/initiatives";
+import { getLiveInitiatives } from "@/lib/cms-live";
 import type { InitiativeStatus } from "@/types/content";
 
 const statusVariant: Record<InitiativeStatus, "outline" | "status" | "verified"> = {
@@ -48,6 +48,7 @@ export default async function InitiativesPage({
   const locale = raw as Locale;
   const dict = getDictionary(locale);
   const bn = locale === "bn";
+  const initiatives = await getLiveInitiatives();
 
   return (
     <>

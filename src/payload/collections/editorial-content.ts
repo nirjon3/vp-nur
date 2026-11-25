@@ -32,7 +32,7 @@ export const News = editorialCollection({
     plural: "📰 News Articles",
   },
   adminGroup: "📰 Content",
-  description: "Publish official statements, press releases, and news articles",
+  description: "🔗 Updates Live Page: /news — Controls news articles on the News page & Homepage cards.",
   useAsTitle: "slug",
   extraFields: [
     slugField,
@@ -90,7 +90,7 @@ export const Speeches = editorialCollection({
     plural: "🎙️ Speeches & Interviews",
   },
   adminGroup: "📰 Content",
-  description: "Public speeches, media interviews, and video recordings",
+  description: "🔗 Updates Live Page: /speeches — Speeches, video recordings, and interview archive.",
   extraFields: [
     slugField,
     {
@@ -131,7 +131,7 @@ export const Events = editorialCollection({
     plural: "📅 Events & Schedule",
   },
   adminGroup: "📰 Content",
-  description: "Political gatherings, public rallies, and campaign tours",
+  description: "🔗 Updates Live Page: /events — Public events schedule and calendar.",
   extraFields: [
     slugField,
     {
@@ -182,7 +182,7 @@ export const Initiatives = editorialCollection({
     plural: "🚀 Initiatives & Projects",
   },
   adminGroup: "📰 Content",
-  description: "Infrastructure, healthcare, education, and development projects",
+  description: "🔗 Updates Live Page: /initiatives — Development projects on initiatives page & homepage.",
   extraFields: [
     slugField,
     {
@@ -246,7 +246,7 @@ export const ParliamentActivities = editorialCollection({
     plural: "🏛️ Parliament Activities",
   },
   adminGroup: "📰 Content",
-  description: "Speeches, questions, legislative bills, and committee sessions in Parliament",
+  description: "🔗 Updates Live Page: /parliament — Speeches, Q&A, and bills on parliament page & homepage.",
   extraFields: [
     slugField,
     {
@@ -291,7 +291,7 @@ export const Publications = editorialCollection({
     plural: "📄 Documents & Publications",
   },
   adminGroup: "🖼️ Media & Milestones",
-  description: "Official manifestos, research papers, booklets, and downloadable PDFs",
+  description: "🔗 Downloadable manifestos, research papers, booklets, and PDFs.",
   extraFields: [
     slugField,
     {
@@ -326,7 +326,7 @@ export const TimelineMilestones = editorialCollection({
     plural: "⏳ Political Milestones",
   },
   adminGroup: "🖼️ Media & Milestones",
-  description: "Key historical moments in Nurul Haque Nur's career and movements",
+  description: "🔗 Updates Live Page: /about — Historical timeline on the About / Profile page.",
   useAsTitle: "slug",
   extraFields: [
     slugField,
@@ -355,7 +355,7 @@ export const Media: CollectionConfig = {
   },
   admin: {
     group: "🖼️ Media & Milestones",
-    description: "Photos and gallery assets stored in Cloudinary CDN",
+    description: "🔗 Updates Live Page: /media — Photo gallery page and homepage photo carousel (Cloudinary CDN).",
     useAsTitle: "altEn",
   },
   access: {
@@ -418,7 +418,7 @@ export const CitizenRequests: CollectionConfig = {
     group: "📩 Citizen & Site",
     useAsTitle: "ref",
     defaultColumns: ["ref", "name", "category", "status", "createdAt"],
-    description: "Public grievances, complaints, and service requests from citizens",
+    description: "🔗 Citizen requests submitted from /services — Trackable by reference ID at /services/track.",
   },
   access: {
     read: serviceOperatorsAndAbove,

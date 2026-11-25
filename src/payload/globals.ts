@@ -7,7 +7,7 @@ export const HomepageSettings: GlobalConfig = {
   label: "🏠 Homepage Banner",
   admin: {
     group: "📩 Citizen & Site",
-    description: "Main homepage hero title, subtitle, and intro portrait",
+    description: "🔗 Updates Live Page: / (Homepage) — Top hero banner, intro text, and main portrait photo.",
   },
   access: { read: () => true, update: editorsAndAbove },
   fields: [
@@ -28,7 +28,7 @@ export const ContactInfoGlobal: GlobalConfig = {
   label: "📍 Contact Info",
   admin: {
     group: "📩 Citizen & Site",
-    description: "Public office address, email, phone number, and Google Map",
+    description: "🔗 Updates Live Page: /contact — Public office address, email, phone number, and Google Map.",
   },
   access: { read: () => true, update: editorsAndAbove },
   fields: [
@@ -46,7 +46,7 @@ export const SocialLinksGlobal: GlobalConfig = {
   label: "🔗 Social Links",
   admin: {
     group: "📩 Citizen & Site",
-    description: "Verified Facebook, YouTube, X/Twitter, and other links",
+    description: "🔗 Updates Live Page: / (All pages) — Official links in website header & footer.",
   },
   access: { read: () => true, update: editorsAndAbove },
   fields: [
