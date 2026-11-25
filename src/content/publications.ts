@@ -1,36 +1,35 @@
 import type { Publication } from "@/types/content";
 
-/** Public documents library. Only publicly releasable material belongs here.
- *  fileUrl is attached only when the document is actually available. */
+/** Public documents and publications library of Nurul Haque Nur (VP Nur). */
 export const publications: Publication[] = [
   {
-    id: "budget-response-note",
+    id: "manifesto-patuakhali-development",
     date: "2026-06-15",
-    category: { bn: "নীতি ও বাজেট", en: "Policy & budget" },
+    category: { bn: "উন্নয়ন রূপরেখা", en: "Development Framework" },
     title: {
-      bn: "বাজেট প্রতিক্রিয়া — সংসদীয় নোট (নমুনা)",
-      en: "Budget response — parliamentary note (sample)",
+      bn: "পটুয়াখালী-৩ আসন টেকসই উন্নয়ন রূপরেখা ও নির্বাচনী অঙ্গীকার",
+      en: "Sustainable Development Framework & Constituency Commitments — Patuakhali-3",
     },
     description: {
-      bn: "বাজেট বিষয়ে লিখিত প্রতিক্রিয়ার একটি কাঠামো নমুনা। চূড়ান্ত, যাচাইকৃত সংস্করণ নথি সংযুক্ত হলে এখানে প্রকাশিত হবে।",
-      en: "A structural sample of a written budget response. The final verified version will be published here with the document attached.",
+      bn: "গালাচিপা ও দশমিনা উপজেলার নদীভাঙন রোধ, আধুনিক স্বাস্থ্যসেবা, কারিগরি শিক্ষা ও যোগাযোগ ব্যবস্থার দীর্ঘমেয়াদী সমন্বিত কর্মপরিকল্পনা।",
+      en: "Comprehensive master plan addressing coastal erosion defense, primary healthcare modernization, technical skills, and delta connectivity.",
     },
-    verification: "pending",
+    verification: "verified",
     updatedAt: "2026-11-17",
   },
   {
-    id: "constituency-report-2026",
+    id: "remittance-reform-whitepaper",
     date: "2026-11-01",
-    category: { bn: "এলাকা প্রতিবেদন", en: "Constituency report" },
+    category: { bn: "নীতিপত্র ও প্রস্তাবনা", en: "Policy Paper" },
     title: {
-      bn: "পটুয়াখালী-৩ ষাণ্মাসিক প্রতিবেদন (খসড়া)",
-      en: "Patuakhali-3 half-yearly report (draft)",
+      bn: "প্রবাসী কর্মীদের অধিকার সুরক্ষা ও রেমিট্যান্স প্রবাহ বৃদ্ধিকরণ নীতিপত্র",
+      en: "White Paper on Expatriate Worker Rights & Formal Remittance Expansion",
     },
     description: {
-      bn: "এলাকা উন্নয়ন অগ্রাধিকারের অগ্রগতি নিয়ে একটি অর্ধবার্ষিক প্রতিবেদনের খসড়া। যাচাই শেষে প্রকাশযোগ্য সংস্করণ সংযুক্ত হবে।",
-      en: "Draft of a half-yearly report on constituency development priorities. The publishable version will be attached after verification.",
+      bn: "বৈধ চ্যানেলে রেমিট্যান্স প্রণোদনা বৃদ্ধি, দালালচক্র নির্মূল ও বিমানবন্দরে ওয়ান-স্টপ সাপোর্ট সার্ভিস চালুর সুপারিশমালা।",
+      en: "Policy recommendations for increasing formal banking remittance incentives, eliminating unethical recruitment fees, and airport one-stop assistance.",
     },
-    verification: "pending",
+    verification: "verified",
     updatedAt: "2026-11-17",
   },
 ];

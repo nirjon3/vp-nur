@@ -31,6 +31,7 @@ next-env.d.ts
 /payload.db
 /payload.db-*
 /media/
+/src/media/
 
 # misc
 *.log
