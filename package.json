@@ -21,6 +21,7 @@
     "@payloadcms/next": "^3.93.0",
     "@payloadcms/richtext-lexical": "^3.93.0",
     "class-variance-authority": "^0.7.1",
+    "cloudinary": "^2.11.0",
     "clsx": "^2.1.1",
     "graphql": "^16.15.0",
     "leaflet": "^1.9.4",
