@@ -222,7 +222,8 @@ export function MediaGallery({ items, locale }: { items: MediaItem[]; locale: Lo
                     fill
                     sizes="(min-width: 1024px) 56rem, 100vw"
                     className="object-contain"
-                    priority
+                    loading="lazy"
+                    decoding="async"
                   />
 
                   {/* Album Photo Counter Indicator */}

@@ -13,6 +13,8 @@ export function BackgroundWatermark() {
           width={1100}
           height={1280}
           priority={false}
+          loading="lazy"
+          decoding="async"
           className="h-auto max-h-[95vh] w-auto max-w-[95vw] scale-110 sm:scale-115 md:scale-120 object-contain"
         />
       </div>

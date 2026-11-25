@@ -96,6 +96,8 @@ export function MediaCarousel({
                   src={thumb}
                   alt={item.title[locale]}
                   fill
+                  loading="lazy"
+                  decoding="async"
                   sizes="(min-width: 1024px) 430px, (min-width: 640px) 390px, 320px"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-108"
                 />
