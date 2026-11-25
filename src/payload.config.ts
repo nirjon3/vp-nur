@@ -43,6 +43,9 @@ export default buildConfig({
     meta: {
       titleSuffix: "— VP Nur Admin",
     },
+    components: {
+      beforeDashboard: ["@/components/admin/LivePreviewDashboard#LivePreviewDashboard"],
+    },
   },
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),

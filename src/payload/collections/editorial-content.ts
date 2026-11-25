@@ -33,6 +33,7 @@ export const News = editorialCollection({
   },
   adminGroup: "📰 Content",
   description: "🔗 Updates Live Page: /news — Controls news articles on the News page & Homepage cards.",
+  preview: () => "/bn/news",
   useAsTitle: "slug",
   extraFields: [
     slugField,
@@ -91,6 +92,7 @@ export const Speeches = editorialCollection({
   },
   adminGroup: "📰 Content",
   description: "🔗 Updates Live Page: /speeches — Speeches, video recordings, and interview archive.",
+  preview: () => "/bn/speeches",
   extraFields: [
     slugField,
     {
@@ -132,6 +134,7 @@ export const Events = editorialCollection({
   },
   adminGroup: "📰 Content",
   description: "🔗 Updates Live Page: /events — Public events schedule and calendar.",
+  preview: () => "/bn/events",
   extraFields: [
     slugField,
     {
@@ -183,6 +186,7 @@ export const Initiatives = editorialCollection({
   },
   adminGroup: "📰 Content",
   description: "🔗 Updates Live Page: /initiatives — Development projects on initiatives page & homepage.",
+  preview: (doc) => (doc?.slug ? `/bn/initiatives/${doc.slug}` : "/bn/initiatives"),
   extraFields: [
     slugField,
     {
@@ -247,6 +251,7 @@ export const ParliamentActivities = editorialCollection({
   },
   adminGroup: "📰 Content",
   description: "🔗 Updates Live Page: /parliament — Speeches, Q&A, and bills on parliament page & homepage.",
+  preview: (doc) => (doc?.slug ? `/bn/parliament/${doc.slug}` : "/bn/parliament"),
   extraFields: [
     slugField,
     {
@@ -292,6 +297,7 @@ export const Publications = editorialCollection({
   },
   adminGroup: "🖼️ Media & Milestones",
   description: "🔗 Downloadable manifestos, research papers, booklets, and PDFs.",
+  preview: () => "/bn/publications",
   extraFields: [
     slugField,
     {
@@ -327,6 +333,7 @@ export const TimelineMilestones = editorialCollection({
   },
   adminGroup: "🖼️ Media & Milestones",
   description: "🔗 Updates Live Page: /about — Historical timeline on the About / Profile page.",
+  preview: () => "/bn/about",
   useAsTitle: "slug",
   extraFields: [
     slugField,
@@ -357,6 +364,7 @@ export const Media: CollectionConfig = {
     group: "🖼️ Media & Milestones",
     description: "🔗 Updates Live Page: /media — Photo gallery page and homepage photo carousel (Cloudinary CDN).",
     useAsTitle: "altEn",
+    preview: () => "/bn/media",
   },
   access: {
     read: () => true,
@@ -419,6 +427,7 @@ export const CitizenRequests: CollectionConfig = {
     useAsTitle: "ref",
     defaultColumns: ["ref", "name", "category", "status", "createdAt"],
     description: "🔗 Citizen requests submitted from /services — Trackable by reference ID at /services/track.",
+    preview: (doc) => (doc?.ref ? `/bn/services/track?ref=${doc.ref}` : "/bn/services"),
   },
   access: {
     read: serviceOperatorsAndAbove,
