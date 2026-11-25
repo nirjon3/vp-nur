@@ -20,6 +20,8 @@
     "@payloadcms/db-sqlite": "^3.93.0",
     "@payloadcms/next": "^3.93.0",
     "@payloadcms/richtext-lexical": "^3.93.0",
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.119.2",
     "class-variance-authority": "^0.7.1",
     "cloudinary": "^2.11.0",
     "clsx": "^2.1.1",
