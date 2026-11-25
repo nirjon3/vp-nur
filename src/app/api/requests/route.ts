@@ -119,6 +119,28 @@ export async function POST(request: Request) {
       },
     });
 
+    // Mirror submission to Supabase in parallel
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    if (supabaseUrl && supabaseKey) {
+      try {
+        const { createClient } = await import("@supabase/supabase-js");
+        const supabase = createClient(supabaseUrl, supabaseKey);
+        await supabase.from("citizen_requests").insert({
+          ref,
+          name: data.name,
+          phone: data.phone,
+          union_name: data.union || null,
+          category: data.category,
+          subject: data.subject,
+          description: data.description,
+          status: "received",
+        });
+      } catch (sbError) {
+        console.warn("[citizen-requests] Supabase mirror sync failed (Payload persisted):", sbError);
+      }
+    }
+
     return NextResponse.json(
       { ok: true, ref },
       { status: 201, headers: { "Cache-Control": "no-store" } },

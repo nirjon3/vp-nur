@@ -49,6 +49,36 @@ export async function GET(request: Request) {
       | undefined;
 
     if (!record || normalizePhone(record.phone) !== normalizePhone(parsed.data.phone)) {
+      // Fallback check in Supabase
+      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+      const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+      if (supabaseUrl && supabaseKey) {
+        try {
+          const { createClient } = await import("@supabase/supabase-js");
+          const supabase = createClient(supabaseUrl, supabaseKey);
+          const { data: sbRow } = await supabase
+            .from("citizen_requests")
+            .select("phone, status, created_at")
+            .eq("ref", parsed.data.ref)
+            .maybeSingle();
+
+          if (sbRow && normalizePhone(sbRow.phone) === normalizePhone(parsed.data.phone)) {
+            return NextResponse.json(
+              {
+                ok: true,
+                ref: parsed.data.ref,
+                status: sbRow.status,
+                submittedAt: sbRow.created_at ?? null,
+                updatedAt: sbRow.created_at ?? null,
+              },
+              { headers: { "Cache-Control": "no-store" } },
+            );
+          }
+        } catch {
+          // Ignore fallback error
+        }
+      }
+
       return NextResponse.json(
         { ok: false, error: "not_found" },
         { status: 404, headers: { "Cache-Control": "no-store" } },
