@@ -89,6 +89,7 @@ export interface EditorialDefinition {
   label: string;
   labels?: { singular: string; plural: string };
   adminGroup: string;
+  description?: string;
   extraFields: NonNullable<CollectionConfig["fields"]>;
   useAsTitle?: string;
   defaultColumns?: string[];
@@ -101,6 +102,7 @@ export function editorialCollection({
   label,
   labels,
   adminGroup,
+  description,
   extraFields,
   useAsTitle,
   defaultColumns,
@@ -112,6 +114,7 @@ export function editorialCollection({
     admin: {
       useAsTitle: useAsTitle ?? "slug",
       group: adminGroup,
+      description,
       defaultColumns: defaultColumns ?? ["slug", "updatedAt"],
     },
     versions: {
