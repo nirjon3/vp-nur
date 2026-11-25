@@ -7,6 +7,7 @@ import {
   Menu,
   X,
   User,
+  Flag,
   Landmark,
   Sparkles,
   CalendarDays,
@@ -26,6 +27,7 @@ interface NavItem {
 
 const navIcons: Record<string, typeof User> = {
   "/about": User,
+  "/gop": Flag,
   "/parliament": Landmark,
   "/initiatives": Sparkles,
   "/events": CalendarDays,

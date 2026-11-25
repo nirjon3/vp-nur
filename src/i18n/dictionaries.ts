@@ -9,6 +9,7 @@ const bn = {
   },
   nav: {
     about: "পরিচয়",
+    gop: "গণঅধিকার পরিষদ",
     parliament: "সংসদ",
     constituency: "গালাচিপা–দশমিনা",
     events: "ইভেন্ট",
@@ -106,6 +107,7 @@ const en: Dictionary = {
   },
   nav: {
     about: "About",
+    gop: "GOP",
     parliament: "Parliament",
     constituency: "Galachipa–Dashmina",
     events: "Events",

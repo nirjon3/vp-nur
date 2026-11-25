@@ -13,6 +13,7 @@ export function Header({ locale }: { locale: Locale }) {
 
   const primary = [
     { href: "/about", label: dict.nav.about },
+    { href: "/gop", label: dict.nav.gop },
     { href: "/parliament", label: dict.nav.parliament },
     { href: "/initiatives", label: dict.nav.initiatives },
     { href: "/events", label: dict.nav.events },

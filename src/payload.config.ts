@@ -25,9 +25,7 @@ if (!process.env.PAYLOAD_SECRET && process.env.NODE_ENV === "production") {
 const defaultSupabaseUrl =
   "postgresql://postgres.qghcoposdhgzbvkkjmzl:Nirjon1478%40%40@aws-0-ap-northeast-1.pooler.supabase.com:6543/postgres";
 
-const databaseUrl =
-  process.env.DATABASE_URL ||
-  (process.env.VERCEL ? defaultSupabaseUrl : "file:./payload.db");
+const databaseUrl = process.env.DATABASE_URL || defaultSupabaseUrl;
 
 const isPostgres =
   databaseUrl.startsWith("postgres://") ||
@@ -42,7 +40,7 @@ export default buildConfig({
           ssl: { rejectUnauthorized: false },
         },
         schemaName: "payload_cms",
-        push: true,
+        push: false,
       })
     : sqliteAdapter({
         client: {

@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths = [
     "",
     "/about",
+    "/gop",
     "/parliament",
     "/events",
     "/initiatives",
