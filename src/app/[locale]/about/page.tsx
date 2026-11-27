@@ -97,7 +97,7 @@ export default async function AboutPage({
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
               <figure>
-                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2px] bg-forest-deep shadow-sm">
+                <div className="relative overflow-hidden rounded-[2px] bg-black shadow-md border border-line/40">
                   <Image
                     src="/images/nur-about-portrait.jpg"
                     alt={
@@ -105,10 +105,11 @@ export default async function AboutPage({
                         ? "নুরুল হক নুর (ভিপি নুর) — প্রতিকৃতি"
                         : "Nurul Haque Nur (VP Nur) — Portrait"
                     }
-                    fill
-                    sizes="(min-width: 1024px) 33vw, 100vw"
-                    className="object-cover object-top"
+                    width={892}
+                    height={1024}
+                    className="w-full h-auto block"
                     priority
+                    unoptimized
                   />
                 </div>
                 <figcaption className="mt-3 text-[11.5px] text-muted">
