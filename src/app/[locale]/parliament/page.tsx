@@ -55,7 +55,7 @@ export default async function ParliamentPage({
               </blockquote>
               <div className="mt-4 flex flex-wrap items-center gap-2 text-[12px] text-[#c9d5c5]">
                 <span className="font-semibold text-white">
-                  {bn ? "মো. নুরুল হক, এমপি" : "Md. Nurul Hoque, MP"}
+                  {bn ? "মোঃ নুরুল হক, এমপি" : "Md. Nurul Haque, MP"}
                 </span>
                 <span>•</span>
                 <span>

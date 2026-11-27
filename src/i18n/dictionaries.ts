@@ -2,10 +2,10 @@ import type { Locale } from "./config";
 
 const bn = {
   site: {
-    name: "মো. নুরুল হক, এমপি",
+    name: "মোঃ নুরুল হক, এমপি",
     shortName: "ভিপি নুর",
     tagline: "মাননীয় প্রতিমন্ত্রী · প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়",
-    homeAria: "মো. নুরুল হক, এমপি — হোমপেজে যান",
+    homeAria: "মোঃ নুরুল হক, এমপি — হোমপেজে যান",
   },
   nav: {
     about: "পরিচয়",
@@ -27,7 +27,7 @@ const bn = {
   servicesCta: "নাগরিক সেবা",
   footer: {
     description:
-      "গণপ্রজাতন্ত্রী বাংলাদেশ সরকারের প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়ের মাননীয় প্রতিমন্ত্রী এবং পটুয়াখালী-৩ আসনের সংসদ সদস্য মো. নুরুল হক (ভিপি নুর)–এর অফিশিয়াল ওয়েবসাইট।",
+      "গণপ্রজাতন্ত্রী বাংলাদেশ সরকারের প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়ের মাননীয় প্রতিমন্ত্রী এবং পটুয়াখালী-৩ আসনের সংসদ সদস্য মোঃ নুরুল হক (ভিপি নুর)–এর অফিশিয়াল ওয়েবসাইট।",
     disclosure:
       "এটি কোনো সরকারি ওয়েবসাইট নয়। প্রকাশনা উপকরণ নির্ভরযোগ্য উৎস থেকে নিশ্চিত হলেই প্রকাশযোগ্য হিসেবে চিহ্নিত হয়।",
     explore: "অন্বেষণ",
@@ -100,10 +100,10 @@ export type Dictionary = typeof bn;
 
 const en: Dictionary = {
   site: {
-    name: "Md. Nurul Hoque, MP",
+    name: "Md. Nurul Haque, MP",
     shortName: "VP Nur",
     tagline: "State Minister · Ministry of Expatriates' Welfare & Overseas Employment",
-    homeAria: "Md. Nurul Hoque, MP — go to the homepage",
+    homeAria: "Md. Nurul Haque, MP — go to the homepage",
   },
   nav: {
     about: "About",
@@ -125,7 +125,7 @@ const en: Dictionary = {
   servicesCta: "Citizen services",
   footer: {
     description:
-      "Official website of Md. Nurul Hoque, MP (VP Nur) — State Minister for the Ministry of Expatriates' Welfare & Overseas Employment, and Member of Parliament for Patuakhali-3.",
+      "Official website of Md. Nurul Haque, MP (VP Nur) — State Minister for the Ministry of Expatriates' Welfare & Overseas Employment, and Member of Parliament for Patuakhali-3.",
     disclosure:
       "This is not a government website. Materials are marked publishable only after confirmation against reliable sources.",
     explore: "Explore",

@@ -11,8 +11,8 @@ export const newsArticles: NewsArticle[] = [
     category: "announcement",
     featured: true,
     title: {
-      bn: "মো. নুরুল হক (ভিপি নুর)–এর অফিশিয়াল পাবলিক পোর্টাল চালু",
-      en: "Official Public Portal of Md. Nurul Hoque, MP (VP Nur) Launched",
+      bn: "মোঃ নুরুল হক (ভিপি নুর)–এর অফিশিয়াল পাবলিক পোর্টাল চালু",
+      en: "Official Public Portal of Md. Nurul Haque, MP (VP Nur) Launched",
     },
     excerpt: {
       bn: "সংসদীয় কর্মকাণ্ড, এলাকার উন্নয়ন উদ্যোগ এবং নাগরিক সেবা — সব তথ্য এক জায়গায়, যাচাইকৃত উৎসসহ।",

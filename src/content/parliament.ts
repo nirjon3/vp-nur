@@ -1,7 +1,7 @@
 import type { ParliamentActivity } from "@/types/content";
 
 /**
- * Parliamentary activity archive of Md. Nurul Hoque, MP (VP Nur).
+ * Parliamentary activity archive of Md. Nurul Haque, MP (VP Nur).
  */
 export const parliamentActivities: ParliamentActivity[] = [
   {
@@ -18,8 +18,8 @@ export const parliamentActivities: ParliamentActivity[] = [
     },
     body: [
       {
-        bn: "সংসদ অধিবেশনে মাননীয় প্রতিমন্ত্রী মো. নুরুল হক উল্লেখ করেন যে, প্রবাসী কর্মীদের শ্রম ও রেমিট্যান্স বাংলাদেশের অর্থনীতির মূল চালিকাশক্তি। অভিবাসন প্রক্রিয়ায় মধ্যস্বত্বভোগীদের দৌরাত্ম্য বন্ধ, বিমানবন্দরে বিশেষ সহায়তা এবং বৈধ চ্যানেলে রেমিট্যান্স প্রেরণে সরকারি প্রণোদনা নিশ্চিতকরণে মন্ত্রণালয় কার্যকর সংস্কার কর্মসূচি বাস্তবায়ন করছে।",
-        en: "Speaking in parliament, State Minister Md. Nurul Hoque emphasized that expatriate remittances remain the backbone of the national economy. The ministry is implementing robust reforms to eliminate exploitative recruitment fees, improve airport arrival services, and provide incentives for formal remittance transfers.",
+        bn: "সংসদ অধিবেশনে মাননীয় প্রতিমন্ত্রী মোঃ নুরুল হক উল্লেখ করেন যে, প্রবাসী কর্মীদের শ্রম ও রেমিট্যান্স বাংলাদেশের অর্থনীতির মূল চালিকাশক্তি। অভিবাসন প্রক্রিয়ায় মধ্যস্বত্বভোগীদের দৌরাত্ম্য বন্ধ, বিমানবন্দরে বিশেষ সহায়তা এবং বৈধ চ্যানেলে রেমিট্যান্স প্রেরণে সরকারি প্রণোদনা নিশ্চিতকরণে মন্ত্রণালয় কার্যকর সংস্কার কর্মসূচি বাস্তবায়ন করছে।",
+        en: "Speaking in parliament, State Minister Md. Nurul Haque emphasized that expatriate remittances remain the backbone of the national economy. The ministry is implementing robust reforms to eliminate exploitative recruitment fees, improve airport arrival services, and provide incentives for formal remittance transfers.",
       },
     ],
     session: { bn: "ত্রয়োদশ জাতীয় সংসদ", en: "13th National Parliament" },

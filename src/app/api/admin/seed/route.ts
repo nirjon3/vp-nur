@@ -383,7 +383,7 @@ export async function GET() {
       {
         filename: "nur-official-2026.jpg",
         altBn: "জাতীয় সংসদ সদস্য ও সাবেক ডাকসু ভিপি নুরুল হক নুরের আনুষ্ঠানিক প্রতিকৃতি",
-        altEn: "Official Portrait of Md. Nurul Hoque, MP",
+        altEn: "Official Portrait of Md. Nurul Haque, MP",
       },
       {
         filename: "brazil-embassy-1.jpg",
@@ -452,8 +452,8 @@ export async function GET() {
             en: "Hon'ble State Minister, Ministry of Expatriates' Welfare & Overseas Employment",
           },
           heroIntro: {
-            bn: "গণপ্রজাতন্ত্রী বাংলাদেশ সরকারের প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়ের মাননীয় প্রতিমন্ত্রী এবং পটুয়াখালী-৩ (গালাচিপা ও দশমিনা) আসনের জাতীয় সংসদ সদস্য মো. নুরুল হক (ভিপি নুর)–এর অফিশিয়াল পাবলিক পোর্টাল।",
-            en: "Official public portal of Md. Nurul Hoque, MP (VP Nur), Hon'ble State Minister for Expatriates' Welfare and Overseas Employment, and Member of Parliament for Patuakhali-3.",
+            bn: "গণপ্রজাতন্ত্রী বাংলাদেশ সরকারের প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়ের মাননীয় প্রতিমন্ত্রী এবং পটুয়াখালী-৩ (গালাচিপা ও দশমিনা) আসনের জাতীয় সংসদ সদস্য মোঃ নুরুল হক (ভিপি নুর)–এর অফিশিয়াল পাবলিক পোর্টাল।",
+            en: "Official public portal of Md. Nurul Haque, MP (VP Nur), Hon'ble State Minister for Expatriates' Welfare and Overseas Employment, and Member of Parliament for Patuakhali-3.",
           },
           heroNote: {
             bn: "প্রবাসী কর্মীদের অধিকার সুরক্ষা, অভিবাসন ব্যয় হ্রাস এবং উপকূলীয় অঞ্চলের টেকসই উন্নয়নে নিরবচ্ছিন্ন প্রচেষ্টা।",

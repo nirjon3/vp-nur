@@ -133,8 +133,8 @@ const featuredPhotos = [
   {
     id: 1,
     filename: "nur-official-2026.jpg",
-    altEn: "Official Portrait of Md. Nurul Hoque, MP",
-    altBn: "জাতীয় সংসদ সদস্য মো. নুরুল হক নুরের অফিশিয়াল প্রতিকৃতি",
+    altEn: "Official Portrait of Md. Nurul Haque, MP",
+    altBn: "জাতীয় সংসদ সদস্য মোঃ নুরুল হক নুরের অফিশিয়াল প্রতিকৃতি",
     badge: "Official Portrait",
   },
   {

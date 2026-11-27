@@ -119,7 +119,7 @@ export default async function AboutPage({
                 </div>
                 <figcaption className="mt-3 text-[11.5px] text-muted">
                   {bn
-                    ? "মো. নুরুল হক (ভিপি নুর) — অফিসিয়াল প্রতিকৃতি।"
+                    ? "মোঃ নুরুল হক (ভিপি নুর) — অফিসিয়াল প্রতিকৃতি।"
                     : "Md. Nurul Haque (VP Nur) — Official Portrait."}
                 </figcaption>
               </figure>
@@ -129,8 +129,8 @@ export default async function AboutPage({
               <div className="bn prose-measure mt-4 space-y-4 text-[16px] leading-8 text-body">
                 <p>
                   {bn
-                    ? "মো. নুরুল হক, এমপি (জনপ্রিয় পরিচিতি ভিপি নুর) গণপ্রজাতন্ত্রী বাংলাদেশ সরকারের প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়ের মাননীয় প্রতিমন্ত্রী এবং পটুয়াখালী-৩ (গালাচিপা–দশমিনা) আসনের সংসদ সদস্য। ২০১৯ সালে ঢাকা বিশ্ববিদ্যালয় কেন্দ্রীয় ছাত্র সংসদের (ডাকসু) সহ-সভাপতি নির্বাচিত হওয়ার মধ্য দিয়ে তিনি জাতীয় রাজনৈতিক পরিমণ্ডলে ঐতিহাসিক পরিচিতি লাভ করেন।"
-                    : "Md. Nurul Hoque, MP (widely known as VP Nur) serves as State Minister for the Ministry of Expatriates' Welfare & Overseas Employment, Government of Bangladesh, and Member of Parliament for Patuakhali-3 (Galachipa–Dashmina). He came to prominent national leadership in 2019 when elected Vice President of DUCSU."}
+                    ? "মোঃ নুরুল হক, এমপি (জনপ্রিয় পরিচিতি ভিপি নুর) গণপ্রজাতন্ত্রী বাংলাদেশ সরকারের প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়ের মাননীয় প্রতিমন্ত্রী এবং পটুয়াখালী-৩ (গালাচিপা–দশমিনা) আসনের সংসদ সদস্য। ২০১৯ সালে ঢাকা বিশ্ববিদ্যালয় কেন্দ্রীয় ছাত্র সংসদের (ডাকসু) সহ-সভাপতি নির্বাচিত হওয়ার মধ্য দিয়ে তিনি জাতীয় রাজনৈতিক পরিমণ্ডলে ঐতিহাসিক পরিচিতি লাভ করেন।"
+                    : "Md. Nurul Haque, MP (widely known as VP Nur) serves as State Minister for the Ministry of Expatriates' Welfare & Overseas Employment, Government of Bangladesh, and Member of Parliament for Patuakhali-3 (Galachipa–Dashmina). He came to prominent national leadership in 2019 when elected Vice President of DUCSU."}
                 </p>
                 <p>
                   {bn

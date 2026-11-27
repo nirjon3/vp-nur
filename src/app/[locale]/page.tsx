@@ -29,11 +29,11 @@ export async function generateMetadata({
     locale: locale as Locale,
     path: "/",
     title: bn
-      ? "মো. নুরুল হক, এমপি (ভিপি নুর) | প্রতিমন্ত্রী, প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়"
-      : "Md. Nurul Hoque, MP (VP Nur) | State Minister, Ministry of Expatriates' Welfare & Overseas Employment",
+      ? "মোঃ নুরুল হক, এমপি (ভিপি নুর) | প্রতিমন্ত্রী, প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়"
+      : "Md. Nurul Haque, MP (VP Nur) | State Minister, Ministry of Expatriates' Welfare & Overseas Employment",
     description: bn
-      ? "গণপ্রজাতন্ত্রী বাংলাদেশ সরকারের প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়ের মাননীয় প্রতিমন্ত্রী এবং পটুয়াখালী-৩ আসনের সংসদ সদস্য মো. নুরুল হক (ভিপি নুর)–এর অফিশিয়াল পোর্টাল।"
-      : "Official portal of Md. Nurul Hoque, MP (VP Nur), State Minister for the Ministry of Expatriates' Welfare and Overseas Employment, and Member of Parliament for Patuakhali-3.",
+      ? "গণপ্রজাতন্ত্রী বাংলাদেশ সরকারের প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়ের মাননীয় প্রতিমন্ত্রী এবং পটুয়াখালী-৩ আসনের সংসদ সদস্য মোঃ নুরুল হক (ভিপি নুর)–এর অফিশিয়াল পোর্টাল।"
+      : "Official portal of Md. Nurul Haque, MP (VP Nur), State Minister for the Ministry of Expatriates' Welfare and Overseas Employment, and Member of Parliament for Patuakhali-3.",
   });
 }
 

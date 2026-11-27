@@ -5,7 +5,7 @@ export function Hero({ locale }: { locale: Locale }) {
   const bn = locale === "bn";
   const heroSrc = bn ? "/images/hero-bn.jpg" : "/images/hero-en.jpg";
   const altText = bn
-    ? "মো: নুরুল হক, এমপি — প্রতিমন্ত্রী, প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়"
+    ? "মোঃ নুরুল হক, এমপি — প্রতিমন্ত্রী, প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়"
     : "Md. Nurul Haque, MP — State Minister, Ministry of Expatriates' Welfare & Overseas Employment";
 
   return (

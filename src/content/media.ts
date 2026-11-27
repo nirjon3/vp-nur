@@ -33,7 +33,7 @@ export const mediaItems: MediaItem[] = [
     id: "photo-portrait-official-2026",
     kind: "photo",
     title: {
-      bn: "অফিসিয়াল প্রতিকৃতি — মো. নুরুল হক",
+      bn: "অফিসিয়াল প্রতিকৃতি — মোঃ নুরুল হক",
       en: "Official Portrait — Md. Nurul Haque",
     },
     imageUrl: "/images/nur-official-2026.jpg",

@@ -21,8 +21,8 @@ export async function generateMetadata({
     path: "/events",
     title: bn ? "ইভেন্ট ও অনুষ্ঠানসূচি" : "Events & Public Schedule",
     description: bn
-      ? "মাননীয় প্রতিমন্ত্রী মো. নুরুল হক, এমপি (ভিপি নুর)–এর সরকারি ও সংসদীয় এলাকার প্রকাশযোগ্য অনুষ্ঠানসূচি ও গণশুনানি।"
-      : "Official public schedule, hearings, and civic engagements of State Minister Md. Nurul Hoque, MP (VP Nur).",
+      ? "মাননীয় প্রতিমন্ত্রী মোঃ নুরুল হক, এমপি (ভিপি নুর)–এর সরকারি ও সংসদীয় এলাকার প্রকাশযোগ্য অনুষ্ঠানসূচি ও গণশুনানি।"
+      : "Official public schedule, hearings, and civic engagements of State Minister Md. Nurul Haque, MP (VP Nur).",
   });
 }
 

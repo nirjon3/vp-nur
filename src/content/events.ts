@@ -1,7 +1,7 @@
 import type { PublicEvent } from "@/types/content";
 
 /**
- * Public events and official engagements of Md. Nurul Hoque, MP (VP Nur).
+ * Public events and official engagements of Md. Nurul Haque, MP (VP Nur).
  * State Minister, Ministry of Expatriates' Welfare & Overseas Employment
  * Member of Parliament, Patuakhali-3 (Galachipa & Dashmina).
  */
