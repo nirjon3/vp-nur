@@ -47,12 +47,12 @@ function MediaCardItem({ item, locale, bn, onOpen }: MediaCardItemProps) {
   const [hoverIndex, setHoverIndex] = React.useState(0);
   const [isHovered, setIsHovered] = React.useState(false);
 
-  // Auto-slide thumbnail on hover/focus every 1 sec if there are multiple images
+  // Auto-slide thumbnail on hover/focus every 3 sec if there are multiple images
   React.useEffect(() => {
     if (!isAlbum || !isHovered) return;
     const interval = setInterval(() => {
       setHoverIndex((prev) => (prev + 1) % itemImages.length);
-    }, 1000);
+    }, 3000);
     return () => clearInterval(interval);
   }, [isAlbum, isHovered, itemImages.length]);
 
@@ -125,6 +125,7 @@ export function MediaGallery({ items, locale }: { items: MediaItem[]; locale: Lo
   const [active, setActive] = React.useState<MediaItem | null>(null);
   const [activeImageIndex, setActiveImageIndex] = React.useState<number>(0);
   const [isAutoSlideActive, setIsAutoSlideActive] = React.useState<boolean>(true);
+  const [feedbackIcon, setFeedbackIcon] = React.useState<"playing" | "paused" | null>(null);
   const closeRef = React.useRef<HTMLButtonElement>(null);
 
   const filtered = items.filter((i) => kind === "all" || i.kind === kind);
@@ -132,7 +133,8 @@ export function MediaGallery({ items, locale }: { items: MediaItem[]; locale: Lo
   const openItem = (item: MediaItem) => {
     setActive(item);
     setActiveImageIndex(0);
-    setIsAutoSlideActive(true); // Start 1-sec auto slide automatically on tap
+    setIsAutoSlideActive(true);
+    setFeedbackIcon(null);
   };
 
   const allActiveImages = React.useMemo(() => {
@@ -152,22 +154,30 @@ export function MediaGallery({ items, locale }: { items: MediaItem[]; locale: Lo
     setActiveImageIndex((prev) => (prev < allActiveImages.length - 1 ? prev + 1 : 0));
   }, [allActiveImages.length]);
 
-  // When tapping directly on the photo inside the modal
+  // Tap photo to toggle play / pause: "tab korle tamby and tab korle abr colbe"
   const handleImageTap = React.useCallback(() => {
     if (allActiveImages.length <= 1) return;
-    // Advance to next image immediately on tap
-    setActiveImageIndex((prev) => (prev < allActiveImages.length - 1 ? prev + 1 : 0));
-    // Ensure 1-second auto-slide remains active
-    setIsAutoSlideActive(true);
+    setIsAutoSlideActive((prev) => {
+      const next = !prev;
+      setFeedbackIcon(next ? "playing" : "paused");
+      return next;
+    });
   }, [allActiveImages.length]);
 
-  // 1-second automatic slide effect when multiple images are present
+  // Hide feedback icon after 700ms
+  React.useEffect(() => {
+    if (!feedbackIcon) return;
+    const t = setTimeout(() => setFeedbackIcon(null), 700);
+    return () => clearTimeout(t);
+  }, [feedbackIcon]);
+
+  // 3-second automatic slide effect when multiple images are present
   React.useEffect(() => {
     if (!active || allActiveImages.length <= 1 || !isAutoSlideActive) return;
 
     const timer = setInterval(() => {
       setActiveImageIndex((prev) => (prev < allActiveImages.length - 1 ? prev + 1 : 0));
-    }, 1000); // 1 second interval as requested
+    }, 3000); // 3 seconds interval as requested
 
     return () => clearInterval(timer);
   }, [active, allActiveImages.length, isAutoSlideActive]);
@@ -184,7 +194,7 @@ export function MediaGallery({ items, locale }: { items: MediaItem[]; locale: Lo
           handleNextImage();
         } else if (e.key === " ") {
           e.preventDefault();
-          setIsAutoSlideActive((prev) => !prev);
+          handleImageTap();
         }
       };
       window.addEventListener("keydown", onKey);
@@ -194,7 +204,7 @@ export function MediaGallery({ items, locale }: { items: MediaItem[]; locale: Lo
         document.body.style.overflow = "";
       };
     }
-  }, [active, handlePrevImage, handleNextImage]);
+  }, [active, handlePrevImage, handleNextImage, handleImageTap]);
 
   const kindLabel = (k: MediaKind | "all") => {
     if (k === "all") return bn ? "সব" : "All";
@@ -288,8 +298,7 @@ export function MediaGallery({ items, locale }: { items: MediaItem[]; locale: Lo
               ) : currentDisplayImage ? (
                 <div
                   onClick={handleImageTap}
-                  title={allActiveImages.length > 1 ? (bn ? "ট্যাপ করে পরবর্তী ছবি দেখুন" : "Tap to see next photo") : undefined}
-                  className={`group relative aspect-[4/3] sm:aspect-[16/10] max-h-[65vh] w-full overflow-hidden bg-black flex items-center justify-center ${
+                  className={`relative aspect-[4/3] sm:aspect-[16/10] max-h-[65vh] w-full overflow-hidden bg-black flex items-center justify-center ${
                     allActiveImages.length > 1 ? "cursor-pointer select-none" : ""
                   }`}
                 >
@@ -304,58 +313,57 @@ export function MediaGallery({ items, locale }: { items: MediaItem[]; locale: Lo
                     priority
                   />
 
-                  {/* Album Photo Counter & Auto-Slide Status Indicator */}
+                  {/* Clean, Non-Intrusive Counter & Tiny Status Icon */}
                   {allActiveImages.length > 1 ? (
-                    <div className="absolute left-3 top-3 z-20 flex items-center gap-2">
-                      <span className="rounded-[2px] bg-forest-ink/85 px-2.5 py-1 text-[11px] font-bold text-white shadow-xs backdrop-blur-xs">
+                    <div className="absolute left-3 top-3 z-20 flex items-center gap-1.5 pointer-events-auto">
+                      <span className="rounded-[2px] bg-forest-ink/80 px-2.5 py-1 text-[11px] font-bold text-white shadow-xs backdrop-blur-xs">
                         {activeImageIndex + 1} / {allActiveImages.length}
                       </span>
                       <button
                         type="button"
                         onClick={(e) => {
                           e.stopPropagation();
-                          setIsAutoSlideActive((prev) => !prev);
+                          handleImageTap();
                         }}
-                        className={`flex items-center gap-1.5 rounded-[2px] px-2.5 py-1 text-[11px] font-semibold shadow-xs backdrop-blur-xs transition-colors ${
+                        aria-label={isAutoSlideActive ? "Pause auto-slide" : "Play auto-slide"}
+                        className={`flex h-6 w-6 items-center justify-center rounded-[2px] shadow-xs backdrop-blur-xs transition-colors ${
                           isAutoSlideActive
-                            ? "bg-forest text-gold border border-gold/40"
-                            : "bg-forest-ink/80 text-white/80 hover:text-white"
+                            ? "bg-forest-ink/80 text-gold hover:text-white"
+                            : "bg-forest-ink/80 text-white/60 hover:text-white"
                         }`}
-                        title={
-                          isAutoSlideActive
-                            ? (bn ? "অটো-স্লাইড বন্ধ করতে ক্লিক করুন" : "Click to pause auto-slide")
-                            : (bn ? "অটো-স্লাইড চালু করতে ক্লিক করুন" : "Click to resume auto-slide")
-                        }
                       >
                         {isAutoSlideActive ? (
-                          <>
-                            <span className="relative flex h-2 w-2">
-                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
-                              <span className="relative inline-flex rounded-full h-2 w-2 bg-gold"></span>
-                            </span>
-                            <Pause className="h-3 w-3" />
-                            <span>{bn ? "১ সেকেন্ডে স্লাইড হচ্ছে" : "Auto 1s"}</span>
-                          </>
+                          <Pause className="h-3 w-3" />
                         ) : (
-                          <>
-                            <Play className="h-3 w-3" />
-                            <span>{bn ? "স্লাইড চালান" : "Play 1s"}</span>
-                          </>
+                          <Play className="h-3 w-3 fill-current" />
                         )}
                       </button>
                     </div>
                   ) : null}
 
-                  {/* Top 1-Second Progress Bar */}
+                  {/* Top 3-Second Progress Bar */}
                   {allActiveImages.length > 1 && isAutoSlideActive ? (
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-white/20 z-30 overflow-hidden">
+                    <div className="absolute top-0 left-0 right-0 h-0.5 bg-white/20 z-30 overflow-hidden">
                       <div
                         key={activeImageIndex}
-                        className="h-full bg-gold animate-[progress_1s_linear_infinite]"
+                        className="h-full bg-gold"
                         style={{
-                          animation: "slideProgress 1000ms linear",
+                          animation: "slideProgress 3000ms linear",
                         }}
                       />
+                    </div>
+                  ) : null}
+
+                  {/* Instant Tap Feedback Icon (Pause / Play) in Center */}
+                  {feedbackIcon ? (
+                    <div className="pointer-events-none absolute inset-0 flex items-center justify-center z-30 animate-out fade-out duration-700">
+                      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-forest-ink/75 text-gold shadow-xl backdrop-blur-xs">
+                        {feedbackIcon === "paused" ? (
+                          <Pause className="h-8 w-8" />
+                        ) : (
+                          <Play className="h-8 w-8 fill-current ml-0.5" />
+                        )}
+                      </div>
                     </div>
                   ) : null}
 
@@ -385,13 +393,6 @@ export function MediaGallery({ items, locale }: { items: MediaItem[]; locale: Lo
                         <ChevronRight className="h-6 w-6" />
                       </button>
                     </>
-                  ) : null}
-
-                  {/* Subtle Tap to Advance Overlay Hint */}
-                  {allActiveImages.length > 1 ? (
-                    <span className="pointer-events-none absolute bottom-3 right-3 z-20 rounded-[2px] bg-forest-ink/70 px-2 py-0.5 text-[10px] text-white/80 opacity-0 group-hover:opacity-100 transition-opacity">
-                      {bn ? "ছবির মধ্যে ট্যাপ করে স্লাইড করুন" : "Tap image to slide"}
-                    </span>
                   ) : null}
                 </div>
               ) : (
