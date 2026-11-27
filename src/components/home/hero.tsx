@@ -13,17 +13,17 @@ export function Hero({ locale }: { locale: Locale }) {
       {/* Accessible semantic H1 heading for SEO & accessibility */}
       <h1 className="sr-only">{altText}</h1>
 
-      <div className="mx-auto w-full max-w-[1600px]">
-        <div className="relative aspect-[16/9] w-full overflow-hidden shadow-xs bg-[#ebe6e1]">
+      <div className="mx-auto w-full max-w-[1280px]">
+        <div className="relative w-full overflow-hidden shadow-xs">
           <Image
             src={heroSrc}
             alt={altText}
-            fill
+            width={1024}
+            height={576}
             priority
-            fetchPriority="high"
-            quality={90}
-            sizes="(min-width: 1600px) 1600px, 100vw"
-            className="object-cover object-center"
+            unoptimized
+            className="w-full h-auto block object-contain"
+            sizes="(min-width: 1280px) 1280px, 100vw"
           />
         </div>
       </div>
