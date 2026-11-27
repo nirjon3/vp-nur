@@ -102,13 +102,13 @@ export default async function AboutPage({
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
               <figure>
-                <div className="relative overflow-hidden rounded-[2px] bg-white shadow-md border border-line">
+                <div className="relative w-full">
                   <Image
                     src="/images/nur-about-portrait.jpg"
                     alt={
                       bn
-                        ? "নুরুল হক নুর (ভিপি নুর) — প্রতিকৃতি"
-                        : "Nurul Haque Nur (VP Nur) — Portrait"
+                        ? "মোঃ নুরুল হক (ভিপি নুর) — প্রতিকৃতি"
+                        : "Md. Nurul Haque (VP Nur) — Portrait"
                     }
                     width={892}
                     height={1024}
