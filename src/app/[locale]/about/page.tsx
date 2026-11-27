@@ -10,6 +10,7 @@ import {
   Megaphone,
   Landmark,
   Building2,
+  Flag,
 } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import { isLocale, localePath } from "@/i18n/config";
@@ -26,15 +27,19 @@ const timelineMeta = [
   },
   {
     icon: GraduationCap,
-    tag: { bn: "উচ্চশিক্ষা", en: "Higher Studies" },
+    tag: { bn: "উচ্চশিক্ষা", en: "Education" },
+  },
+  {
+    icon: Megaphone,
+    tag: { bn: "কোটা সংস্কার", en: "Student Movement" },
   },
   {
     icon: Award,
     tag: { bn: "ডাকসু ভিপি", en: "DUCSU Leadership" },
   },
   {
-    icon: Megaphone,
-    tag: { bn: "রাজনৈতিক যাত্রা", en: "Political Movement" },
+    icon: Flag,
+    tag: { bn: "গণঅধিকার পরিষদ", en: "Party Foundation" },
   },
   {
     icon: Landmark,
@@ -97,7 +102,7 @@ export default async function AboutPage({
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
               <figure>
-                <div className="relative overflow-hidden rounded-[2px] bg-black shadow-md border border-line/40">
+                <div className="relative overflow-hidden rounded-[2px] bg-white shadow-md border border-line">
                   <Image
                     src="/images/nur-about-portrait.jpg"
                     alt={
@@ -134,8 +139,8 @@ export default async function AboutPage({
                 </p>
                 <p className="text-[14px] leading-7 text-muted">
                   {bn
-                    ? "বি.দ্র: জন্মতারিখ, শিক্ষাগত যোগ্যতা, দলীয় পদ ও বর্তমান দাপ্তরিক দায়িত্বের সুনির্দিষ্ট তারিখ ও বিবরণ যাচাই সম্পন্ন হলে এখানে প্রকাশিত হবে। অনুমাননির্ভর তথ্য প্রকাশ করা হয় না।"
-                    : "Note: exact dates and details for birth, education, party office and current formal responsibilities will be published once verified. Information is never published on assumption."}
+                    ? "উইকিপিডিয়া ও প্রাতিষ্ঠানিক নথিপত্র অনুসারে তাঁর জন্ম, শিক্ষা, ছাত্র আন্দোলন, ডাকসু নির্বাচন, দল প্রতিষ্ঠা এবং রাষ্ট্রীয় দায়িত্বের যাবতীয় তথ্য নিচে সবিস্তারে উপস্থাপিত হলো।"
+                    : "According to Wikipedia and verified institutional records, detailed records of his early life, education, student activism, DUCSU tenure, party founding, and state responsibilities are presented below."}
                 </p>
               </div>
               <dl className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-[2px] border border-line bg-line sm:grid-cols-4">
@@ -182,7 +187,10 @@ export default async function AboutPage({
 
             <div className="space-y-8 md:space-y-12">
               {timeline.map((item, index) => {
-                const meta = timelineMeta[index];
+                const meta = timelineMeta[index] || {
+                  icon: Award,
+                  tag: { bn: "মাইলফলক", en: "Milestone" },
+                };
                 const Icon = meta.icon;
                 const isEven = index % 2 === 0;
 
