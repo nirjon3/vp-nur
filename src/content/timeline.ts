@@ -9,14 +9,14 @@ import type { TimelineItem } from "@/types/content";
 export const timeline: TimelineItem[] = [
   {
     id: "birth",
-    date: { bn: "১৯৯১", en: "1991" },
+    date: { bn: "৩০ জানুয়ারি ১৯৯৪", en: "30 January 1994" },
     title: {
       bn: "জন্ম ও প্রারম্ভিক জীবন",
       en: "Birth & Early Life",
     },
     body: {
-      bn: "পটুয়াখালী জেলার গলাচিপা উপজেলার বৃহত্তর চর কাজল ইউনিয়ন (বর্তমান চর বিশ্বাস ইউনিয়ন)-এ এক সম্ভ্রান্ত মুসলিম পরিবারে জন্ম। পিতা মো. ইদ্রিস হাওলাদার একজন ব্যবসায়ী ও সাবেক ইউপি সদস্য এবং মাতা মরহুমা নিলুফা বেগম। তিন ভাই ও পাঁচ বোনের মাঝে তিনি দ্বিতীয় সন্তান।",
-      en: "Born in October 1991 in Char Biswas Union (formerly Char Kajal Union), Galachipa Upazila, Patuakhali District. Father Md. Idris Hawlader is a businessman and former local union council member, and mother late Nilufa Begum. He is the second among three brothers and five sisters.",
+      bn: "১৯৯৪ সালের ৩০ জানুয়ারি পটুয়াখালী জেলার গলাচিপা উপজেলার বৃহত্তর চর কাজল ইউনিয়ন (বর্তমান চর বিশ্বাস ইউনিয়ন)-এ এক সম্ভ্রান্ত মুসলিম পরিবারে জন্ম। পিতা মোঃ ইদ্রিস হাওলাদার একজন ব্যবসায়ী ও সাবেক ইউপি সদস্য এবং মাতা মরহুমা নিলুফা বেগম। তিন ভাই ও পাঁচ বোনের মাঝে তিনি দ্বিতীয় সন্তান।",
+      en: "Born on 30 January 1994 in Char Biswas Union (formerly Char Kajal Union), Galachipa Upazila, Patuakhali District. Father Md. Idris Hawlader is a businessman and former local union council member, and mother late Nilufa Begum. He is the second among three brothers and five sisters.",
     },
     verification: "verified",
     sourceUrl: "https://bn.wikipedia.org/wiki/নুরুল_হক_নুর",

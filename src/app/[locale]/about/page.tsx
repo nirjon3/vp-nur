@@ -215,36 +215,13 @@ export default async function AboutPage({
                       }`}
                     >
                       <div className="group rounded-xl border border-line bg-white p-6 shadow-2xs transition-all duration-200 hover:-translate-y-0.5 hover:border-forest/40 hover:shadow-md sm:rounded-2xl sm:p-7">
-                        {/* Header: Date + Unique Point Icon */}
-                        <div className="flex items-center justify-between border-b border-line/70 pb-3">
-                          <span className="text-[13px] font-bold tracking-wider text-forest uppercase">
-                            {typeof item.date === "string"
-                              ? item.date
-                              : item.date[locale]}
-                          </span>
-                          <div className="flex h-8 w-8 items-center justify-center rounded-[3px] border border-forest/20 bg-forest/5 text-forest transition-colors group-hover:border-forest/40 group-hover:bg-forest group-hover:text-gold">
-                            <Icon className="h-4 w-4" />
-                          </div>
-                        </div>
-
                         {/* Title & Body */}
-                        <h3 className="bn-heading mt-3 text-[17px] font-bold leading-snug text-forest">
+                        <h3 className="bn-heading text-[18px] font-bold leading-snug text-forest sm:text-[19px]">
                           {item.title[locale]}
                         </h3>
-                        <p className="bn mt-2.5 text-[14px] leading-relaxed text-body">
+                        <p className="bn mt-3 text-[14.5px] leading-relaxed text-body">
                           {item.body[locale]}
                         </p>
-
-                        {/* Bottom Pill Badge with Dedicated Icon */}
-                        <div className="mt-4 flex items-center justify-between">
-                          <span className="inline-flex items-center gap-1.5 rounded-full bg-forest/8 px-3 py-1 text-[11.5px] font-semibold text-forest">
-                            <Icon className="h-3 w-3 text-gold-deep" />
-                            {meta.tag[locale]}
-                          </span>
-                          <span className="text-[11px] font-bold text-muted/70 tracking-widest">
-                            #{String(index + 1).padStart(2, "0")}
-                          </span>
-                        </div>
                       </div>
                     </div>
                   </div>
